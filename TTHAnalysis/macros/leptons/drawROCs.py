@@ -19,8 +19,10 @@ parser.add_option('-n', '--classifierName', dest='classifierNames', help='Intern
 parser.add_option('-b', '--nbins',      dest='nbins', help='Number of bins for the ROC', default=100, type='int')
 parser.add_option('-s', '--smooth',     dest='smooth', help='Draw a smoothed curve instead of a binned histogram', action='store_true')
 parser.add_option('-e', '--extensions', dest='extensions', help='Write the plots in the specified format (comma-separated list)', default='png,pdf,root', type='string')
+parser.add_option('-y', '--logy',       dest='logy', help='Draw y axis in logy', action='store_true')
 parser.add_option('--simple', dest='simple', help='Take the ROCs directly from the ROOT histograms', action='store_true')
 (opt, args) = parser.parse_args()                                                                                                                        
+# check if the conversions are excluded
 
 inputDir=opt.inputDir
 outputDir=opt.outputDir
@@ -35,6 +37,7 @@ else:
 nbins=opt.nbins
 smooth=opt.smooth
 extensions=opt.extensions.split(',')
+logy=opt.logy
 
 if not os.path.isdir(outputDir):
     os.mkdir(outputDir)
@@ -81,6 +84,8 @@ for flavour in ['el_eleGP', 'mu']:
 
     c = TCanvas("c", "c", 1000, 1000)
     c.cd() 
+    if logy:
+        gPad.SetLogy()
     leg = TLegend(0.3,0.3,0.58,0.58)
     leg.SetBorderSize(0)
     leg.SetTextSize(0.025)
