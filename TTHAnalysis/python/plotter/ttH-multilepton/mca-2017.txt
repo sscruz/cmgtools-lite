@@ -1,0 +1,16 @@
+data	: Tree_MuonEG_Run2017B_12Sep2017_v1_0
+data	: Tree_MuonEG_Run2017C_PromptReco_v1_0	
+data 	: Tree_MuonEG_Run2017C_PromptReco_v2_0	
+data	: Tree_MuonEG_Run2017C_PromptReco_v3_0	
+data	: Tree_MuonEG_Run2017D_PromptReco_v1_0	
+data 	: Tree_MuonEG_Run2017E_PromptReco_v1_0	
+
+2016 	: MuonEG_Run2016B_03Feb2017_ver2_v2_runs_273150_275376 : 1; FillColor=ROOT.kBlue
+2016 	: MuonEG_Run2016C_03Feb2017_v1_runs_271036_284044      : 1; FillColor=ROOT.kBlue
+2016 	: MuonEG_Run2016D_03Feb2017_v1_runs_271036_284044      : 1; FillColor=ROOT.kBlue
+2016 	: MuonEG_Run2016E_03Feb2017_v1_runs_271036_284044      : 1; FillColor=ROOT.kBlue
+2016 	: MuonEG_Run2016F_03Feb2017_v1_runs_271036_284044      : 1; FillColor=ROOT.kBlue
+2016 	: MuonEG_Run2016G_03Feb2017_v1_runs_271036_284044      : 1; FillColor=ROOT.kBlue
+2016 	: MuonEG_Run2016H_03Feb2017_ver2_v1_runs_281085_284035 : 1; FillColor=ROOT.kBlue
+2016 	: MuonEG_Run2016H_03Feb2017_ver3_v1_runs_284036_284044 : 1; FillColor=ROOT.kBlue
+

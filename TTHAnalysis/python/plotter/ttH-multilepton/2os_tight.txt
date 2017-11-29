@@ -1,0 +1,18 @@
+alwaystrue: 1
+trigger: Trigger_2l
+cleanup: minMllAFAS > 12
+dilep: nLepFO>=2
+pt2515: LepGood_conePt>25
+exclusive: nLepTight<=2
+opposite-sign: LepGood1_charge*LepGood2_charge < 0
+eleID: (abs(LepGood_pdgId)!=11 || (LepGood_convVeto && LepGood_lostHits==0 && LepGood_tightCharge>=2)) 
+muTightCharge: (abs(LepGood_pdgId)!=13 || LepGood_tightCharge>=1)
+loose: LepGood_miniRelIso<0.4 && LepGood_sip3d < 8
+
+electrons : abs(LepGood_pdgId) == 11; Disable=True
+muons     : abs(LepGood_pdgId) == 13; Disable=True 
+
+
+2j: nJet25>=2
+2b1B: nBJetLoose25 >= 2 || nBJetMedium25 >= 1
+

@@ -41,8 +41,87 @@ void trainLeptonID(TString name, TString sig1file, TString sig2file, TString bkg
 	  else assert(0);
 	}
 	else { std::cerr << "ERROR: must either be electron or muon." << std::endl; return; }
-	
     }
+    else if (name.Contains("pietro"))
+      {
+        factory->AddVariable("LepGood_pt", 'D');
+        factory->AddVariable("LepGood_eta", 'D');
+	factory->AddVariable("LepGood_jetNDauChargedMVASel", 'D');
+	factory->AddVariable("LepGood_miniRelIsoCharged", 'D');
+	factory->AddVariable("LepGood_miniRelIsoNeutral", 'D');
+	factory->AddVariable("LepGood_jetPtRelv2", 'D');
+	factory->AddVariable("LepGood_jetPtRatio := min(LepGood_jetPtRatiov2,1.5)", 'D');
+	factory->AddVariable("LepGood_jetBTagCSV := max(LepGood_jetBTagCSV,0)", 'D');
+        factory->AddVariable("LepGood_sip3d", 'D'); 
+        factory->AddVariable("LepGood_dxy := log(abs(LepGood_dxy))", 'D');
+        factory->AddVariable("LepGood_dz  := log(abs(LepGood_dz))",  'D');
+	lepton += "LepGood_miniRelIso<0.4 && LepGood_sip3d < 8";
+	if (name.Contains("_mu")) {
+	  factory->AddVariable("LepGood_segmentCompatibility",'D');
+	} else if (name.Contains("_el")) {
+	  if (name.Contains("_eleHZZ")) factory->AddVariable("LepGood_mvaIdSpring16HZZ",'D');
+	  else if (name.Contains("_eleGP")) factory->AddVariable("LepGood_mvaIdSpring16GP",'D');
+	  else if (name.Contains("_eleOLD")) factory->AddVariable("LepGood_mvaIdSpring15",'D');
+	  else assert(0);
+	}
+	else { std::cerr << "ERROR: must either be electron or muon." << std::endl; return; }
+      }
+    else if (name.Contains("sergio_noPt")) {
+      factory->AddVariable("LepGood_eta", 'D');
+	factory->AddVariable("LepGood_jetNDauChargedMVASel", 'D');
+	factory->AddVariable("LepGood_miniRelIsoCharged", 'D');
+	factory->AddVariable("LepGood_miniRelIsoNeutral", 'D');
+	factory->AddVariable("LepGood_jetPtRelv2", 'D');
+	factory->AddVariable("LepGood_jetPtRatio := min(LepGood_jetPtRatiov2,1.5)", 'D');
+	factory->AddVariable("LepGood_jetBTagCSV := max(LepGood_jetBTagCSV,0)", 'D');
+        factory->AddVariable("LepGood_sip3d", 'D'); 
+        factory->AddVariable("LepGood_dxy := log(abs(LepGood_dxy))", 'D');
+        factory->AddVariable("LepGood_dz  := log(abs(LepGood_dz))",  'D');
+	lepton += "LepGood_miniRelIso<0.4 && LepGood_sip3d < 8";
+	if (name.Contains("_mu")) {
+	  factory->AddVariable("LepGood_segmentCompatibility",'D');
+	} else if (name.Contains("_el")) {
+	  if (name.Contains("_eleHZZ")) factory->AddVariable("LepGood_mvaIdSpring16HZZ",'D');
+	  else if (name.Contains("_eleGP")) factory->AddVariable("LepGood_mvaIdSpring16GP",'D');
+	  else if (name.Contains("_eleOLD")) factory->AddVariable("LepGood_mvaIdSpring15",'D');
+	  else assert(0);
+	}
+	else { std::cerr << "ERROR: must either be electron or muon." << std::endl; return; }
+    }
+
+    else if (name.Contains("sergio_noEtaPt")) {
+	factory->AddVariable("LepGood_jetNDauChargedMVASel", 'D');
+	factory->AddVariable("LepGood_miniRelIsoCharged", 'D');
+	factory->AddVariable("LepGood_miniRelIsoNeutral", 'D');
+	factory->AddVariable("LepGood_jetPtRelv2", 'D');
+	factory->AddVariable("LepGood_jetPtRatio := min(LepGood_jetPtRatiov2,1.5)", 'D');
+	factory->AddVariable("LepGood_jetBTagCSV := max(LepGood_jetBTagCSV,0)", 'D');
+        factory->AddVariable("LepGood_sip3d", 'D'); 
+        factory->AddVariable("LepGood_dxy := log(abs(LepGood_dxy))", 'D');
+        factory->AddVariable("LepGood_dz  := log(abs(LepGood_dz))",  'D');
+	lepton += "LepGood_miniRelIso<0.4 && LepGood_sip3d < 8";
+	if (name.Contains("_mu")) {
+	  factory->AddVariable("LepGood_segmentCompatibility",'D');
+	} else if (name.Contains("_el")) {
+	  if (name.Contains("_eleHZZ")) factory->AddVariable("LepGood_mvaIdSpring16HZZ",'D');
+	  else if (name.Contains("_eleGP")) factory->AddVariable("LepGood_mvaIdSpring16GP",'D');
+	  else if (name.Contains("_eleOLD")) factory->AddVariable("LepGood_mvaIdSpring15",'D');
+	  else assert(0);
+	}
+	else { std::cerr << "ERROR: must either be electron or muon." << std::endl; return; }
+    }
+
+    else if (name.Contains("sergio_onlyIP")) {
+	// factory->AddVariable("LepGood_miniRelIsoCharged", 'D');
+	// factory->AddVariable("LepGood_miniRelIsoNeutral", 'D');
+        factory->AddVariable("LepGood_sip3d", 'D'); 
+        factory->AddVariable("LepGood_dxy := log(abs(LepGood_dxy))", 'D');
+        factory->AddVariable("LepGood_dz  := log(abs(LepGood_dz))",  'D');
+	lepton += "LepGood_miniRelIso<0.4 && LepGood_sip3d < 8";
+    }
+
+
+
     else if (name.Contains("asMultiIso")){
 	factory->AddVariable("LepGood_miniRelIso", 'D');
 	factory->AddVariable("LepGood_jetPtRelv2", 'D');
@@ -182,14 +261,22 @@ void trainLeptonID(TString name, TString sig1file, TString sig2file, TString bkg
     //    if (!doMultiClass) factory->BookMethod( TMVA::Types::kLD, "LD", "!H:!V:VarTransform=None" );
     
     // Boosted Decision Trees with gradient boosting
-    TString BDTGopt = "!H:!V:NTrees=500:BoostType=Grad:Shrinkage=0.10:!UseBaggedGrad:nCuts=2000:nEventsMin=100:NNodesMax=9:UseNvars=9:MaxDepth=8";
+    TString BDTGopt("!H:!V:NTrees=500:BoostType=Grad:Shrinkage=0.10:!UseBaggedGrad:nCuts=2000:nEventsMin=100:NNodesMax=9:UseNvars=9:MaxDepth=8");
+    if (name.Contains("pietro")) BDTGopt ="!H:!V:NTrees=500:MaxDepth=2:BoostType=Grad:UseBaggedBoost=True:SeparationType=CrossEntropy:Shrinkage=0.20";
+    // TString TTHopt = "!H:!V:NTrees=500:MaxDepth=2:BoostType=Grad:Shrinkage=0.10:UseNvars=9:nEventsMin=100:!UseBaggedGrad:NNodesMax=9";
+    // TString TTHmore = "!H:!V:NTrees=2000:MaxDepth=2:BoostType=Grad:Shrinkage=0.10:UseNvars=9:nEventsMin=100:UseBaggedGrad:NNodesMax=9:GradBaggingFraction=0.2";
+    // TString TTHmoremore = "!H:!V:NTrees=2000:MaxDepth=2:BoostType=Grad:Shrinkage=0.10:UseNvars=5:nEventsMin=100:UseBaggedGrad:NNodesMax=9:GradBaggingFraction=0.2";
 
     // alternative options
     //TString BDTGopt = "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.10:!UseBaggedGrad:nCuts=2000:nEventsMin=100:MaxDepth=3";
     //TString BDTGopt = "!H:!V:NTrees=1000:BoostType=Grad:Shrinkage=0.10:!UseBaggedGrad:nCuts=2000";
 
     if (!doMultiClass) BDTGopt += ":CreateMVAPdfs"; // Create Rarity distribution
-    factory->BookMethod( TMVA::Types::kBDT, "BDTG", BDTGopt);
+    factory->BookMethod( TMVA::Types::kBDT , "BDTG", BDTGopt);
+    //factory->BookMethod( TMVA::Types::kCuts, "Cuts", "FitMethod=GA");
+    // factory->BookMethod( TMVA::Types::kBDT, "BDTG1", TTHopt);
+    // factory->BookMethod( TMVA::Types::kBDT, "BDTG2", TTHmore);
+    // factory->BookMethod( TMVA::Types::kBDT, "BDTG3", TTHmoremore);
 
     factory->TrainAllMethods();
     factory->TestAllMethods();
