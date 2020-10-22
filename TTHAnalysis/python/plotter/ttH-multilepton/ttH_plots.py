@@ -23,7 +23,7 @@ P0="/eos/cms/store/cmst3/group/tthlep/peruzzi/"
 #if 'cmsco01'   in os.environ['HOSTNAME']: P0="/data1/peruzzi"
 nCores = 32
 if 'fanae' in os.environ['HOSTNAME']:
-    nCores = 32
+    nCores = 6
     #submit = 'sbatch -c %d -p cpupower  --wrap "{command}"'%nCores
     P0     = "/pool/ciencias/HeppyTrees/EdgeZ/TTH/"
 if 'gae' in os.environ['HOSTNAME']: 

@@ -991,7 +991,8 @@ class PlotMaker:
                     signorms = doStackSignalNorm(pspec,pmap,options.showIndivSigShapes or options.showIndivSigs,extrascale=options.signalPlotScale, norm=not options.showIndivSigs)
                     for signorm in signorms:
                         if outputDir: 
-                            signorm.SetDirectory(outputDir); outputDir.WriteTObject(signorm)
+                            signorm.SetDirectory(outputDir); 
+                            outputDir.WriteTObject(signorm.central)
                         reMax(total,signorm,islog,doWide=doWide)
                 if options.showDatShape: 
                     datnorm = doDataNorm(pspec,pmap)

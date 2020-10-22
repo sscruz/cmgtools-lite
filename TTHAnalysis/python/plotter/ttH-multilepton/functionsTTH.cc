@@ -265,6 +265,161 @@ int ttH_catIndex_2lss_nosign(int LepGood1_pdgId, int LepGood2_pdgId, int nBJetMe
 
 }
 
+int ttW_catIndex_2lss_second(int LepGood1_charge, int nJet25, float DNN_2lss_predictions_ttW){
+  //low DNN
+  if    ((DNN_2lss_predictions_ttW < 0.6) && (LepGood1_charge > 0) && nJet25==3) return 1; //positive low jet
+  if    ((DNN_2lss_predictions_ttW < 0.6) && (LepGood1_charge > 0) && nJet25>3)  return 2; //positve high jet
+  if    ((DNN_2lss_predictions_ttW < 0.6) && (LepGood1_charge < 0) && nJet25==3) return 3; //negative low jet
+  if    ((DNN_2lss_predictions_ttW < 0.6) && (LepGood1_charge < 0) && nJet25>3)  return 4; //negative high jet
+  
+   //high DNN
+  if    ((DNN_2lss_predictions_ttW > 0.6) && (LepGood1_charge > 0) && nJet25==3) return 5; //positive low jet
+  if    ((DNN_2lss_predictions_ttW > 0.6) && (LepGood1_charge > 0) && nJet25>3)  return 6; //positve high jet
+  if    ((DNN_2lss_predictions_ttW > 0.6) && (LepGood1_charge < 0) && nJet25==3) return 7; //negative low jet
+  if    ((DNN_2lss_predictions_ttW > 0.6) && (LepGood1_charge < 0) && nJet25>3)  return 8; //negative high jet
+  
+
+ return -1;
+
+}
+
+int ttW_catIndex_2lss(int LepGood1_charge, int nJet25, float DNN_2lss_predictions_ttW){
+  //low DNN
+  if    ((DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge > 0) && nJet25==3) return 1; //positive low jet
+  if    ((DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge > 0) && nJet25>3)  return 2; //positve high jet
+  if    ((DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge < 0) && nJet25==3) return 3; //negative low jet
+  if    ((DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge < 0) && nJet25>3)  return 4; //negative high jet
+  
+   //high DNN
+  if    ((DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge > 0) && nJet25==3) return 5; //positive low jet
+  if    ((DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge > 0) && nJet25>3)  return 6; //positve high jet
+  if    ((DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge < 0) && nJet25==3) return 7; //negative low jet
+  if    ((DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge < 0) && nJet25>3)  return 8; //negative high jet
+  
+
+ return -1;
+
+}
+
+int ttW_catIndex_2lss_bjets(int LepGood1_charge, int nBJet, float DNN_2lss_predictions_ttW){
+  //low DNN
+  if    ((DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge > 0) && nBJet==0) return 1; //positive low jet
+  if    ((DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge > 0) && nBJet>0)  return 2; //positve high jet
+  if    ((DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge < 0) && nBJet==0) return 3; //negative low jet
+  if    ((DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge < 0) && nBJet>0)  return 4; //negative high jet
+  
+   //high DNN
+  if    ((DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge > 0) && nBJet==0) return 5; //positive low jet
+  if    ((DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge > 0) && nBJet>0)  return 6; //positve high jet
+  if    ((DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge < 0) && nBJet==0) return 7; //negative low jet
+  if    ((DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge < 0) && nBJet>0)  return 8; //negative high jet
+  
+
+ return -1;
+
+}
+
+int ttW_catIndex_bkg( int nJet25, int nBJet, float DNN_2lss_predictions_ttW,float DNN_2lss_predictions_ttH){
+ 
+  if (DNN_2lss_predictions_ttW < 0.3 && DNN_2lss_predictions_ttH <0.6 && nJet25 < 4 && nBJet<1) return 1;
+  if (DNN_2lss_predictions_ttW < 0.3 && DNN_2lss_predictions_ttH <0.6 && nJet25 < 4 && nBJet>=1) return 2;
+  if (DNN_2lss_predictions_ttW < 0.3 && DNN_2lss_predictions_ttH <0.6  && nJet25 > 4) return 3;
+  if (DNN_2lss_predictions_ttW < 0.3 && DNN_2lss_predictions_ttH >0.6) return 4;
+
+
+
+  return -1;
+
+}
+
+
+std::vector<TString> bin2lsslabels_plots = {
+  "ee_ttHnode" , "em_ttHnode" ,  "mm_ttHnode", 
+  "ee_Restnode", "em_Restnode",  "mm_Restnode",
+  "ee_ttWnode" , "em_ttWnode" ,  "mm_ttWnode",
+  "ee_tHQnode" , "em_tHQnode" ,  "mm_tHQnode",
+
+};
+
+
+std::map<TString, TH1F*> binHistos2lss_plots;
+TFile* f2lssBins_plots;
+
+int ttH_catIndex_2lss_plots(int LepGood1_pdgId, int LepGood2_pdgId, float tth, float ttw, float thq, float rest)
+{
+
+  if (!f2lssBins_plots){
+    f2lssBins_plots = TFile::Open("../../data/kinMVA/DNNBin_v3_xmas.root");
+    for (auto & la : bin2lsslabels_plots){
+      int bins = bins2lss[la];
+      binHistos2lss_plots[la] = (TH1F*) f2lssBins_plots->Get(Form("%s_2018_Map_nBin%d", la.Data(), bins));
+    }
+  }
+
+  int idx = ttH_catIndex_2lss(LepGood1_pdgId, LepGood2_pdgId, tth,ttw, thq,rest); 
+  TString binLabel = bin2lsslabels[idx-1];
+  int offset=0;
+  int node = ttH_2lss_node(tth, ttw,thq, rest);
+  if (abs(LepGood1_pdgId*LepGood2_pdgId) == 143){
+    if (node == 0) offset = 5;
+    else if (node == 1) offset = 8;
+    else if (node == 2) offset = 6;
+    else offset = 4;
+  }
+  if (abs(LepGood1_pdgId*LepGood2_pdgId) == 169){
+    if (node == 0) offset = 5+13;
+    else if (node == 1) offset = 8+8;
+    else if (node == 2) offset = 6+19;
+    else offset = 4+11;
+  }
+
+  float mvavar = 0;
+  if (tth >= ttw && tth >= thq && tth >= rest)
+    mvavar = tth;
+  else if (rest >= tth && rest >= ttw && rest >= thq)
+    mvavar =rest;
+  else if (ttw >= tth && ttw >= rest && ttw >= thq)
+    mvavar = ttw;
+  else if (thq >= tth && thq >= rest && thq >= ttw)
+    mvavar = thq;
+  else 
+    cout << "It shouldnt be here" << endl;
+
+
+  return binHistos2lss_plots[binLabel]->FindBin( mvavar ) + offset;
+    
+
+}
+
+int ttW_catIndex_2lss_bjets_njets(int LepGood1_charge, int nJet25, int nBJet, float DNN_2lss_predictions_ttW){
+ 
+   //low DNN
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge > 0) && nJet25==3 && nBJet<=1) return 1; //positive low jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge > 0) && nJet25==3 && nBJet>1) return 2; //positive low jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge > 0) && nJet25>3  && nBJet<=1)  return 3; //positve high jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge > 0) && nJet25>3  && nBJet>1)  return 4; //positve high jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge < 0) && nJet25==3 && nBJet<=1) return 5; //negative low jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge < 0) && nJet25==3 && nBJet>1) return 6; //negative low jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge < 0) && nJet25>3  && nBJet<=1)  return 7; //negative high jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW < 0.45) && (LepGood1_charge < 0) && nJet25>3  && nBJet>1)  return 8; //negative high jet
+  
+   //high DNN
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge > 0) && nJet25==3 && nBJet<=1) return 9; //positive low jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge > 0) && nJet25==3 && nBJet>1) return 10; //positive low jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge > 0) && nJet25>3  && nBJet<=1)  return 11; //positve high jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge > 0) && nJet25>3  && nBJet>1)  return 12; //positve high jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge < 0) && nJet25==3 && nBJet<=1) return 13; //negative low jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge < 0) && nJet25==3 && nBJet>1) return 14; //negative low jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge < 0) && nJet25>3  && nBJet<=1)  return 15; //negative high jet
+  if    ((DNN_2lss_predictions_ttW >= 0.3 && DNN_2lss_predictions_ttW > 0.45) && (LepGood1_charge < 0) && nJet25>3  && nBJet>1)  return 16; //negative high jet
+  
+  
+
+  return -1;
+
+}
+
+
 int ttH_catIndex_2lss_SVA(int LepGood1_pdgId, int LepGood2_pdgId, int LepGood1_charge, int nJet25){
 
   int res = -2;
