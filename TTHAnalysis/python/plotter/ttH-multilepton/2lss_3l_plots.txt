@@ -109,6 +109,8 @@ htJet25j:   	htJet25j 				: 40,0,1000 ; XTitle="H_{T}(jet p_{T} > 25) (GeV)"
 mhtJet25:   	mhtJet25 				: 40,0,400 ; XTitle="H_{T}^{miss}(p_{T} > 25) (GeV)"
 met: 		MET_pt					: 40,0,400 ; XTitle="E_{T}^{miss} (GeV)"
 metLD:		MET_pt*0.6 + mhtJet25*0.4  	        : 40,0,400; XTitle="E_{T}^{miss} LD (GeV)"
+MET_T1_pt: 			MET_T1_pt 				: 40,0,400 ; XTitle="E_{T}^{miss} T1 (GeV)"
+MET_T1Smear_pt: 			MET_T1Smear_pt 				: 40,0,400 ; XTitle="E_{T}^{miss} T1 smeared (GeV)"
 minMllAFAS:	minMllAFAS				: 20,0,200; XTitle="min M_{ll} (GeV)", Legend='TR'
 minMllAFOS:     minMllAFOS                              : 20,0,200; XTitle="min M_{ll} (GeV)", Legend='TR'
 minMllSFOS:     minMllSFOS                              : 20,0,200; XTitle="min M_{ll} (GeV)", Legend='TR'
