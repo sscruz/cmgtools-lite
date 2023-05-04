@@ -40,3 +40,7 @@ NBtagLoose30    :     nBJetLoose30                               : [0.5,1.5,2.5,
 #diff_conePt_Pt_subleading:  (LepGood2_conePt-LepGood2_pt) / (LepGood2_pt)   : 20,-1,1; XTitle= "conePt-lepPt/lepPt (sub_leading)"
 #2lep_2DpT_diffconePtleading_vs_leppt: (LepGood1_conePt-LepGood1_pt) / (LepGood1_pt)\:LepGood1_pt     : [-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]*[25,35,50,70,90,110,130,160,200,250,300,350,400] ; XTitle="diff_conePt_Pt_leading", YTitle="lep1_pt (GeV)", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=True
 
+dR_lb_mediumWP : dR_lbmedium     : [0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5]; XTitle="dR (l b medium)"
+dR_lb_looseWP  : dR_lbloose      : [0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5]; XTitle="dR (l b medium)"
+minDR_lj30     : mindr_lep_jet30 : [0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5]; XTitle="min(dR) lj (ptj > 30 GeV)"
+

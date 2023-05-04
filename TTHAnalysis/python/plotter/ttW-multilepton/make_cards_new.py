@@ -41,7 +41,7 @@ if "gen" in OTHER:
 
    OPTIONS = OPTIONS.replace(ltext,"-l 1.")
 
-T2L="-P {ORIGIN}/NanoTrees_UL_v2_060422_skim2lss_newfts/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btagSF_fixedWP/ --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars --Fs {{P}}/6_ttWforlepton  --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
+T2L="-P {ORIGIN}/NanoTrees_UL_v2_060422_skim2lss_newfts/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btagSF_fixedWP/ --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
 
 if "gen" in OTHER:
    T2L= "-P {ORIGIN}/NanoTrees_UL_v2_gennoskim/".format(ORIGIN=ORIGIN)
@@ -61,13 +61,13 @@ if 'unblind' in OTHER:
     ASIMOV=""
 
 print "We are using the asimov dataset"
-OPTIONS="{OPTIONS} -L ttW-multilepton/functionsTTW.cc --mcc ttW-multilepton/lepchoice-ttW-FO.txt --mcc ttW-multilepton/mcc-METchoice-prefiring.txt {PROMPTSUB} --neg   --threshold 0.01 {ASIMOV} ".format(OPTIONS=OPTIONS,PROMPTSUB=PROMPTSUB,ASIMOV=ASIMOV) # neg necessary for subsequent rebin #
+OPTIONS="{OPTIONS} -L ttH-multilepton/functionsTTH.cc --mcc ttW-multilepton/lepchoice-ttW-FO.txt --mcc ttW-multilepton/mcc-METchoice-prefiring.txt {PROMPTSUB} --neg   --threshold 0.01 {ASIMOV} ".format(OPTIONS=OPTIONS,PROMPTSUB=PROMPTSUB,ASIMOV=ASIMOV) # neg necessary for subsequent rebin #
 CATPOSTFIX=""
 MCASUFFIX="mcdata-frdata"
 
 DOFILE = ""
 
-availableObservables = ['inclusive', 'njets','nbjets','lep1_pt','jet1_pt','deta_llss',"asymmetry_withbees","asymmetry_smart_nocharge","asymmetry_v4"]
+availableObservables = ['inclusive', 'dR_lbloose', 'dR_lbmedium', 'njets','nbjets','lep1_pt','jet1_pt','deta_llss',"asymmetry_withbees","asymmetry_smart_nocharge","asymmetry_v4"]
 
 if OBSERVABLE == "inclusive":
     FUNCTION_2L="0"
@@ -105,6 +105,22 @@ elif OBSERVABLE == "jet1_pt":
         CATBINS    ="[30,50,100,150,225,500]"
         SYSTS = ""
 
+elif OBSERVABLE == "dR_lbmedium":
+    FUNCTION_2L="dR_lbmedium"
+    CATBINS    ="[0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5]"
+    if "gen" in OTHER:
+        FUNCTION_2L="dR_DressBSelJet_DressSelLep1"
+        CATBINS    ="[0, 1.0, 2.0, 3.0]"
+        SYSTS = ""
+
+elif OBSERVABLE == "dR_lbloose":
+    FUNCTION_2L="dR_lbmedium"
+    CATBINS    ="[0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5]"
+    if "gen" in OTHER:
+        FUNCTION_2L="dR_DressBSelJet_DressSelLep1"
+        CATBINS    ="[0, 1.0, 2.0, 3.0]"
+        SYSTS = ""
+        
 elif OBSERVABLE == "deta_llss":
     FUNCTION_2L="abs(LepGood1_eta-LepGood2_eta)"
     CATBINS    ="[0.0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4]"

@@ -367,8 +367,8 @@ met_phi : MET_phi : 40,-3.14,3.14; XTitle="MET #phi"
 
 
 #Control regions
-cr_3l: ttH_3l_clasifier(nJet25, nBJetMedium25): [0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5]; XTitle="nJet nBJet clasification",YMin=0.1 , YMax=5.0e3,  XNDdiv=505, IncludeOverflows=False, xBinLabels="1j\,2j\,3j\,>3j\,2j\,3j\,4j\,>4j\,2j\,3j\,4j\,>4j"
-cr_4l: ttH_4l_clasifier(nJet25, nBJetMedium25,mZ2): [0.5,1.5,2.5,3.5,4.5]; XTitle="4l Control Region", Logy, YMin=0.1 ,  XNDdiv=505, IncludeOverflows=False, xBinLabels="1\,2\,3\,4"
+cr_3l: ttH_3l_clasifier(nJet25, nBJetMedium25): [0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5]; XTitle="nJet nBJet clasification",YMin=0.1 , YMax=5.0e3,  XNDdiv=505, IncludeOverflows=False, xBinLabels="1j\,2j\,3j\,>3j\,2j\,3j\,4j\,>4j\,2j\,3j\,4j\,>4j", Logy
+cr_4l: ttH_4l_clasifier(nJet25, nBJetMedium25,mZ2): [0.5,1.5,2.5,3.5,4.5]; XTitle="4l Control Region", Logy, YMin=0.1 ,  XNDdiv=505, IncludeOverflows=False, xBinLabels="1\,2\,3\,4", Logy
 mu_fake_origin : (abs(LepGood1_pdgId)==13 && LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0 )*LepGood1_genPartFlav + (abs(LepGood2_pdgId)==13 && LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0 )*LepGood2_genPartFlav : [ -0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5]; XTitle="Fake muon genPartFlav" 
 
 
@@ -397,3 +397,7 @@ simple_asymmetry : ttW_charge_asymmetry_simple(hasOSSF,nJet30, LepGood1_charge+L
 simple_asymmetry_bees : ttW_charge_asymmetry_simple_withbees(hasOSSF,nJet30, LepGood1_charge+LepGood2_charge+LepGood3_charge, abs(positive_lepton_eta)-abs(negative_lepton_eta),nBJetMedium30) : 40,-0.5,39.5; Wide=True
 smart_strategy_nocharge : ttW_charge_asymmetry_simple_withbees_nocharge(hasOSSF,nJet30, abs(positive_lepton_eta)-abs(negative_lepton_eta),nBJetMedium30) : 20,-0.5,19.5; Wide=True, Legend="TL"
 ttW_charge_asymmetry_v4 : ttW_charge_asymmetry_v4(hasOSSF,nJet30, abs(positive_lepton_eta)-abs(negative_lepton_eta),nBJetMedium30, mZ_OSSF) : 32,-0.5,31.5; Wide=True
+
+dR_lb_mediumWP :dR_lbmedium: [0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5]; XTitle="x"
+dR_lb_looseWP  :dR_lbloose: [0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5]; XTitle="x"
+
