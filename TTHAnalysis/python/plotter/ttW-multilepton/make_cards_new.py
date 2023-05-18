@@ -39,12 +39,11 @@ if "gen" in OTHER:
    OPTIONS = OPTIONS.replace("--WA prescaleFromSkim","")
    ltext = "-l {LUMI}".format(LUMI=LUMI)
 
-   OPTIONS = OPTIONS.replace(ltext,"-l 1.")
 
-T2L="-P {ORIGIN}/NanoTrees_UL_v2_060422_skim2lss_newfts/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btagSF_fixedWP/ --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
+T2L="-P {ORIGIN}/NanoTrees_UL_v2_060422_skim2lss_newfts/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btagSF_fixedWP/ --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars --FMCs {{P}}/6_ttWforlepton --FMCs {{P}}/7_Vars_forttWDiff --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
 
 if "gen" in OTHER:
-   T2L= "-P {ORIGIN}/NanoTrees_UL_v2_gennoskim/".format(ORIGIN=ORIGIN)
+   T2L= "-P {ORIGIN}/NanoTrees_UL_v2_gennoskim/{YEAR} ".format(ORIGIN=ORIGIN, YEAR=YEAR)
 
 
 T3L=T2L
@@ -67,7 +66,7 @@ MCASUFFIX="mcdata-frdata"
 
 DOFILE = ""
 
-availableObservables = ['inclusive', 'dR_lbloose', 'dR_lbmedium', 'njets','nbjets','lep1_pt','jet1_pt','deta_llss',"asymmetry_withbees","asymmetry_smart_nocharge","asymmetry_v4"]
+availableObservables = ['inclusive', 'njets','nbjets','lep1_pt','lep1_eta',"dR_ll","max_eta",'jet1_pt','deta_llss',"HT",'dR_lbloose', 'dR_lbmedium',"asymmetry_withbees","mindr_lep1_jet30","asymmetry_smart_nocharge","asymmetry_v4"]
 
 if OBSERVABLE == "inclusive":
     FUNCTION_2L="0"
@@ -96,6 +95,30 @@ elif OBSERVABLE == "lep1_pt":
         CATBINS    ="[25,50,100,150,225,500]"
         SYSTS = ""
 
+elif OBSERVABLE == "dR_ll":
+    FUNCTION_2L="deltaR(LepGood1_eta,LepGood1_phi,LepGood2_eta,LepGood2_phi)"
+    CATBINS    = "[0.75,1.5,2.0,2.5,3.0,3.5,4.5,5]"
+    if "gen" in OTHER:
+        FUNCTION_2L="deltaR(GenDressedLepton_eta[iDressSelLep[0]],GenDressedLepton_phi[iDressSelLep[0]],GenDressedLepton_eta[iDressSelLep[1]],GenDressedLepton_phi[iDressSelLep[1]])"
+        CATBINS    ="[0.0,1.5,2.5,3.5,5]"
+        SYSTS = ""
+
+elif OBSERVABLE == "lep1_eta":
+    FUNCTION_2L="abs(LepGood1_eta)"
+    CATBINS    = "[0.,0.45,0.9,1.1,1.2,1.85,2.5]"
+    if "gen" in OTHER:
+        FUNCTION_2L="abs(GenDressedLepton_eta[iDressSelLep[0]])"
+        CATBINS    ="[0.,0.9,1.2,2.5]"
+        SYSTS = ""
+
+elif OBSERVABLE == "max_eta":
+    FUNCTION_2L="max(LepGood1_eta,LepGood2_eta)"
+    CATBINS    = "[0.0,0.45,0.75,1.25,1.5,1.75,2.0,2.25,2.5]"
+    if "gen" in OTHER:
+        FUNCTION_2L="max(GenDressedLepton_eta[iDressSelLep[0]],GenDressedLepton_eta[iDressSelLep[1]])"
+        CATBINS    ="[0.0,0.75,1.5,2.0,2.5]"
+        SYSTS = ""
+
 
 elif OBSERVABLE == "jet1_pt":
     FUNCTION_2L="JetSel_Recl_pt[0]"
@@ -105,28 +128,44 @@ elif OBSERVABLE == "jet1_pt":
         CATBINS    ="[30,50,100,150,225,500]"
         SYSTS = ""
 
-elif OBSERVABLE == "dR_lbmedium":
-    FUNCTION_2L="dR_lbmedium"
-    CATBINS    ="[0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5]"
-    if "gen" in OTHER:
-        FUNCTION_2L="dR_DressBSelJet_DressSelLep1"
-        CATBINS    ="[0, 1.0, 2.0, 3.0]"
-        SYSTS = ""
-
-elif OBSERVABLE == "dR_lbloose":
-    FUNCTION_2L="dR_lbmedium"
-    CATBINS    ="[0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5]"
-    if "gen" in OTHER:
-        FUNCTION_2L="dR_DressBSelJet_DressSelLep1"
-        CATBINS    ="[0, 1.0, 2.0, 3.0]"
-        SYSTS = ""
-        
 elif OBSERVABLE == "deta_llss":
     FUNCTION_2L="abs(LepGood1_eta-LepGood2_eta)"
     CATBINS    ="[0.0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4]"
     if "gen" in OTHER:
         FUNCTION_2L="abs(GenDressedLepton_eta[iDressSelLep[0]]-GenDressedLepton_eta[iDressSelLep[1]])"
         CATBINS    ="[0.0,0.4,0.8,1.2,1.6,2.0,2.4]"
+        SYSTS = ""
+
+elif OBSERVABLE == "dR_lbmedium":
+    FUNCTION_2L="dR_lbmedium"
+    CATBINS    ="[0, 0.5, 1.0,1.25, 1.5,1.75, 2.0, 2.5, 3.0]"
+    if "gen" in OTHER:
+        FUNCTION_2L="dR_DressBSelJet_DressSelLep1"
+        CATBINS    ="[0, 1.0, 1.5, 2.0, 3.0]"
+        SYSTS = ""
+
+elif OBSERVABLE == "dR_lbloose":
+    FUNCTION_2L="dR_lbloose"
+    CATBINS    ="[0, 0.5, 1.0,1.25, 1.5,1.75, 2.0, 2.5, 3.0]"
+    if "gen" in OTHER:
+        FUNCTION_2L="dR_DressBSelJet_DressSelLep1"
+        CATBINS    ="[0, 1.0, 1.5, 2.0, 3.0]"
+        SYSTS = ""
+
+elif OBSERVABLE == "mindr_lep1_jet30":
+    FUNCTION_2L="mindr_lep1_jet30"
+    CATBINS    ="[0, 0.5, 1.0,1.25, 1.5,1.75, 2.0, 2.5, 3.0]"
+    if "gen" in OTHER:
+        FUNCTION_2L="mindr_DressSelLep1_DressSelJet"
+        CATBINS    ="[0, 1.0, 1.5, 2.0, 3.0]"
+        SYSTS = ""
+
+elif OBSERVABLE == "HT":
+    FUNCTION_2L="htJet30j_Recl"
+    CATBINS    ="[0.0,100,200.,300.,400.,500.,600.,800.,1000.]"
+    if "gen" in OTHER:
+        FUNCTION_2L="Gen_HT"
+        CATBINS    ="[0.0,200.,400.,600.,1000.]"
         SYSTS = ""
 
 elif OBSERVABLE == "asymmetry_withbees":
@@ -159,7 +198,6 @@ if REGION == "2lss":
 
     TORUN='''python {SCRIPT} {DOFILE} ttW-multilepton/mca-2lss-{MCASUFFIX}{MCAOPTION}.txt ttW-multilepton/2lss_tight.txt "{FUNCTION_2L}" "{CATBINS}" {SYSTS} {OPT_2L} --binname ttW_2lss_0tau_{GEN}{OBS}_{YEAR} --year {YEAR} --xp {signals_remove} '''.format(SCRIPT=SCRIPT, DOFILE=DOFILE, MCASUFFIX=MCASUFFIX, MCAOPTION=MCAOPTION, FUNCTION_2L=FUNCTION_2L, CATBINS=CATBINS, SYSTS=SYSTS, OPT_2L=OPT_2L, signals_remove=','.join(signals_remove), YEAR=YEAR, GEN=GENN,OBS=OBSERVABLE)
     if "gen" in OTHER:
-        TORUN = TORUN.replace("_"+YEAR,"")
         TORUN = TORUN.replace("--xp","")
         TORUN = TORUN.replace("ttW-multilepton/mca-2lss-mcdata-frdata.txt","ttW-multilepton/mca-includes/mca-2lss-sigprompt-gen.txt")
         TORUN = TORUN.replace("ttW-multilepton/2lss_tight.txt","ttW-multilepton/2lss_fiducial.txt")
