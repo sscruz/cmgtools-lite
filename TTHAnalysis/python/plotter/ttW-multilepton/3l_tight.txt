@@ -3,7 +3,7 @@ trilep: nLepFO==3
 cleanup: minMllAFAS > 12
 trigger: Trigger_3l
 filters: Flag_goodVertices && Flag_globalSuperTightHalo2016Filter && Flag_HBHENoiseFilter && Flag_HBHENoiseIsoFilter && Flag_EcalDeadCellTriggerPrimitiveFilter && Flag_BadPFMuonFilter && (Flag_ecalBadCalibFilter || (year == 2016))  $DATA{&& Flag_eeBadScFilter}
-pt251515: LepGood1_conePt>25 && LepGood2_conePt>15 && LepGood3_conePt>10
+pt251515: LepGood1_conePt>25 && LepGood2_conePt>15 && LepGood3_conePt>15
 TTT: LepGood1_isLepTight && LepGood2_isLepTight && LepGood3_isLepTight
 Zveto: abs(mZ1-91.2) > 10
 q1: abs(LepGood1_charge + LepGood2_charge + LepGood3_charge) == 1
@@ -15,3 +15,6 @@ ele conv cuts: (abs(LepGood1_pdgId)!=11 || (LepGood1_convVeto && LepGood1_lostHi
 
 met : (!hasOSSF) || (nJet30>=4) || (nBJetMedium30 >= 2) || (MET_pt > 50); Disable=True
 hasOSSF : hasOSSF; Disable=True
+
+underflowVeto3l: ttH_3l_clasifier(nJet25, nBJetMedium25) > 0 ; Disable=True
+
