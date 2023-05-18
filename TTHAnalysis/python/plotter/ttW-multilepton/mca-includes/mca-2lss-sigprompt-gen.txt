@@ -1,3 +1,2 @@
-TTW_inclusive+     : TTWToLNu_fxfx : 0.1960 : 1 ;  FillColor=ROOT.kGreen-5, Label="ttW (inclusive)", FillStyle=3005, FriendsSimple="{P}/A_ttW_diff_info/"
-TTW_inclusive+     : TTWJetsToLNu_EWK_5f_NLO : 0.0162562 : 1 ; FillColor=ROOT.kGreen-5, Label="ttW (inclusive)", FillStyle=3005, FriendsSimple="{P}/A_ttW_diff_info/"
-
+TTW_inclusive+     : TTWToLNu_fxfx : 0.1960*1.44 : 1 ;  FillColor=ROOT.kGreen-5, Label="ttW (inclusive)", FillStyle=3005, FriendsSimple="{P}/A_ttW_diff_info_extended/"
+TTW_inclusive+     : TTWJetsToLNu_EWK_5f_NLO : 0.0162562*1.44 : 1 ; FillColor=ROOT.kGreen-5, Label="ttW (inclusive)", FillStyle=3005, FriendsSimple="{P}/A_ttW_diff_info_extended/"
