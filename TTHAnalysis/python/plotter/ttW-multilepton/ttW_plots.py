@@ -530,8 +530,28 @@ if __name__ == '__main__':
             x = add(x,"--unc ttW-multilepton/systsUnc.txt  --xu CMS_ttWl_TTZ_lnU,CMS_ttWl_TTW_lnU")
             if '_postfit' in torun:
                 x = add(x, "--aefr fitDiagnostics.root fit_s --aefrl Postfit --peg-process TTZ r_ttZ --peg-process TTW r_ttW")
-
         plots = ['cr_4l']
         runIt(x,'%s'%torun,plots)
+    if 'cr_nonprompt_met' in torun:
+        x = base('2lss')
+        x = x.replace('2lss_tight.txt','2lss_tight_sync.txt')
+        if '_data' in torun: x = x.replace('mca-2lss-mc.txt','mca-2lss-mcdata.txt')
+        if '_frdata' in torun:
+            x = promptsub(x)
+            if not '_data' in torun: raise RuntimeError
+            x = x.replace('mca-2lss-mcdata.txt','mca-2lss-mcdata-frdata.txt')
+        #plots = ['lep2_pt','met','nJet25','mZ1']
+        #plots += ['3lep_.*','nJet25','nBJetLoose25','nBJetMedium25','met','metLD','htJet25j','mhtJet25','mtWmin','htllv','kinMVA_3l_ttbar','kinMVA_3l_ttV','kinMVA_3l_ttV_withMEM','era','kinMVA_3l.*']
+
+        plots=['kinMVA_3l_score_.*','kinMVA_3l_input_.*']
+        x = add(x,"-I ^metLD -E ^2j -X ^3j -E ^mll ")
+        if '_unc' in torun:
+            x = add(x,"--unc ttW-multilepton/systsUnc.txt  --xu CMS_ttWl_TTZ_lnU,CMS_ttWl_TTW_lnU")
+            if '_postfit' in torun:
+                x = add(x, "--aefr fitDiagnostics.root fit_s --aefrl Postfit --peg-process TTZ r_ttZ --peg-process TTW r_ttW")
+
+        
+        runIt(x,'%s'%torun,plots)
+        
        
         

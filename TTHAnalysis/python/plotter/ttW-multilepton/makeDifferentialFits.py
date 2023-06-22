@@ -53,12 +53,12 @@ if todo == "2":
    for signal in signals:
        params += "r_%s=1,"%(signal)
 
-   rf = "combine -M FitDiagnostics {WS_NAME} -m 125  --setParameters {POIS}  --freezeParameters MH --saveWorkspace -n nominal --robustFit 1 --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000".format(WS_NAME ="ws_"+var+".root",POIS = params )
+   rf = "combine -M FitDiagnostics {WS_NAME} -m 125  --setParameters {POIS}  --freezeParameters MH --saveWorkspace --saveShapes --saveWithUncertainties -n nominal --robustFit 1 --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000".format(WS_NAME ="ws_"+var+".root",POIS = params )
    
 
    #Run fit for stat
 
-   rff = "combine -M FitDiagnostics %s -m 125  --setParameters %s --freezeParameters MH,'rgx{lumi.*}','rgx{CMS_eff.*}','rgx{CMS_ttWl.*}','rgx{CMS_ttHl.*}','rgx{CMS_scale_j.*}',CMS_jesHEMIssue,'rgx{CMS_res_j.*}','rgx{QCDscale_.*}','rgx{pdf_.*}','rgx{BR_.*}',CMS_ttWl_UnclusteredEn  --saveWorkspace -n freezing --robustFit 1 --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000"%("ws_"+var+".root",params )
+   rff = "combine -M FitDiagnostics %s -m 125  --setParameters %s --freezeParameters MH,'rgx{lumi.*}','rgx{CMS_eff.*}','rgx{CMS_ttWl.*}','rgx{CMS_ttHl.*}','rgx{CMS_scale_j.*}',CMS_jesHEMIssue,'rgx{CMS_res_j.*}','rgx{QCDscale_.*}','rgx{pdf_.*}','rgx{BR_.*}',CMS_ttWl_UnclusteredEn  --saveWorkspace --saveShapes --saveWithUncertainties -n freezing --robustFit 1 --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000"%("ws_"+var+".root",params )
    os.chdir(folder)
    print('sbatch -c 5 -p batch --wrap "'+rf+'"')
    print('sbatch -c 5 -p batch --wrap "'+rff+'"')

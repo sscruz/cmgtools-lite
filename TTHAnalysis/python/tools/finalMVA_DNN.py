@@ -16,10 +16,13 @@ class finalMVA_DNN(Module):
         cats_2lss = ['predictions_ttH','predictions_Rest','predictions_ttW','predictions_tHQ']
 
         if fillInputs:
-            self.outVars.extend(varorder+['nEvent'])
-            self.outVars.append('frWeight')
+            self.outVars.extend(varorder+[('nEvent','L')])
+            self.outVars.extend(['frWeight','HTXS_Higgs_pt','HTXS_Higgs_y','genWeight'])
             self.inputHelper = self.getVarsForVariation('')
             self.inputHelper['nEvent'] = lambda ev : ev.event
+            self.inputHelper['HTXS_Higgs_pt'] = lambda ev : ev.HTXS_Higgs_pt if hasattr(ev, 'HTXS_Higgs_pt') else 0
+            self.inputHelper['HTXS_Higgs_y'] = lambda ev : ev.HTXS_Higgs_y  if hasattr(ev, 'HTXS_Higgs_pt') else 0
+            self.inputHelper['genWeight'] = lambda ev : ev.genWeight
             self.fakerate={}
             for year in '2016APV_2016,2017,2018'.split(','):
                 self.fakerate[year]={}
@@ -107,7 +110,6 @@ class finalMVA_DNN(Module):
 
 
     def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
-        print self.outVars
         declareOutput(self, wrappedOutputTree, self.outVars)
         
     def analyze(self,event):

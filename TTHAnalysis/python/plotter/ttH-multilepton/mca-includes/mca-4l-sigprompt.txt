@@ -1,5 +1,6 @@
 ttH    : TTHnobb_fxfx : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; Label="ttH", FillColor=ROOT.kOrange+10
 
+<<<<<<< HEAD
 tHq	: THQ_ctcvcp : 0.07096*LHEReweightingWeight[11]  : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kBlue,genSumWeightName="LHEReweightingSumw[11]/LHEScaleSumw[4]*genEventSumw"
 tHW	: THW_ctcvcp : 0.01561*LHEReweightingWeight[11]  : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kOrange+8,genSumWeightName="LHEReweightingSumw[11]/LHEScaleSumw[4]*genEventSumw"
 
@@ -46,3 +47,7 @@ Rares : GluGluToHHTo4Tau   : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!
 Rares : GluGluToHHTo2V2Tau : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0; FillColor=ROOT.kAzure-9, years="2017\,2018"
 Rares : GluGluToHHTo4V     : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0; FillColor=ROOT.kAzure-9, years="2017"
 
+=======
+tHq+	: THQ_ctcvcp : 0.07096*LHEReweightingWeight[11]  : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kBlue,genSumWeightName="LHEReweightingSumw[11]/LHEScaleSumw[4]*genEventSumw"
+tHW+	: THW_ctcvcp : 0.01561*LHEReweightingWeight[11]  : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kOrange+8,genSumWeightName="LHEReweightingSumw[11]/LHEScaleSumw[4]*genEventSumw"
+>>>>>>> 4aeb15c591f7c2ec226d6ba2203a4745856ed5c2

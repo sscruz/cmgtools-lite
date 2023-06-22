@@ -9,8 +9,10 @@ var = sys.argv[3]
 Fit=folder+"/fitDiagnosticsnominal.root"
 fit_st = folder+"/fitDiagnosticsfreezing.root"
 
-lumi =1. #use the lumi used to normalized the gen histos (fb-1)
-varname = {"lep1_pt":("p_{T} (lep)"),"njets":("N Jet"),"nbjets":("N b-tag"),"jet1_pt":("p_{T} (jet)"),"deta_llss":("#Delta #eta (ll)")}
+
+lumi = 16.8+19.5+41.4+59.7#use the lumi used to normalized the gen histos (fb-1)
+
+varname = {"lep1_pt":("p_{T} (lep1)"),"lep1_eta":("#eta (lep1)"),"njets":("N Jet"),"nbjets":("N b-tag"),"jet1_pt":("p_{T} (jet)"),"deta_llss":("#Delta #eta (ll)"),"HT":("HT"),"dR_ll":("#Delta R (ll)"),"max_eta":("max(#eta) (ll)")}
 
 
 r.gROOT.ProcessLine(".x tdrstyle.cc")
@@ -19,6 +21,25 @@ r.gStyle.SetOptTitle(0)
 r.gROOT.SetBatch(True)
 
 _noDelete={}
+
+def Get_Genhisto(fil,fil2,fil3,fil4):
+    reference1=fil.Get("x_TTW_inclusive")
+    reference2=fil2.Get("x_TTW_inclusive")
+    reference3=fil3.Get("x_TTW_inclusive")
+    reference4=fil4.Get("x_TTW_inclusive")
+    reference = reference1.Clone()
+
+    reference.Add(reference2)
+    reference.Add(reference3)
+    reference.Add(reference4)
+    print(reference1.GetBinContent(1),reference1.GetBinError(1))
+    print(reference2.GetBinContent(1),reference2.GetBinError(1))
+    print(reference3.GetBinContent(1),reference3.GetBinError(1))
+    print(reference4.GetBinContent(1),reference4.GetBinError(1))
+    print(reference.GetBinContent(1),reference.GetBinError(1))
+    return reference
+
+
 def doSpam(text,x1,y1,x2,y2,align=12,fill=False,textSize=0.033,_noDelete={}):
     cmsprel = r.TPaveText(x1,y1,x2,y2,"NBNDC");
     cmsprel.SetTextSize(textSize);
@@ -72,7 +93,7 @@ def doShadedUncertainty(h,lumi,relative = False):
       points = []; errors = []
       for i in xrange(h.GetNbinsX()):
             N = h.GetBinContent(i+1)/lumi;
-            dN = h.GetBinError(i+1)/lumi 
+            dN = h.GetBinError(i+1)/lumi
             if N == 0 and (dN == 0 or relative): continue
             x = xaxis.GetBinCenter(i+1);
             EYlow = dN
@@ -90,7 +111,7 @@ def doShadedUncertainty(h,lumi,relative = False):
       for i,((x,y),(EXlow,EXhigh,EYlow,EYhigh)) in enumerate(zip(points,errors)):
             ret.SetPoint(i, x, y)
             ret.SetPointError(i, EXlow,EXhigh,EYlow,EYhigh)
-      
+            print("e",y,EYlow,EYhigh)
        
       ret.SetFillStyle(3244);
       ret.SetFillColor(r.kOrange+1)
@@ -98,8 +119,11 @@ def doShadedUncertainty(h,lumi,relative = False):
       ret.Draw("PE2 SAME")
       return ret
 
-tf=r.TFile.Open(str(GenInfo))
-reference=tf.Get("x_TTW_inclusive")
+tf=r.TFile.Open(GenInfo+"_2016.root")
+tf1=r.TFile.Open(GenInfo+"_2016APV.root")
+tf2=r.TFile.Open(GenInfo+"_2017.root")
+tf3=r.TFile.Open(GenInfo+"_2018.root")
+reference = Get_Genhisto(tf,tf1,tf2,tf3)
 
 tf_fit = r.TFile.Open(str(Fit))
 tf_fitst = r.TFile.Open(str(fit_st))
@@ -116,13 +140,16 @@ unc = r.TGraphAsymmErrors(len(reference))
 results = {}
 results_st = {}
 count =0
-print(reference.GetNbinsX())
+
 for v in fitResult.floatParsFinal():
         if "r_TTW" in v.GetName():
             count += 1
+            print(v)
             results[v.GetName()] = [ v.getVal(), abs(v.getErrorLo()), v.getErrorHi(), v.getError() ]
             if count == reference.GetNbinsX(): break
 count2 =0
+
+print(fitResult_stat.floatParsFinal())
 for v in fitResult_stat.floatParsFinal():
         if "r_TTW" in v.GetName():
             count2 += 1
@@ -224,12 +251,14 @@ frame.GetYaxis().SetRangeUser(0,maxY)
 
 
 frame.Draw()
-reference2 = reference.Clone()
-reference2.SetLineColor(r.kOrange+1);
-reference2.SetLineWidth(3)
-reference2.Scale(1./lumi)
-reference2.Draw("Hsame")
+
+referencen = reference.Clone()
+referencen.SetLineColor(r.kOrange+1);
+referencen.SetLineWidth(3)
+referencen.Scale(1./lumi)
+referencen.Draw("Hsame")
 totalError = doShadedUncertainty(reference,lumi)  
+totalError.Draw("PE2 SAME")
 gr.SetLineWidth(3)
 gr.Draw("PE,same")
 grst.SetLineWidth(3)
@@ -239,7 +268,7 @@ grst.Draw("PE,same")
 t.Draw()
 t1.Draw()
 
-entries = [[gr,"Data","lep"],[reference2,"ttW Gen","l"]]
+entries = [[gr,"Data","lep"],[referencen,"ttW Gen","l"]]
 leg=doLegend(entries)
 
 

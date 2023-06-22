@@ -129,6 +129,8 @@ class finalMVA_DNN_3l(Module):
 
             if len(leps) < 3: return False
             if event.nJet25_Recl < 2: return False
+            if abs(event.mZ1_Recl-91.2) < 10: return False
+
 
             frWeight=1 
             year=str(event.year) if event.year in [2017,2018] else '2016APV_2016'

@@ -193,8 +193,49 @@ dataSamples_Run2018D_UL18 = [MET_Run2018D_UL18, SingleMuon_Run2018D_UL18, Double
 dataSamples_UL18 = dataSamples_Run2018A_UL18 + dataSamples_Run2018B_UL18 + dataSamples_Run2018C_UL18 + dataSamples_Run2018D_UL18
 
 
+# ----------------------------- Run2018A UL2018 NanoAODv9 ----------------------------------------
+JetHT_Run2018A_UL18_GT36 = kreator.makeDataComponent("JetHT_Run2018A_UL18_GT36", "/JetHT/Run2018A-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+MET_Run2018A_UL18_GT36 = kreator.makeDataComponent("MET_Run2018A_UL18_GT36", "/MET/Run2018A-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+EGamma_Run2018A_UL18_GT36 = kreator.makeDataComponent("EGamma_Run2018A_UL18_GT36", "/EGamma/Run2018A-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+SingleMuon_Run2018A_UL18_GT36 = kreator.makeDataComponent("SingleMuon_Run2018A_UL18_GT36", "/SingleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+DoubleMuon_Run2018A_UL18_GT36 = kreator.makeDataComponent("DoubleMuon_Run2018A_UL18_GT36", "/DoubleMuon/Run2018A-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+MuonEG_Run2018A_UL18_GT36 = kreator.makeDataComponent("MuonEG_Run2018A_UL18_GT36", "/MuonEG/Run2018A-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+#Tau_Run2018A_UL18_GT36 = kreator.makeDataComponent("Tau_Run2018A_UL18_GT36", "/Tau/Run2018A-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+dataSamples_Run2018A_UL18_GT36 = [EGamma_Run2018A_UL18_GT36, SingleMuon_Run2018A_UL18_GT36, DoubleMuon_Run2018A_UL18_GT36, MuonEG_Run2018A_UL18_GT36, MET_Run2018A_UL18_GT36, JetHT_Run2018A_UL18_GT36]#, Tau_Run2018A_UL18_GT36] 
 
-dataSamples = dataSamples_14Dec2018 + dataSamples_1June2019 + dataSamples_25Oct2019 + dataSamples_UL18
+JetHT_Run2018B_UL18_GT36 = kreator.makeDataComponent("JetHT_Run2018B_UL18_GT36", "/JetHT/Run2018B-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+MET_Run2018B_UL18_GT36 = kreator.makeDataComponent("MET_Run2018B_UL18_GT36", "/MET/Run2018B-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+EGamma_Run2018B_UL18_GT36 = kreator.makeDataComponent("EGamma_Run2018B_UL18_GT36", "/EGamma/Run2018B-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+SingleMuon_Run2018B_UL18_GT36 = kreator.makeDataComponent("SingleMuon_Run2018B_UL18_GT36", "/SingleMuon/Run2018B-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+DoubleMuon_Run2018B_UL18_GT36 = kreator.makeDataComponent("DoubleMuon_Run2018B_UL18_GT36", "/DoubleMuon/Run2018B-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+MuonEG_Run2018B_UL18_GT36 = kreator.makeDataComponent("MuonEG_Run2018B_UL18_GT36", "/MuonEG/Run2018B-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+Tau_Run2018B_UL18_GT36 = kreator.makeDataComponent("Tau_Run2018B_UL18_GT36", "/Tau/Run2018B-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+dataSamples_Run2018B_UL18_GT36 = [EGamma_Run2018B_UL18_GT36, SingleMuon_Run2018B_UL18_GT36, DoubleMuon_Run2018B_UL18_GT36, MuonEG_Run2018B_UL18_GT36, MET_Run2018B_UL18_GT36, JetHT_Run2018B_UL18_GT36, Tau_Run2018B_UL18_GT36] 
+
+JetHT_Run2018C_UL18_GT36 = kreator.makeDataComponent("JetHT_Run2018C_UL18_GT36", "/JetHT/Run2018C-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+#MET_Run2018C_UL18_GT36 = kreator.makeDataComponent("MET_Run2018C_UL18_GT36", "/MET/Run2018C-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+EGamma_Run2018C_UL18_GT36 = kreator.makeDataComponent("EGamma_Run2018C_UL18_GT36", "/EGamma/Run2018C-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+SingleMuon_Run2018C_UL18_GT36 = kreator.makeDataComponent("SingleMuon_Run2018C_UL18_GT36", "/SingleMuon/Run2018C-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+DoubleMuon_Run2018C_UL18_GT36 = kreator.makeDataComponent("DoubleMuon_Run2018C_UL18_GT36", "/DoubleMuon/Run2018C-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+MuonEG_Run2018C_UL18_GT36 = kreator.makeDataComponent("MuonEG_Run2018C_UL18_GT36", "/MuonEG/Run2018C-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+Tau_Run2018C_UL18_GT36 = kreator.makeDataComponent("Tau_Run2018C_UL18_GT36", "/Tau/Run2018C-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+dataSamples_Run2018C_UL18_GT36 = [EGamma_Run2018C_UL18_GT36, SingleMuon_Run2018C_UL18_GT36, DoubleMuon_Run2018C_UL18_GT36, MuonEG_Run2018C_UL18_GT36,  JetHT_Run2018C_UL18_GT36, Tau_Run2018C_UL18_GT36]  # MET_Run2018C_UL18_GT36,
+
+#JetHT_Run2018D_UL18_GT36 = kreator.makeDataComponent("JetHT_Run2018D_UL18_GT36", "/JetHT/Run2018D-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+#MET_Run2018D_UL18_GT36 = kreator.makeDataComponent("MET_Run2018D_UL18_GT36", "/MET/Run2018D-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+#EGamma_Run2018D_UL18_GT36 = kreator.makeDataComponent("EGamma_Run2018D_UL18_GT36", "/EGamma/Run2018D-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+SingleMuon_Run2018D_UL18_GT36 = kreator.makeDataComponent("SingleMuon_Run2018D_UL18_GT36", "/SingleMuon/Run2018D-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+DoubleMuon_Run2018D_UL18_GT36 = kreator.makeDataComponent("DoubleMuon_Run2018D_UL18_GT36", "/DoubleMuon/Run2018D-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+MuonEG_Run2018D_UL18_GT36 = kreator.makeDataComponent("MuonEG_Run2018D_UL18_GT36", "/MuonEG/Run2018D-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+#Tau_Run2018D_UL18_GT36 = kreator.makeDataComponent("Tau_Run2018D_UL18_GT36", "/Tau/Run2018D-UL2018_MiniAODv2_NanoAODv9_GT36-v1/NANOAOD", "CMS", ".*root", json)
+dataSamples_Run2018D_UL18_GT36 = [ SingleMuon_Run2018D_UL18_GT36, DoubleMuon_Run2018D_UL18_GT36, MuonEG_Run2018D_UL18_GT36, ]  # EGamma_Run2018D_UL18_GT36, MET_Run2018D_UL18_GT36, JetHT_Run2018D_UL18_GT36, Tau_Run2018D_UL18_GT36
+
+
+dataSamples_UL18_GT36 = dataSamples_Run2018A_UL18_GT36 + dataSamples_Run2018B_UL18_GT36 + dataSamples_Run2018C_UL18_GT36 + dataSamples_Run2018D_UL18_GT36
+
+
+
+dataSamples = dataSamples_14Dec2018 + dataSamples_1June2019 + dataSamples_25Oct2019 + dataSamples_UL18 + dataSamples_UL18_GT36
 
 samples = dataSamples
 

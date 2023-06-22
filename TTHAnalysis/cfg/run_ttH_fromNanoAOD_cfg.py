@@ -17,7 +17,7 @@ preprocessor = getHeppyOption("nanoPreProcessor")
 
 if year == '2018':
     from CMGTools.RootTools.samples.samples_13TeV_RunIISummer20UL18NanoAODv9 import samples as mcSamples_
-    from CMGTools.RootTools.samples.samples_13TeV_DATA2018_NanoAOD import dataSamples_UL18 as allData
+    from CMGTools.RootTools.samples.samples_13TeV_DATA2018_NanoAOD import dataSamples_UL18_GT36 as allData
 elif year == '2017':
     from CMGTools.RootTools.samples.samples_13TeV_RunIISummer20UL17NanoAODv9 import samples as mcSamples_
     from CMGTools.RootTools.samples.samples_13TeV_DATA2017_NanoAOD import dataSamples_UL2017 as allData
@@ -45,27 +45,10 @@ from CMGTools.TTHAnalysis.tools.nanoAOD.ttH_modules import triggerGroups_dict
 
 DatasetsAndTriggers = []
 theyear=int(year) if year != '2016APV' else 2016
-if analysis == "main":
+if analysis in ["main", "gennoskim"]:
     mcSamples =  byCompName(mcSamples_, [
-        # single boson
-        "DYJetsToLL_M50", "DYJetsToLL_M10to50_LO", 
-        # Ttbar + single top + tW
-        "TT(Lep|Semi)_pow",
-        "T_tch", "TBar_tch", "T_tWch_noFullyHad", "TBar_tWch_noFullyHad",
-        # conversions
-        "TTGJets",# "WGToLNuG", "ZGTo2LG", # , "TGJets_lep",
-        #  # ttV
-        "TTZToLLNuNu_m1to10", #"TTWToLNu_fxfx", "TTZToLLNuNu_amc", "TTW_LO", "TTZ_LO"
-        #  # ttH + tHq/tHW
-        "TTHnobb_fxfx",# "TTHnobb_pow", # faltan cpcvct "THQ_ctcvcp", "THW_ctcvcp", "TTH_ctcvcp",
-        #  # top + V rare processes
-        "TZQToLL", "TTTT", "TTWW", #  "tWll", <- mirar que pasa con twll
-        #  # diboson + DPS + WWss
-        "ZZTo4L", #"WWTo2L2Nu",  "WZTo3LNu_fxfx",   # "WW_DPS", falta dps y wpwp "WWTo2L2Nu_DPS", "WpWpJJ", # "WZTo3LNu_pow",
-        #  # triboson
-        "WWW",  "WWZ", "WZG", "WZZ", "ZZZ", # "WWW_ll", <- not there, but its just a leptonic filter
-        #  # other Higgs processes
-        "GGHZZ4L", "VHToNonbb",   "ZHToTauTau", "TTWH", "TTZH", # "VHToNonbb_ll","ZHTobb_ll", <- not there, but its just a leptonic filter
+        "TTWJetsToLNu_EWK_5f_NLO","TTWToLNu_fxfx", "TTW_LO"
+        #"DYJetsToLL_M10to50_LO","DYJetsToLL_M50_LO","DYJetsToLL_M50","GluGluToContinToZZTo2e2mu","GluGluToContinToZZTo2e2tau","GluGluToContinToZZTo2mu2tau","GluGluToContinToZZTo4e","GluGluToContinToZZTo4mu","GluGluToContinToZZTo4tau","TBar_tch","TBar_tWch_noFullyHad","TGJets_lep","THQ_ctcvcp","THW_ctcvcp","T_tch","TTGJets","TTH_ctcvcp","TTHnobb_fxfx","TTHnobb_pow","TTLep_pow","TTSemi_pow","TTTT","T_tWch_noFullyHad","TTWH","TTWW","TTZH","TTZ_LO","TTZToLLNuNu_amc","TTZToLLNuNu_m1to10","tWll_thad_wlep","tWll_tlep_whad","tWll_tlep_wlep","TZQToLL","VHToNonbb","WGToLNuG","WJetsToLNu_LO","WLLJJ_WToLNu_EWK","WWTo2L2Nu","WWW","WWZ","WZG","WZTo3LNu_fxfx","WZTo3LNu_pow","WZZ","ZZTo4L","ZZZ"
      ])
     DatasetsAndTriggers.append( ("DoubleMuon", triggerGroups_dict["Trigger_2m"][theyear] + triggerGroups_dict["Trigger_3m"][theyear]) )
     DatasetsAndTriggers.append( ("EGamma",     triggerGroups_dict["Trigger_2e"][theyear] + triggerGroups_dict["Trigger_3e"][theyear] + triggerGroups_dict["Trigger_1e"][theyear]) if theyear == 2018 else
@@ -134,7 +117,7 @@ def setFilesPerJob(comps,filesperjob):
     for comp in comps:
         comp.splitFactor=len(comp.files) / filesperjob
 
-if analysis == "main":
+if analysis == ["main", "gennoskim"]:
     cropToLumi(byCompName(selectedComponents,["DYJetsToLL", "T_","TBar_","TT(Lep|Semi)_pow"]),50.)
     cropToLumi(byCompName(selectedComponents,["ZZTo4L"]),40.)
 
@@ -166,11 +149,20 @@ compression = "ZLIB:3" #"LZ4:4" #"LZMA:9"
 branchsel_in = os.environ['CMSSW_BASE']+"/src/CMGTools/TTHAnalysis/python/tools/nanoAOD/branchsel_in.txt"
 branchsel_out = os.environ['CMSSW_BASE']+"/src/CMGTools/TTHAnalysis/python/tools/nanoAOD/branchsel_out.txt"
 
+if analysis == 'gennoskim':
+    cut = '1'
+    branchsel_in = os.environ['CMSSW_BASE']+"/src/CMGTools/TTHAnalysis/python/tools/nanoAOD/gen.txt"
+    branchsel_out = os.environ['CMSSW_BASE']+"/src/CMGTools/TTHAnalysis/python/tools/nanoAOD/gen.txt"
+    modules = []
+
+
 if analysis == "frqcd":
     modules = ttH_sequence_step1_FR
     cut = ttH_skim_cut_FR
     compression = "LZMA:9"
     branchsel_out = os.environ['CMSSW_BASE']+"/src/CMGTools/TTHAnalysis/python/plotter/ttH-multilepton/lepton-fr/qcd1l-skim-ec.txt"
+
+print("Setting postprocessor with cut", cut)
 
 POSTPROCESSOR = PostProcessor(None, [], modules = modules,
         cut = cut, prefetch = True, longTermCache = False,
@@ -179,12 +171,14 @@ POSTPROCESSOR = PostProcessor(None, [], modules = modules,
 test = getHeppyOption("test")
 if test == "94X-MC":
     json="/work/sesanche/FRs/CMSSW_10_4_0/src/CMGTools/TTHAnalysis/data/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt"
-    TTLep_pow = kreator.makeDataComponent("SingleElectron_Run2017C_14Dec2018", "/SingleElectron/Run2017C-Nano14Dec2018-v1/NANOAOD", "CMS", ".*root", json)
-    TTLep_pow.files = ["/pnfs/psi.ch/cms/trivcat/store/user/sesanche/NanoAOD_ULv9_jan21///store/data/Run2018D/SingleMuon/NANOAOD/UL2018_MiniAODv2_NanoAODv9-v1/280000/37F54D98-B6E7-8147-ACA8-0DBA4821F03F_Skim.root"]
+    TTLep_pow = kreator.makeMCComponent("TTLep_pow", "/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIISummer20UL18NanoAODv9-106X_upgrade2018_realistic_v16_L1v1-v1/NANOAODSIM", "CMS", ".*root", 800)
+    TTLep_pow.files = ["/pnfs/psi.ch/cms/trivcat/store/user/sesanche/synch/59327570-2119-B948-A213-6787A6310593.root"]
     lepSkim.requireSameSignPair = False
     lepSkim.minJets = 0
     lepSkim.minMET = 0
-    lepSkim.prescaleFactor = 0
+    lepSkim.prescaleFactor = 1
+    lepSkim.minLeptons = 0
+    POSTPROCESSOR.cut='1'
     selectedComponents = [TTLep_pow]
 if test == "synch-2016":
     TTLep_pow = kreator.makeMCComponent("TTLep_pow", "/TTTo2L2Nu_TuneCP5up_PSweights_13TeV-powheg-pythia8/RunIISummer16NanoAODv7-PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/NANOAODSIM", "CMS", ".*root", 831.76*((3*0.108)**2) )

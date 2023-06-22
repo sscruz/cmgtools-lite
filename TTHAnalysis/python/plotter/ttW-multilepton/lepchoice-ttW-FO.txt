@@ -50,6 +50,7 @@ minMllAFAS\b: minMllAFAS_Recl; AlsoData
 minMllAFOS\b: minMllAFOS_Recl; AlsoData
 minMllAFSS\b: minMllAFSS_Recl; AlsoData
 minMllSFOS\b: minMllSFOS_Recl; AlsoData
+dR_bl_Gen\b :  dR_DressBSelJet_DressSelLep1; AlsoData
 dTakingEra\b : if3(isData,(run>=275657)+(run>=276315)+(run>=276831)+(run>=277772)+(run>=278820)+(run>=280919),-1); AlsoData # 2016B==0,C,D,E,F,G,H
 elLooseUnc_2lss_up\b : leptonSF_2lss_el_up/leptonSF_2lss
 elLooseUnc_2lss_dn\b : leptonSF_2lss_el_dn/leptonSF_2lss

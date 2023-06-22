@@ -40,7 +40,11 @@ if "gen" in OTHER:
    ltext = "-l {LUMI}".format(LUMI=LUMI)
 
 
+<<<<<<< HEAD
 T2L="-P {ORIGIN}/NanoTrees_UL_v2_060422_skim2lss_newfts/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btagSF_fixedWP/ --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars --FMCs {{P}}/6_ttWforlepton --FMCs {{P}}/7_Vars_forttWDiff --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
+=======
+T2L="-P {ORIGIN}/NanoTrees_UL_v2_060422_skim2lss_newfts/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btagSF/ --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars --FMCs {{P}}/6_ttWforlepton --Fs {{P}}/7_Vars_forttWDiff --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
+>>>>>>> 4aeb15c591f7c2ec226d6ba2203a4745856ed5c2
 
 if "gen" in OTHER:
    T2L= "-P {ORIGIN}/NanoTrees_UL_v2_gennoskim/{YEAR} ".format(ORIGIN=ORIGIN, YEAR=YEAR)
@@ -66,7 +70,11 @@ MCASUFFIX="mcdata-frdata"
 
 DOFILE = ""
 
+<<<<<<< HEAD
 availableObservables = ['inclusive', 'njets','nbjets','lep1_pt','lep1_eta',"dR_ll","max_eta",'jet1_pt','deta_llss',"HT",'dR_lbloose', 'dR_lbmedium',"asymmetry_withbees","mindr_lep1_jet30","asymmetry_smart_nocharge","asymmetry_v4"]
+=======
+availableObservables = ['inclusive', 'njets','nbjets','lep1_pt','lep1_eta',"dR_ll","max_eta",'jet1_pt','deta_llss',"HT",'dR_lbloose', 'dR_lbmedium',"mindr_lep1_jet25", "asymmetry"]
+>>>>>>> 4aeb15c591f7c2ec226d6ba2203a4745856ed5c2
 
 if OBSERVABLE == "inclusive":
     FUNCTION_2L="0"
@@ -74,14 +82,14 @@ if OBSERVABLE == "inclusive":
     
 
 elif OBSERVABLE == "njets":
-    FUNCTION_2L="nJet30"
+    FUNCTION_2L="nJet25"
     if "gen" in OTHER:
         FUNCTION_2L="nDressSelJet"
         SYSTS = ""
     CATBINS    ="[2.5,3.5,4.5,5.5,6.5,7.5]"
 
 elif OBSERVABLE == "nbjets":
-    FUNCTION_2L="nBJetLoose30"
+    FUNCTION_2L="nBJetLoose25"
     if "gen" in OTHER:
         FUNCTION_2L="nDressBSelJet"
         SYSTS = ""
@@ -122,10 +130,10 @@ elif OBSERVABLE == "max_eta":
 
 elif OBSERVABLE == "jet1_pt":
     FUNCTION_2L="JetSel_Recl_pt[0]"
-    CATBINS    ="[30,40,50,75,100,125,150,187,225,350,500]"
+    CATBINS    ="[25,40,50,75,100,125,150,187,225,350,500]"
     if "gen" in OTHER:
         FUNCTION_2L="GenJet_pt[iDressSelJet[0]]"
-        CATBINS    ="[30,50,100,150,225,500]"
+        CATBINS    ="[25,50,100,150,225,500]"
         SYSTS = ""
 
 elif OBSERVABLE == "deta_llss":
@@ -136,6 +144,12 @@ elif OBSERVABLE == "deta_llss":
         CATBINS    ="[0.0,0.4,0.8,1.2,1.6,2.0,2.4]"
         SYSTS = ""
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+elif OBSERVABLE == "asymmetry":
+=======
+>>>>>>> 4aeb15c591f7c2ec226d6ba2203a4745856ed5c2
 elif OBSERVABLE == "dR_lbmedium":
     FUNCTION_2L="dR_lbmedium"
     CATBINS    ="[0, 0.5, 1.0,1.25, 1.5,1.75, 2.0, 2.5, 3.0]"
@@ -152,8 +166,13 @@ elif OBSERVABLE == "dR_lbloose":
         CATBINS    ="[0, 1.0, 1.5, 2.0, 3.0]"
         SYSTS = ""
 
+<<<<<<< HEAD
 elif OBSERVABLE == "mindr_lep1_jet30":
     FUNCTION_2L="mindr_lep1_jet30"
+=======
+elif OBSERVABLE == "mindr_lep1_jet25":
+    FUNCTION_2L="mindr_lep1_jet25"
+>>>>>>> 4aeb15c591f7c2ec226d6ba2203a4745856ed5c2
     CATBINS    ="[0, 0.5, 1.0,1.25, 1.5,1.75, 2.0, 2.5, 3.0]"
     if "gen" in OTHER:
         FUNCTION_2L="mindr_DressSelLep1_DressSelJet"
@@ -161,7 +180,11 @@ elif OBSERVABLE == "mindr_lep1_jet30":
         SYSTS = ""
 
 elif OBSERVABLE == "HT":
+<<<<<<< HEAD
     FUNCTION_2L="htJet30j_Recl"
+=======
+    FUNCTION_2L="htJet25j_Recl"
+>>>>>>> 4aeb15c591f7c2ec226d6ba2203a4745856ed5c2
     CATBINS    ="[0.0,100,200.,300.,400.,500.,600.,800.,1000.]"
     if "gen" in OTHER:
         FUNCTION_2L="Gen_HT"
@@ -177,6 +200,7 @@ elif OBSERVABLE == "asymmetry_smart_nocharge":
     CATBINS    ="[-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,13.5,14.5,15.5,16.5,17.5,18.5,19.5]"
     CATPOSTFIX=" -E ^met "
 elif OBSERVABLE == "asymmetry_v4":
+>>>>>>> 1f572b998daf1849eab263bab13ef48e8d3311bf
     FUNCTION_3L="ttW_charge_asymmetry_v4(hasOSSF,nJet30, abs(positive_lepton_eta)-abs(negative_lepton_eta),nBJetMedium30, mZ_OSSF)"
     CATBINS    ="[-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,13.5,14.5,15.5,16.5,17.5,18.5,19.5,20.5,21.5,22.5,23.5,24.5,25.5,26.5,27.5,28.5,29.5,30.5,31.5]"
     CATPOSTFIX=" -E ^met "

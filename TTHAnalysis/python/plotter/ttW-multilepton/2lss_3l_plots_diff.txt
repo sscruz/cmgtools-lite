@@ -34,13 +34,17 @@
 lep1_conePt     :     LepGood1_conePt                            : [25,40,50,75,100,125,150,187,225,350,500]; XTitle="Leading lepton cone p_{T} (GeV)"  ,YMin=0, YMax=1500.
 jet1_Pt         :     JetSel_Recl_pt[0]                          : [30,40,50,75,100,125,150,187,225,350,500]; XTitle="Leading jet p_{T} (GeV)" ,YMin=0, YMax=1100.
 deta_llss       :     abs(LepGood1_eta-LepGood2_eta)             : [0.0,0.2,0.4,0.6,0.8,1.0,1.2,1.4,1.6,1.8,2.0,2.2,2.4]; XTitle="#Delta #eta_{ll} (GeV)"  ,YMin=0, YMax=800.
-NJets           :     nJet30                                     : [2.5,3.5,4.5,5.5,6.5,7.5]; XTitle='N(jet\, p_{T} > 30 GeV)', XNDiv=5, xBinLabels="3\,4\,5\,6\,#geq 7",YMin=0, YMax=2800.
-NBtagLoose30    :     nBJetLoose30                               : [0.5,1.5,2.5,3.5]; XTitle='N(jet\, p_{T} > 30 GeV\, CSVL)', XNDiv=5, xBinLabels="1\,2\,#geq 3",YMin=0, YMax=2500. 
+NJets           :     nJet25                                     : [2.5,3.5,4.5,5.5,6.5,7.5]; XTitle='N(jet\, p_{T} > 30 GeV)', XNDiv=5, xBinLabels="3\,4\,5\,6\,#geq 7",YMin=0, YMax=2800.
+NBtagLoose25    :     nBJetLoose25                               : [0.5,1.5,2.5,3.5]; XTitle='N(jet\, p_{T} > 30 GeV\, CSVL)', XNDiv=5, xBinLabels="1\,2\,#geq 3",YMin=0, YMax=2500. 
 #diff_conePt_Pt_leading   :  (LepGood1_conePt-LepGood1_pt) / (LepGood1_pt)   : 20,-1,1; XTitle= "conePt-lepPt/lepPt (leading)"
 #diff_conePt_Pt_subleading:  (LepGood2_conePt-LepGood2_pt) / (LepGood2_pt)   : 20,-1,1; XTitle= "conePt-lepPt/lepPt (sub_leading)"
 #2lep_2DpT_diffconePtleading_vs_leppt: (LepGood1_conePt-LepGood1_pt) / (LepGood1_pt)\:LepGood1_pt     : [-0.5,-0.4,-0.3,-0.2,-0.1,0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]*[25,35,50,70,90,110,130,160,200,250,300,350,400] ; XTitle="diff_conePt_Pt_leading", YTitle="lep1_pt (GeV)", Legend='TL', LegendCutoff=1e-5, PlotMode='COLZ', IncludeOverflows=True
+<<<<<<< HEAD
 
 dR_lb_mediumWP : dR_lbmedium     : [0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5]; XTitle="dR (l b medium)"
 dR_lb_looseWP  : dR_lbloose      : [0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5]; XTitle="dR (l b medium)"
 minDR_lj30     : mindr_lep_jet30 : [0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5]; XTitle="min(dR) lj (ptj > 30 GeV)"
 
+=======
+lepGen1_eta    :     abs(GenDressedLepton_eta[iDressSelLep[0]])                            : [0.0,0.9,1.2,2.4]; XTitle="Leading lepton eta (GeV)"  
+>>>>>>> 4aeb15c591f7c2ec226d6ba2203a4745856ed5c2

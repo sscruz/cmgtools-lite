@@ -1,0 +1,44 @@
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+c      written by the UFO converter
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+      DOUBLE PRECISION G
+      COMMON/STRONG/ G
+
+      DOUBLE COMPLEX GAL(2)
+      COMMON/WEAK/ GAL
+
+      DOUBLE PRECISION MU_R
+      COMMON/RSCALE/ MU_R
+
+      DOUBLE PRECISION NF
+      PARAMETER(NF=4)
+
+      DOUBLE PRECISION MDL_MT,MDL_MW,MDL_MZ,MDL_MTA,MDL_MB,MDL_MH
+
+      COMMON/MASSES/ MDL_MT,MDL_MW,MDL_MZ,MDL_MTA,MDL_MB,MDL_MH
+
+
+      DOUBLE PRECISION MDL_WZ,MDL_WH,MDL_WW,MDL_WT
+
+      COMMON/WIDTHS/ MDL_WZ,MDL_WH,MDL_WW,MDL_WT
+
+
+      DOUBLE COMPLEX GC_7, GC_598, GC_599, GC_725, GC_726, GC_649,
+     $  GC_730, GC_733, GC_740, GC_827, GC_828, GC_923, GC_924, GC_40,
+     $  GC_41, GC_42, GC_43, GC_44, GC_45, GC_46, GC_47, GC_48, GC_49,
+     $  GC_59, GC_60, GC_61, GC_62, GC_63, GC_65, GC_67, GC_68, GC_69,
+     $  GC_70, GC_71, GC_73, GC_200, GC_201, GC_202, GC_203, GC_204,
+     $  GC_206, GC_208, GC_209, GC_210, GC_211, GC_212, GC_214, GC_471
+     $ , GC_472, GC_473, GC_474, GC_475, GC_476, GC_570, GC_572,
+     $  GC_738, GC_739, GC_741, GC_742, GC_767, GC_768, GC_953, GC_954
+
+      COMMON/COUPLINGS/ GC_7, GC_598, GC_599, GC_725, GC_726, GC_649,
+     $  GC_730, GC_733, GC_740, GC_827, GC_828, GC_923, GC_924, GC_40,
+     $  GC_41, GC_42, GC_43, GC_44, GC_45, GC_46, GC_47, GC_48, GC_49,
+     $  GC_59, GC_60, GC_61, GC_62, GC_63, GC_65, GC_67, GC_68, GC_69,
+     $  GC_70, GC_71, GC_73, GC_200, GC_201, GC_202, GC_203, GC_204,
+     $  GC_206, GC_208, GC_209, GC_210, GC_211, GC_212, GC_214, GC_471
+     $ , GC_472, GC_473, GC_474, GC_475, GC_476, GC_570, GC_572,
+     $  GC_738, GC_739, GC_741, GC_742, GC_767, GC_768, GC_953, GC_954
+
