@@ -1,0 +1,7 @@
+alwaystrue: 1
+lep3 : nDressSelLep > 2
+pt251515: GenDressedLepton_pt[iDressSelLep[0]] > 25 && GenDressedLepton_pt[iDressSelLep[1]] >  15 && GenDressedLepton_pt[iDressSelLep[2]] > 15
+3j: nDressSelJet >= 3
+1b: nDressBSelJet >=1
+
+
