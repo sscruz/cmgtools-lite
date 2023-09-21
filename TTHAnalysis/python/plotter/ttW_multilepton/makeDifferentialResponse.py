@@ -293,7 +293,7 @@ stability_histo.GetYaxis().SetRangeUser(0, 1.05)
 stability_histo.GetXaxis().SetTitle(varname[var])
 
 
-t2 = doSpam('Lumi fb^{-1} (13 TeV)',  0.52, .955, 0.89, .995, align=12, textSize=0.033*1.4)
+t2 = doSpam('138 fb^{-1} (13 TeV)',  0.52, .955, 0.89, .995, align=12, textSize=0.033*1.4)
 
 l = r.TLegend(0.55, 0.75, 0.65, 0.85)
 l.SetBorderSize(0)
