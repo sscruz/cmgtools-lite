@@ -217,4 +217,106 @@ t1.Draw()
 
 
 plot=var
-c1.SaveAs(folder+'/response_%s.png'%(plot.replace('.','p')))                 
+c1.SaveAs(folder+'/response_%s.png'%(plot.replace('.','p')))
+
+## Compute purity and stability with the response matrix
+# X: detector level
+# Y: particle level
+
+def compute_purity(hist, low_bin, high_bin):
+    """ 
+    Sum over particle level for a given detector level bin 
+        p_j = M(j, j) / ( sum_i[M(i, j)] ) = num / denom
+    p_j: purity in bin j (detector level bin)
+    M(j, j): Events that fall in the same bin in the folded and unfolded spaces.
+    M(i, j): response matrix (here we fix the particle level bin, hence "i")   
+    
+    Note: there must be as many purity values as unfolded bins.
+    """
+    
+    nBinsX = hist.GetNbinsX()
+    nBinsY = hist.GetNbinsY()
+    purity_h = r.TH1D("purity", "", nBinsX, low_bin, high_bin)
+    
+    for j in range(1, nBinsY + 1):
+        num = hist.GetBinContent(j, j)
+        denom = sum([ hist.GetBinContent(i, j) for i in range(1, 1+nBinsX)])
+        
+        pj = num / denom if denom else 0
+        purity_h.SetBinContent(j, pj)
+    
+    return purity_h
+
+def compute_stability(hist, low_bin, high_bin):
+    """ 
+    Sum over particle level for a given detector level bin 
+        s_i = M(i, i) / ( sum_j[M(i, j)] ) = num / denom
+    s_i: purity in bin i (particle level bin)
+    M(i, i): Events that fall in the same bin in the folded and unfolded spaces.
+    M(i, j): response matrix (here we fix the detector level bin, hence "j")   
+    
+    Note: there must be as many stability values as folded bins.
+    """
+
+    nBinsX = hist.GetNbinsX()
+    nBinsY = hist.GetNbinsY()
+    stability_h = r.TH1D("stability", "", nBinsY,  low_bin, high_bin)
+    
+    for i in range(1, nBinsX + 1):
+        num = hist.GetBinContent(i, i)
+        denom = sum([ hist.GetBinContent(i, j) for j in range(1, 1+nBinsY)])
+        s = num / denom if denom else 0
+        
+        stability_h.SetBinContent(i, s)
+    
+    return stability_h
+
+# Get binnings
+from differential_variables import all_vars
+
+observable = all_vars[(var, "2lss")]
+
+reco_bins = observable.CATBINS
+reco_bins = reco_bins.strip("[").strip("]").split(",")
+
+purity_histo    = compute_purity(reco_particle, int(reco_bins[0]), int(reco_bins[-1]))
+stability_histo = compute_stability(reco_particle, int(reco_bins[0]), int(reco_bins[-1]))
+
+# Add some cosmetics
+purity_histo.SetLineColor(r.kRed)
+purity_histo.SetLineWidth(2)
+
+
+stability_histo.SetLineColor(r.kBlue)
+stability_histo.SetLineWidth(2)
+stability_histo.GetYaxis().SetRangeUser(0, 1.05)
+stability_histo.GetXaxis().SetTitle(varname[var])
+
+
+t2 = doSpam('138 fb^{-1} (13 TeV)',  0.52, .955, 0.89, .995, align=12, textSize=0.033*1.4)
+
+l = r.TLegend(0.55, 0.75, 0.65, 0.85)
+l.SetBorderSize(0)
+l.SetTextSize(0.04)
+l.SetFillColor(0)
+l.SetShadowColor(0)
+l.SetFillStyle(0)
+l.SetTextFont(42)
+
+l.AddEntry(purity_histo, "Purity", "l")
+l.AddEntry(stability_histo, "Stability", "l")
+
+c1 = r.TCanvas("_canvas_ps", '', 600, 750)
+p1 = r.TPad("pad1","pad1",0.01,0.05,0.98,0.98)
+p1.SetTopMargin(p1.GetTopMargin()*topSpamSize)
+p1.SetRightMargin(0.14)
+p1.Draw()
+p1.cd()
+
+stability_histo.Draw("hist")
+purity_histo.Draw("hist same")
+t.Draw("same")
+t2.Draw("same")
+l.Draw("same")
+
+c1.SaveAs(folder+'/purityAndStability_%s.png'%(plot.replace('.','p')))
