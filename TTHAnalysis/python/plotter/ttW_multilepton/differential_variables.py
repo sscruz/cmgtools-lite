@@ -36,8 +36,8 @@ for REGION in ["2lss", "3l"]:
             FUNCTION_2L="GenDressedLepton_pt[iDressSelLep[0]]"
             FUNCTION_2Lreco="LepGood1_conePt"
             if REGION == "2lss":
-                CATBINS    = "[25,50,70,85,100,120,150,200,300]"
-                CATBINS_Gen  ="[25,70,100,150,300]"
+                CATBINS    = "[25, 37, 50, 62, 75, 97, 120, 160, 200]"
+                CATBINS_Gen  ="[25, 50, 75, 120, 200]"
             elif REGION == "3l":
                 CATBINS    = "[25,50,70,85,100,120,150,200,300]"
                 CATBINS_Gen  ="[25,70,100,150,300]" 
@@ -46,8 +46,8 @@ for REGION in ["2lss", "3l"]:
             FUNCTION_2L="GenDressedLepton_pt[iDressSelLep[1]]"
             FUNCTION_2Lreco="LepGood2_conePt"
             if REGION == "2lss":
-                CATBINS    ="[15,30,45,70,100,200]"
-                CATBINS_Gen    ="[15,45,100,200]"
+                CATBINS    ="[15, 22, 30, 40, 50, 75, 100]"
+                CATBINS_Gen    ="[15, 30, 50, 100]"
             elif REGION == "3l":
                 CATBINS    ="[15,30,45,70,100,200]"
                 CATBINS_Gen    ="[15,45,100,200]"
@@ -56,8 +56,8 @@ for REGION in ["2lss", "3l"]:
             FUNCTION_2L="deltaR(GenDressedLepton_eta[iDressSelLep[0]],GenDressedLepton_phi[iDressSelLep[0]],GenDressedLepton_eta[iDressSelLep[1]],GenDressedLepton_phi[iDressSelLep[1]])"
             FUNCTION_2Lreco="deltaR(LepGood1_eta,LepGood1_phi,LepGood2_eta,LepGood2_phi)"
             if REGION == "2lss":
-                CATBINS    = "[0,0.5, 1.0, 1.25, 1.5,1.75, 2.0,2.25,2.5,2.75,3.0,3.25,3.5,3.75,10.0]"
-                CATBINS_Gen    ="[0, 1.0, 1.5, 2.0, 2.5, 3.0,3.5,10.0]"
+                CATBINS    = "[0, 0.8, 1.6, 2.1, 2.5, 2.9 3.3, 4.1, 5]"
+                CATBINS_Gen    ="[0, 1.6, 2.5, 3.3, 5]"
             elif REGION == "3l":
                 continue # Not implemented
             
@@ -65,8 +65,8 @@ for REGION in ["2lss", "3l"]:
             FUNCTION_2L="abs(GenDressedLepton_eta[iDressSelLep[0]])"
             FUNCTION_2Lreco="abs(LepGood1_eta)"
             if REGION == "2lss":
-                CATBINS    ="[0.0,0.2,0.4,0.6,0.8,1.0,1.3,1.8,2.5]"
-                CATBINS_Gen    ="[0.0,0.4,0.8,1.3,2.5]"
+                CATBINS    ="[0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5]"
+                CATBINS_Gen    ="[0, 0.5, 1.0, 1.5, 2.5]"
             elif REGION == "3l":
                 CATBINS    ="[0.0,0.2,0.4,0.6,0.8,1.0,1.3,1.8,2.5]"
                 CATBINS_Gen    ="[0.0,0.4,0.8,1.3,2.5]"
@@ -75,8 +75,8 @@ for REGION in ["2lss", "3l"]:
             FUNCTION_2L="max(GenDressedLepton_eta[iDressSelLep[0]],GenDressedLepton_eta[iDressSelLep[1]])"
             FUNCTION_2Lreco="max(LepGood1_eta,LepGood2_eta)"
             if REGION == "2lss":
-                CATBINS    ="[0.0,0.2,0.4,0.6,0.8,1.0,1.3,1.8,2.5]"
-                CATBINS_Gen    ="[0.0,0.4,0.8,1.3,2.5]"
+                CATBINS    ="[0, 0.5, 1.0, 1.25, 1.5, 1.75, 2, 2.25, 2.5]"
+                CATBINS_Gen    ="[0, 1.0, 1.5, 2, 2.5]"
             elif REGION == "3l":
                 continue # Not implemented
 
@@ -84,8 +84,8 @@ for REGION in ["2lss", "3l"]:
             FUNCTION_2L="GenJet_pt[iDressSelJet[0]]"
             FUNCTION_2Lreco="JetSel_Recl_pt[0]"
             if REGION == "2lss":
-                CATBINS        ="[25,65,95,150,200,300,450]"
-                CATBINS_Gen    ="[25,95,200,450]"
+                CATBINS        ="[25, 62, 100, 140, 180, 240, 300]"
+                CATBINS_Gen    ="[25, 100, 180, 300]"
             elif REGION == "3l":
                 CATBINS        ="[25,95,150,200,300,450]"
                 CATBINS_Gen    ="[25,150,300,450]"
@@ -121,8 +121,8 @@ for REGION in ["2lss", "3l"]:
             FUNCTION_2L="mindr_DressSelLep_JetDressSel"
             FUNCTION_2Lreco="mindr_lep1_jet25"
             if REGION == "2lss":
-                CATBINS    ="[0,0.375,0.75,0.875,1.0,1.125,1.25,1.375,1.5,1.625,1.75,1.875,2.0,2.25,2.5,2.75,3.0]"
-                CATBINS_Gen    ="[0, 0.75,1.0,1.25, 1.5,1.75, 2.0,2.5, 3.0]"
+                CATBINS    ="[0, 0.5, 1, 1.25, 1.5, 1.75, 2, 2.5, 3]"
+                CATBINS_Gen    ="[0, 1, 1.5, 2, 3]"
             elif REGION == "3l":
                 continue # Not implemented
 
@@ -130,9 +130,9 @@ for REGION in ["2lss", "3l"]:
             FUNCTION_2L="Gen_HT"
             FUNCTION_2Lreco="htJet25j_Recl"
             if REGION == "2lss":
-                CATBINS    ="[0.0,100,200,250,300.,375,450,525,600.,1400.,2000.]"
+                CATBINS    ="[0, 125, 250, 325, 400, 500, 600, 800, 1000]"
                 #CATBINS_Gen    ="[0.0,200,300.,450,600.,2000.]"
-                CATBINS_Gen    ="[0.0,200,300.,375,450,525,600.,800,2000.]"
+                CATBINS_Gen    ="[0, 250, 400, 600, 1000]"
 
             elif REGION == "3l":
                 CATBINS    ="[0.0,100,200,250,300.,375,450,525,600.,1400.,2000.]"
@@ -156,3 +156,4 @@ for REGION in ["2lss", "3l"]:
                 CATBINS_Gen    ="[0.0, 150., 250., 350., 800.]"
         
         all_vars[(OBSERVABLE,REGION)]=Observable(FUNCTION_2L, FUNCTION_2Lreco, CATBINS, CATBINS_Gen, REGION)
+
