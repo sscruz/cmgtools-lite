@@ -336,6 +336,17 @@ class HistoWithNuisances:
         else:
             hvars={}
             # compute up envelope and down envelope for all variations
+
+            # First template stats
+            hvarup = _cloneNoDir(hempty)
+            hvardn = _cloneNoDir(hempty)
+            for b in xrange(1,self.GetNbinsX()+1):
+                hvarup.SetBinContent(b,self.GetBinError(b))
+                hvardn.SetBinContent(b,-self.GetBinError(b))
+            hvars['bbb_stat_unc']=[hvarup,hvardn]
+            if 'bbb_stat_unc' in toadd:
+                raise NotImplementedError("Used forbidden name for systematic uncertainty")
+                
             for var in toadd:
                 hvarup = _cloneNoDir(hempty)
                 hvardn = _cloneNoDir(hempty)
