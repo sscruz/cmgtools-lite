@@ -275,6 +275,7 @@ for bin in particle_bins:
        h1.Add(h5)
        h1.Add(h6)
        h1.Add(h7)
+       h1.Add(h8)
     for i in range(1,ndetectorbins+1):
         reco_particle.SetBinContent(particleindex,i,h1.GetBinContent(i)/lumi)
 
