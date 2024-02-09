@@ -56,3 +56,5 @@ dR_lbloose : dR_lbloose : [0, 0.5,1.0,1.25, 1.5,1.75, 2.0,2.25, 2.5,2.75, 3.0,3.
 dR_lbmedium : dR_lbmedium : [0, 0.5,1.0,1.25, 1.5,1.75, 2.0,2.25, 2.5,2.75, 3.0,3.25,3.5,3.75,4.0]; XTitle="min #Delta R(l\,b)",  IncludeOverflows=True
 2lep_flav:    	if3(nLepFO>1,if3(abs(LepGood1_pdgId)!=abs(LepGood2_pdgId),1,abs(LepGood1_pdgId)-11),-99)     : [-0.5,0.5,1.5,2.5]; XTitle="lepton flavour", XNDiv=505, MoreY=2.0, xBinLabels="ee\,e#mu\,#mu#mu"
 
+pt3l         : LepGood1_pt+LepGood2_pt+LepGood3_pt    : [0.0, 100,150.,200., 250.,300 ,350.,450. ,800.];  XTitle=" p_{T}^{3l} (GeV)"  ,  IncludeOverflows=True,YMin=0, YMax=400.
+
