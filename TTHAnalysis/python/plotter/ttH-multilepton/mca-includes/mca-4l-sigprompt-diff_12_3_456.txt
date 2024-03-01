@@ -1,6 +1,6 @@
-ttH_pt_0_120+    : TTHnobb_fxfx : 0.5071*0.418 : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 && (HTXS_Higgs_pt >= 0) && (HTXS_Higgs_pt < 120); FillColor=ROOT.kRed+0
-ttH_pt_120_200+    : TTHnobb_fxfx : 0.5071*0.418 : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 && (HTXS_Higgs_pt >= 120) && (HTXS_Higgs_pt < 200); FillColor=ROOT.kRed+2
-ttH_pt_200_inf+    : TTHnobb_fxfx : 0.5071*0.418 : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 && (HTXS_Higgs_pt >= 200); FillColor=ROOT.kRed+5
+ttH_PTH_0_120+    : TTHnobb_fxfx : 0.5071*0.418 : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 && (HTXS_Higgs_pt >= 0) && (HTXS_Higgs_pt < 120); FillColor=ROOT.kRed+0
+ttH_PTH_120_200+    : TTHnobb_fxfx : 0.5071*0.418 : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 && (HTXS_Higgs_pt >= 120) && (HTXS_Higgs_pt < 200); FillColor=ROOT.kRed+2
+ttH_PTH_200_inf+    : TTHnobb_fxfx : 0.5071*0.418 : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 && (HTXS_Higgs_pt >= 200); FillColor=ROOT.kRed+5
 
 tHq+	: THQ_ctcvcp: 0.07096*LHEReweightingWeight[11] : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0; FillColor=ROOT.kBlue,genSumWeightName="LHEReweightingSumw[11]/LHEScaleSumw[4]*genEventSumw"
 tHW+	: THW_ctcvcp :0.01561*LHEReweightingWeight[11] : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0; FillColor=ROOT.kOrange+8,genSumWeightName="LHEReweightingSumw[11]/LHEScaleSumw[4]*genEventSumw"

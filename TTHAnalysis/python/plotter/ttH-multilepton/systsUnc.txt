@@ -1,11 +1,10 @@
 # vim: syntax=sh
 
-
 ### Alias definitions. Careful to avoid trailing '.*' to avoid matching _promptsub
 #$alias : ttH : ttH|ttH_h[a-z]+|ttH_cosa_[0-9]p[0-9]+_q_[0-9]p[0-9]+|ttH_cosa_m[0-9]p[0-9]+_q_[0-9]p[0-9]+|ttH_cosa_[0-9]p[0-9]+_q_[0-9]p[0-9]+_h[a-z]+|ttH_cosa_m[0-9]p[0-9]+_q_[0-9]p[0-9]+_h[a-z]+|ttH_cosa_[0-9]p[0-9]+_q_m[0-9]p[0-9]+_h[a-z]+|ttH_cosa_m[0-9]p[0-9]+_q_m[0-9]p[0-9]+_h[a-z]+
 #$alias : tHq : tHq|tHq_h[a-z]+|tHq_cosa_[0-9]p[0-9]+_q_[0-9]p[0-9]+|tHq_cosa_m[0-9]p[0-9]+_q_[0-9]p[0-9]+|tHq_cosa_[0-9]p[0-9]+_q_[0-9]p[0-9]+_h[a-z]+|tHq_cosa_m[0-9]p[0-9]+_q_[0-9]p[0-9]+_h[a-z]+|tHq_cosa_[0-9]p[0-9]+_q_m[0-9]p[0-9]+_h[a-z]+|tHq_cosa_m[0-9]p[0-9]+_q_m[0-9]p[0-9]+_h[a-z]+
 #$alias : tHW : tHW|tHW_h[a-z]+|tHW_cosa_[0-9]p[0-9]+_q_[0-9]p[0-9]+|tHW_cosa_m[0-9]p[0-9]+_q_[0-9]p[0-9]+|tHW_cosa_[0-9]p[0-9]+_q_[0-9]p[0-9]+_h[a-z]+|tHW_cosa_m[0-9]p[0-9]+_q_[0-9]p[0-9]+_h[a-z]+|tHW_cosa_[0-9]p[0-9]+_q_m[0-9]p[0-9]+_h[a-z]+|tHW_cosa_m[0-9]p[0-9]+_q_m[0-9]p[0-9]+_h[a-z]+
-$alias : ttH : ttH|ttH_c3_h[a-z]+|ttH_h[a-z]+|ttH_SM_h[a-z]+|ttH_CPodd_h[a-z]+|ttH_c3
+$alias : ttH : ttH|ttH_c3_h[a-z]+|ttH_h[a-z]+|ttH_SM_h[a-z]+|ttH_CPodd_h[a-z]+|ttH_c3|ttH_PTH_0_60|ttH_PTH_60_120|ttH_PTH_120_200|ttH_PTH_200_300|ttH_PTH_300_450|ttH_PTH_450_inf|ttH_PTH_0_120|ttH_PTH_120_200|ttH_PTH_200_inf|ttH_mttH_0_750|ttH_mttH_750_1000|ttH_mttH_1000_inf
 $alias : tHq : tHq|tHq_h[a-z]+|tHq_SM_h[a-z]+|tHq_CPodd_h[a-z]+|tHq_kV_1_kt_0_h[a-z]+|tHq_kV_0_kt_1_h[a-z]+
 $alias : tHW : tHW|tHW_h[a-z]+|tHW_SM_h[a-z]+|tHW_CPodd_h[a-z]+|tHW_kV_1_kt_0_h[a-z]+|tHW_kV_0_kt_1_h[a-z]+
 $alias : ttHX : $ttH|$tHq|$tHW
@@ -59,7 +58,8 @@ CMS_ttHl18_FRjt_Add   : $PromptFromMC : .*2lss_1tau.* : templateAsymm ; AddWeigh
 
 
 ## L1 ECAL prefiring
-CMS_ttHl16_L1PreFiring : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2016\,2016APV"
+CMS_ttHl16_L1PreFiring : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2016"
+CMS_ttHl16_L1PreFiring : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2016APV"
 CMS_ttHl17_L1PreFiring : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2017"
 
 
@@ -89,7 +89,11 @@ CMS_ttHl16APV_trigger_3l      : $PromptFromMC : .*4l.* : normSymm : 1.01; year="
 CMS_ttHl17_trigger_3l      : $PromptFromMC : .*4l.* : normSymm : 1.01; year="2017"
 CMS_ttHl18_trigger_3l      : $PromptFromMC : .*4l.* : normSymm : 1.01; year="2018"
 
-CMS_ttHl_pileup : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight']
+#CMS_ttHl_pileup : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight']
+CMS_ttHl_pileup_2016 : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'], year="2016"
+CMS_ttHl_pileup_2016APV : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'], year="2016APV"
+CMS_ttHl_pileup_2017 : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'], year="2017"
+CMS_ttHl_pileup_2018 : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'],	year="2018"
 
 CMS_scale_j_HF        : $PromptFromMC : .* : templateAsymm; \
                          FakeRates=['ttH-multilepton/frs-jecs/fr-jesHFUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesHFDown.txt']
@@ -246,8 +250,18 @@ CMS_jesHEMIssue      : $PromptFromMC : .* : templateAsymm; \
 		    FakeRates=['ttH-multilepton/frs-jecs/fr_jesHEMIssueUp.txt'\,'ttH-multilepton/frs-jecs/fr_jesHEMIssueDown.txt'], \
                     year="2018"
 
-CMS_ttHl_UnclusteredEn : $PromptFromMC : .* : templateAsymm; \
-        FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt']
+#CMS_ttHl_UnclusteredEn : $PromptFromMC : .* : templateAsymm; \
+#        FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt']
+
+CMS_ttHl_UnclusteredEn_2016 : $PromptFromMC : .* : templateAsymm; \
+        FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt'], year="2016"
+CMS_ttHl_UnclusteredEn_2016APV : $PromptFromMC : .* : templateAsymm; \
+        FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt'], year="2016APV"
+CMS_ttHl_UnclusteredEn_2017 : $PromptFromMC : .* : templateAsymm; \
+        FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt'], year="2017"
+CMS_ttHl_UnclusteredEn_2018 : $PromptFromMC : .* : templateAsymm; \
+        FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt'], year="2018"
+
 
 CMS_ttHl_btag_LF    : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lf/btagSF'\,'btagSFdown_lf/btagSF']
 CMS_ttHl_btag_HF    : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hf/btagSF'\,'btagSFdown_hf/btagSF']
