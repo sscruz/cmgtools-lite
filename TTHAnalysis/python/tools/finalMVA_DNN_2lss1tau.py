@@ -22,12 +22,12 @@ def mTauTauVis(ev, ind, tesFile):
     
     if ev.Tau_tight2lss1tau_idx < 0: return -1
     taus = [ t for t in Collection(ev, 'TauSel_Recl')]
-    dms = [ d for d in Collection(ev, 'TauSel_Recl_decayMode')]
+    #dms = [ d for d in Collection(ev, 'TauSel_Recl_decayMode')]
 
     #dm = ev.TauSel_Recl_decayMode
     #tes  = hist.GetBinContent(hist.GetXaxis().FindBin(dm))
     #print("ciao ", tes)
-    return (leps[ind].p4() + (taus[int(ev.Tau_tight2lss1tau_idx)].p4()*hist.GetBinContent(hist.GetXaxis().FindBin(dms[int(ev.Tau_tight2lss1tau_idx)])) )).M()  
+    return (leps[ind].p4() + (taus[int(ev.Tau_tight2lss1tau_idx)].p4()*hist.GetBinContent(hist.GetXaxis().FindBin(ev.TauSel_Recl_decayMode[int(ev.Tau_tight2lss1tau_idx)])) )).M()  
 
 def massL3(ev, var, tesFile):
     file = r.TFile(tesFile)
@@ -40,11 +40,11 @@ def massL3(ev, var, tesFile):
     if len(leps) < 2: return 0
 
     taus = [ t for t in Collection(ev, 'TauSel_Recl')]
-    dms = [ d for d in Collection(ev, 'TauSel_Recl_decayMode')]
+    #dms = [ d for d in Collection(ev, 'TauSel_Recl_decayMode')]
     l1=r.TLorentzVector();l2=r.TLorentzVector()
     l1.SetPtEtaPhiM(leps[0].conePt, leps[0].eta, leps[0].phi, 0)
     l2.SetPtEtaPhiM(leps[1].conePt, leps[1].eta, leps[1].phi, 0)
-    part = l1 + l2 + taus[int(ev.Tau_tight2lss1tau_idx)].p4()*hist.GetBinContent(hist.GetXaxis().FindBin(dms[int(ev.Tau_tight2lss1tau_idx)]))
+    part = l1 + l2 + taus[int(ev.Tau_tight2lss1tau_idx)].p4()*hist.GetBinContent(hist.GetXaxis().FindBin(ev.TauSel_Recl_decayMode[int(ev.Tau_tight2lss1tau_idx)]))
 
     met_pt  = getattr(ev,'MET_pt%s'%var)
     met_phi = getattr(ev,'MET_phi%s'%var)
