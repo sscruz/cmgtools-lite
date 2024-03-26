@@ -24,7 +24,7 @@ class EventVars2LSS(Module):
                               'bMediumSelJet1_pt',
                               'bMediumSelJet1_eta',
                               'bLooseSelJet1_pt',
-                              'bLooseSelJet1_eta',
+                              'bLooseSelJet1_eta'
                               'min_Deta_leadfwdJet_jet',
                               'dEtaLL_BBframe_2lss',
                               'dEtaBB_LLframe_2lss',
@@ -34,125 +34,123 @@ class EventVars2LSS(Module):
                               'mTTH_2lss',
                               'mTTH_3l',
                               "dEtaL1L2_BBframe_3l",
-        "dEtaL1L3_BBframe_3l",
-        "dEtaBB_L1L2frame_3l",
-        "dEtaBB_L1L3frame_3l",
-        'mTTH_2lss1tau',
-        'theta_higgs_ttbar_TTHsystem_2lss1tau',
-        'thetaTopTop_ttbarframe_2lss1tau'
-        ]
+                              "dEtaL1L3_BBframe_3l",
+                              "dEtaBB_L1L2frame_3l",
+                              "dEtaBB_L1L3frame_3l",
+                              'mTTH_2lss1tau',
+                              'theta_higgs_ttbar_TTHsystem_2lss1tau',
+                              'thetaTopTop_ttbarframe_2lss1tau'
+                              ]
         self.label = "" if (label in ["",None]) else ("_"+label)
         self.systsJEC = {0:"",\
-            1:"_jesTotalCorrUp"  , -1:"_jesTotalCorrDown",\
-                2:"_jesTotalUnCorrUp", -2: "_jesTotalUnCorrDown",\
-                3:"_jerUp", -3: "_jerDown",\
-        } if doSystJEC else {0:""}
-if len(variations): 
-    self.systsJEC = {0:""}
-    for i,var in enumerate(variations):
-        self.systsJEC[i+1]   ="_%sUp"%var
-        self.systsJEC[-(i+1)]="_%sDown"%var
+                         1:"_jesTotalCorrUp"  , -1:"_jesTotalCorrDown",\
+                         2:"_jesTotalUnCorrUp", -2: "_jesTotalUnCorrDown",\
+                         3:"_jerUp", -3: "_jerDown",\
+                     } if doSystJEC else {0:""}
+        if len(variations): 
+            self.systsJEC = {0:""}
+            for i,var in enumerate(variations):
+                self.systsJEC[i+1]   ="_%sUp"%var
+                self.systsJEC[-(i+1)]="_%sDown"%var
 
 
         self.inputlabel = '_'+recllabel
-    self.branches = []
-for var in self.systsJEC: self.branches.extend([br+self.label+self.systsJEC[var] for br in self.namebranches])
-    if len(self.systsJEC) > 1: 
-    self.branches.extend([br+self.label+'_unclustEnUp' for br in self.namebranches if 'met' in br])
-    self.branches.extend([br+self.label+'_unclustEnDown' for br in self.namebranches if 'met' in br])
-    self.branches.extend( ['drlep12','drlep13','drlep23', 'hasOSSF4l','hasOSSF3l','m4l','Tau_tight2lss1tau_idx'])
-    self.tauTight_2lss_1tau=tauTight_2lss_1tau
+        self.branches = []
+        for var in self.systsJEC: self.branches.extend([br+self.label+self.systsJEC[var] for br in self.namebranches])
+        if len(self.systsJEC) > 1: 
+            self.branches.extend([br+self.label+'_unclustEnUp' for br in self.namebranches if 'met' in br])
+            self.branches.extend([br+self.label+'_unclustEnDown' for br in self.namebranches if 'met' in br])
+        self.branches.extend( ['drlep12','drlep13','drlep23', 'hasOSSF4l','hasOSSF3l','m4l','Tau_tight2lss1tau_idx'])
+        self.tauTight_2lss_1tau=tauTight_2lss_1tau
 
     # old interface (CMG)
     def listBranches(self):
         return self.branches[:]
-        def __call__(self,event):
-            return self.run(event, CMGCollection, "met")
+    def __call__(self,event):
+        return self.run(event, CMGCollection, "met")
 
-            # new interface (nanoAOD-tools)
-            def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
-                declareOutput(self, wrappedOutputTree, self.branches)
-                def analyze(self, event):
-                    writeOutput(self, self.run(event, NanoAODCollection))
-                    return True
+    # new interface (nanoAOD-tools)
+    def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
+        declareOutput(self, wrappedOutputTree, self.branches)
+    def analyze(self, event):
+        writeOutput(self, self.run(event, NanoAODCollection))
+        return True
 
-                    # logic of the algorithm
-                    def run(self,event,Collection):
-                        allret = {}
+    # logic of the algorithm
+    def run(self,event,Collection):
+        allret = {}
 
-                        all_leps = [l for l in Collection(event,"LepGood")]
-                        nFO = getattr(event,"nLepFO"+self.inputlabel)
-                        chosen = getattr(event,"iLepFO"+self.inputlabel)
-                        leps = [all_leps[chosen[i]] for i in xrange(nFO)]
-                        if nFO >= 2: 
-                        allret['drlep12'] = deltaR(leps[0],leps[1])
-                        else: 
-                        allret['drlep12'] = 0 
-                        if nFO >= 3: 
-                        allret['drlep13'] = deltaR(leps[0],leps[2])
-                        allret['drlep23'] = deltaR(leps[1],leps[2])
-                        else:
-                        allret['drlep13'] = 0 
-                        allret['drlep23'] = 0 
+        all_leps = [l for l in Collection(event,"LepGood")]
+        nFO = getattr(event,"nLepFO"+self.inputlabel)
+        chosen = getattr(event,"iLepFO"+self.inputlabel)
+        leps = [all_leps[chosen[i]] for i in xrange(nFO)]
+        if nFO >= 2: 
+            allret['drlep12'] = deltaR(leps[0],leps[1])
+        else: 
+            allret['drlep12'] = 0 
+        if nFO >= 3: 
+            allret['drlep13'] = deltaR(leps[0],leps[2])
+            allret['drlep23'] = deltaR(leps[1],leps[2])
+        else:
+            allret['drlep13'] = 0 
+            allret['drlep23'] = 0 
+        
+        allret['hasOSSF3l'] = False
+        allret['hasOSSF4l'] = False
+        allret['m4l']       = -99
+        if nFO >= 3:
+            leps3 = [leps[0], leps[1], leps[2]]
+            for l1 in leps3:
+                for l2 in leps3: 
+                    if l1 == l2: continue
+                    if l1.pdgId * l2.pdgId > 0: continue
+                    if abs(l1.pdgId) != abs(l2.pdgId): continue
+                    allret['hasOSSF3l'] = True
 
-                        allret['hasOSSF3l'] = False
-                        allret['hasOSSF4l'] = False
-                        allret['m4l']       = -99
-                        if nFO >= 3:
-                        leps3 = [leps[0], leps[1], leps[2]]
-                        for l1 in leps3:
-                        for l2 in leps3: 
-                        if l1 == l2: continue
-                        if l1.pdgId * l2.pdgId > 0: continue
-                        if abs(l1.pdgId) != abs(l2.pdgId): continue
-                                                           allret['hasOSSF3l'] = True
+        if nFO >= 4:
+            allret['m4l'] = (leps[0].p4()+leps[1].p4()+leps[2].p4()+leps[3].p4()).M()
+            leps4 = [leps[0], leps[1], leps[2], leps[3]]
+            for l1 in leps4:
+                for l2 in leps4: 
+                    if l1 == l2: continue
+                    if l1.pdgId * l2.pdgId > 0: continue
+                    if abs(l1.pdgId) != abs(l2.pdgId): continue
+                    allret['hasOSSF4l'] = True
+        taus = [ t for t in Collection(event, 'TauSel'+self.inputlabel)]
+        Tau_tight2lss1tau_idx=-1
+        for t in taus: 
+            if self.tauTight_2lss_1tau(t): 
+                Tau_tight2lss1tau_idx = taus.index(t)
+                break
+        allret['Tau_tight2lss1tau_idx']=Tau_tight2lss1tau_idx
+            
+        for var in self.systsJEC:
+            # prepare output
+            ret = dict([(name,0.0) for name in self.namebranches])
+            _var = var
+            if not hasattr(event,"nJet25"+self.systsJEC[var]+self.inputlabel): 
+                _var = 0; 
+            jets = [j for j in Collection(event,"JetSel"+self.inputlabel)]
+            for j in jets: 
+                setattr(j, 'isFromHadTop', jets.index(j) in [int(event.BDThttTT_eventReco_iJetSel1), int(event.BDThttTT_eventReco_iJetSel2), int(event.BDThttTT_eventReco_iJetSel3)])
 
-                                                           if nFO >= 4:
-                                                           allret['m4l'] = (leps[0].p4()+leps[1].p4()+leps[2].p4()+leps[3].p4()).M()
-                                                           leps4 = [leps[0], leps[1], leps[2], leps[3]]
-                                                           for l1 in leps4:
-                                                           for l2 in leps4: 
-                                                           if l1 == l2: continue
-                                                           if l1.pdgId * l2.pdgId > 0: continue
-                                                           if abs(l1.pdgId) != abs(l2.pdgId): continue
-                                                                                              allret['hasOSSF4l'] = True
-                                                                                              taus = [ t for t in Collection(event, 'TauSel'+self.inputlabel)]
-                                                                                              Tau_tight2lss1tau_idx=-1
-                                                                                              for t in taus: 
-                                                                                              if self.tauTight_2lss_1tau(t): 
-                                                                                                  Tau_tight2lss1tau_idx = taus.index(t)
-                                                                                                  break
-                                                                                                  allret['Tau_tight2lss1tau_idx']=Tau_tight2lss1tau_idx
-
-                                                                                                  for var in self.systsJEC:
-    # prepare output
-ret = dict([(name,0.0) for name in self.namebranches])
-    _var = var
-    if not hasattr(event,"nJet25"+self.systsJEC[var]+self.inputlabel): 
-        _var = 0; 
-        jets = [j for j in Collection(event,"JetSel"+self.inputlabel)]
-        for j in jets: 
-        setattr(j, 'isFromHadTop', jets.index(j) in [int(event.BDThttTT_eventReco_iJetSel1), int(event.BDThttTT_eventReco_iJetSel2), int(event.BDThttTT_eventReco_iJetSel3)])
-
-        jetptcut = 25
-        jets = filter(lambda x : getattr(x,'pt%s'%self.systsJEC[_var]) > jetptcut, jets)
+            jetptcut = 25
+            jets = filter(lambda x : getattr(x,'pt%s'%self.systsJEC[_var]) > jetptcut, jets)
 
 
-        if getattr(event, 'nFwdJet%s_Recl'%self.systsJEC[_var]) > 0 and len(jets):
-            ret['min_Deta_leadfwdJet_jet'] = min( [ abs( getattr(event, 'FwdJet1_eta%s_Recl'%self.systsJEC[_var]) - j.eta) for j in jets])
+            if getattr(event, 'nFwdJet%s_Recl'%self.systsJEC[_var]) > 0 and len(jets):
+                ret['min_Deta_leadfwdJet_jet'] = min( [ abs( getattr(event, 'FwdJet1_eta%s_Recl'%self.systsJEC[_var]) - j.eta) for j in jets])
             else: 
                 ret['min_Deta_leadfwdJet_jet'] = 0
-
-                bmedium = filter(lambda x : x.btagDeepFlavB > _btagWPs["DeepFlav_%d_%s"%(event.year,"M")][1], jets)
-                bloose  = filter(lambda x : x.btagDeepFlavB > _btagWPs["DeepFlav_%d_%s"%(event.year,"L")][1], jets)
-                if len(bloose) >= 1:
-                    ret['bLooseSelJet1_pt'] = bloose[0].pt
-                    ret['bLooseSelJet1_eta'] = bloose[0].eta
-                if len(bmedium) >= 1:
-                    ret['bMediumSelJet1_pt'] = bmedium[0].pt
-                    ret['bMediumSelJet1_eta'] = bmedium[0].eta
-
-             
+                
+            bmedium = filter(lambda x : x.btagDeepFlavB > _btagWPs["DeepFlav_%d_%s"%(event.year,"M")][1], jets)
+            bloose  = filter(lambda x : x.btagDeepFlavB > _btagWPs["DeepFlav_%d_%s"%(event.year,"L")][1], jets)
+            if len(bloose) >= 1:
+                ret['bLooseSelJet1_pt'] = bloose[0].pt
+                ret['bLooseSelJet1_eta'] = bloose[0].eta
+            if len(bmedium) >= 1:
+                ret['bMediumSelJet1_pt'] = bmedium[0].pt
+                ret['bMediumSelJet1_eta'] = bmedium[0].eta
             if len(bmedium) >1: 
                 bmedium.sort(key = lambda x : getattr(x,'pt%s'%self.systsJEC[_var]), reverse = True)
                 b1 = bmedium[0].p4()
