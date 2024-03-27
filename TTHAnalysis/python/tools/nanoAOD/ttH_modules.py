@@ -43,7 +43,6 @@ from CMGTools.TTHAnalysis.tools.nanoAOD.autoPuWeight import autoPuWeight
 from CMGTools.TTHAnalysis.tools.nanoAOD.yearTagger import yearTag
 from CMGTools.TTHAnalysis.tools.nanoAOD.xsecTagger import xsecTag
 from CMGTools.TTHAnalysis.tools.nanoAOD.lepJetBTagAdder import lepJetBTagDeepFlav, lepJetBTagDeepFlavC
-from CMGTools.TTHAnalysis.tools.nanoAOD.bJetAdder import bTagAdder_2016 
 
 from CMGTools.TTHAnalysis.tools.nanoAOD.LepMVAULFriend import lepMVA
 
