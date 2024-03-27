@@ -422,9 +422,6 @@ btagEffDeepjet_2016    = [lambda : bTagEffCount( tagger = "DeepFlav", variable =
 btagEffDeepjet_2017    = [lambda : bTagEffCount( tagger = "DeepFlav", variable = "btagDeepFlavB", year = "2017", verbosity = 0)]
 btagEffDeepjet_2018    = [lambda : bTagEffCount( tagger = "DeepFlav", variable = "btagDeepFlavB", year = "2018", verbosity = 0)]
 
-
-
-
 from CMGTools.TTHAnalysis.tools.nanoAOD.lepScaleFactors import lepScaleFactors
 leptonSFs = lambda : lepScaleFactors()
 
@@ -546,8 +543,8 @@ MVAcp_2lss1tau_allvars = lambda : mvaCP_2lss1tau(variations = [ 'jes%s'%v for v 
 
 
 from CMGTools.TTHAnalysis.tools.nanoAOD.selectParticleAndPartonInfo import selectParticleAndPartonInfo
-ttW_diff_gen_info = lambda : selectParticleAndPartonInfo( dresslepSel_ = lambda x : x.pt>10 and ((abs(x.eta) <= 2.4 and abs(x.pdgId)==13 ) or (abs(x.eta) <= 2.5 and abs(x.pdgId)==11 )),
-                                                          dressjetSel_ = lambda x : x.pt>25 and abs(x.eta) <= 2.4 ,
+ttW_diff_gen_info = lambda : selectParticleAndPartonInfo( dresslepSel_ = lambda x : x.pt>10 and ((abs(x.eta) < 2.4 and abs(x.pdgId)==13 ) or (abs(x.eta) < 2.5 and abs(x.pdgId)==11 )),
+                                                          dressjetSel_ = lambda x : x.pt>25 and abs(x.eta) < 2.4 ,
                                                           #dressfwdSel_ = lambda x : x.pt>40 and abs(x.eta) < 4.7 and abs(x.eta) > 2.4, 
 
 ) 
