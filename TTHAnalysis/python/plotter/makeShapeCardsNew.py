@@ -190,10 +190,10 @@ for binname, report in allreports.iteritems():
             for hv,d in zip(variants, ('up','down')):
                 k = hv.Integral()/n0
                 if k == 0: 
-                    print "Warning: underflow template for %s %s %s %s. Will take the nominal scaled down by a factor 2" % (binname, p, name, d)
+                    print("Warning: underflow template for %s %s %s %s. Will take the nominal scaled down by a factor 2" % (binname, p, name, d))
                     hv.Add(h.raw()); hv.Scale(0.5)
                 elif k < 0.2 or k > 5:
-                    print "Warning: big shift in template for %s %s %s %s: kappa = %g " % (binname, p, name, d, k)
+                    print("Warning: big shift in template for %s %s %s %s: kappa = %g " % (binname, p, name, d, k))
             # prevent variations from going to zero by symmetrizing
             for bin in range(1,h.GetXaxis().GetNbins()+1):
                 for d in range(2):
@@ -201,10 +201,10 @@ for binname, report in allreports.iteritems():
                         shift = variants[1-d].GetBinContent(bin); shift = max(5e-6, shift)
                         variants[d].SetBinContent( bin, h.raw().GetBinContent( bin )**2/shift)
                     if variants[d].GetBinContent( bin )/h.raw().GetBinContent(bin) > 10: 
-                        print "Warning: big shift in template for %s %s %s %s in bin %d: variation = %g"%( binname, p, name, d, bin, variants[d].GetBinContent( bin )/h.raw().GetBinContent(bin))
+                        print("Warning: big shift in template for %s %s %s %s in bin %d: variation = %g"%( binname, p, name, d, bin, variants[d].GetBinContent( bin )/h.raw().GetBinContent(bin)))
                         variants[d].SetBinContent( bin, 10*h.raw().GetBinContent(bin) )
                     if variants[d].GetBinContent( bin )/h.raw().GetBinContent(bin) < 0.1: 
-                        print "Warning: big shift in template for %s %s %s %s in bin %d: variation = %g"%( binname, p, name, d, bin, variants[d].GetBinContent( bin )/h.raw().GetBinContent(bin))
+                        print("Warning: big shift in template for %s %s %s %s in bin %d: variation = %g"%( binname, p, name, d, bin, variants[d].GetBinContent( bin )/h.raw().GetBinContent(bin)))
                         variants[d].SetBinContent( bin, 0.1*h.raw().GetBinContent(bin) )
 
             effshape[p] = variants 
@@ -266,5 +266,5 @@ for binname, report in allreports.iteritems():
       workspace.WriteTObject(h,h.GetName())
   workspace.Close()
 
-  print "Wrote to {0}.txt and {0}.root ".format(outdir+binname)
+  print("Wrote to {0}.txt and {0}.root ".format(outdir+binname))
 
