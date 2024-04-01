@@ -87,7 +87,7 @@ class selectParticleAndPartonInfo(Module):
             if self.dressjetSel(jet):
                 if i not in self.vetoedjets:
                     self.listdressjet.append(i)
-                    if abs(jet.partonFlavour) == 5: 
+                    if abs(jet.hadronFlavour) == 5:
                        otherVarsDict["nDressBSelJet"] += 1
                        self.listdressBjet.append(i)
                        

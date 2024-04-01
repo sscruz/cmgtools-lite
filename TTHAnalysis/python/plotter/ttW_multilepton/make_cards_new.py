@@ -7,10 +7,10 @@ if 'psi' in os.environ['HOSTNAME']:
     ORIGIN="/pnfs/psi.ch/cms/trivcat/store/user/sesanche/NanoTrees_UL_v2_060422_newfts_skim2lss"; 
     queue ="standard"
 elif 'fanae' in os.environ['HOSTNAME']:
-    ORIGIN     = "/beegfs/data/nanoAODv9/ttH_differential/NanoTrees_UL_v2_060422_skim2lss_newfts"
+    ORIGIN     = "/lustrefs/hdd_pool_dir/nanoAODv9/ttH_differential/NanoTrees_UL_v2_060422_skim2lss_newfts/"
     queue ="batch"
 elif 'gae' in os.environ['HOSTNAME']: 
-    ORIGIN    = "/beegfs/data/nanoAODv9/ttH_differential/NanoTrees_UL_v2_060422_skim2lss_newfts"
+    ORIGIN     = "/lustrefs/hdd_pool_dir/nanoAODv9/ttH_differential/NanoTrees_UL_v2_060422_skim2lss_newfts/"
     queue ="batch"
 
 else: 
@@ -30,8 +30,8 @@ OTHER=sys.argv[5:] if len(sys.argv) > 5 else ''
 
 if   YEAR == '2016'   : LUMI="16.8"
 elif   YEAR == '2016APV': LUMI="19.5"
-elif YEAR in '2017': LUMI="41.4"
-elif YEAR in '2018': LUMI="59.7"
+elif YEAR in '2017': LUMI="41.48"
+elif YEAR in '2018': LUMI="59.83"
 else:
     raise RuntimeError("Wrong year %s"%YEAR)
 
@@ -80,6 +80,8 @@ if OBSERVABLE == "inclusive":
     CATBINS    ="[-0.5,0.5]"
     FUNCTION_CR_3L='''"ttH_3l_clasifier(nJet25,nBJetMedium25)" "[0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5]" '''
     FUNCTION_CR_4L='''"ttH_4l_clasifier(nJet25,nBJetMedium25,mZ2)" "[0.5,1.5,2.5,3.5,4.5]" '''
+    if "gen" in OTHER:       
+       GENN = "Gen_"
 
 elif OBSERVABLE == "asymmetry":
     FUNCTION_3L="ttW_charge_asymmetry_v4(hasOSSF,nJet30, abs(positive_lepton_eta)-abs(negative_lepton_eta),nBJetMedium30, mZ_OSSF)"
