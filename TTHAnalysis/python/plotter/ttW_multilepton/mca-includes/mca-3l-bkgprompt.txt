@@ -33,7 +33,7 @@ Rares : GluGluToHHTo4V     : xsec : LepGood1_isMatchRightCharge && LepGood2_isMa
 
 ttVV: TTWH : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FillColor=ROOT.kAzure-9, years= "2017\,2018"
 
-tZq: TZQToLL : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FillColor=ROOT.kOrange-9
+tZq: TZQToLL : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FillColor=ROOT.kBlue
 
 VVV: WWW_ll : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FillColor=ROOT.kMagenta-10
 VVV: WWZ : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge && LepGood3_isMatchRightCharge ; FillColor=ROOT.kMagenta-10
