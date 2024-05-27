@@ -386,6 +386,10 @@ finalMVA3L_input = lambda : finalMVA_DNN_3l(doSystJEC=False, fillInputs=True)
 from CMGTools.TTHAnalysis.tools.finalMVA_DNN_2lss1tau import finalMVA_DNN_2lss1tau
 finalMVA2lss1tau = lambda : finalMVA_DNN_2lss1tau() # use this for data
 finalMVA2lss1tau_allVars = lambda : finalMVA_DNN_2lss1tau(variations = jevariations)
+finalMVA2lss1tau_allVars_2016APV = lambda : finalMVA_DNN_2lss1tau(tesYear = "2016_preVFP" ,variations = jevariations)
+finalMVA2lss1tau_allVars_2016 = lambda : finalMVA_DNN_2lss1tau(tesYear = "2016_postVFP" ,variations = jevariations)
+finalMVA2lss1tau_allVars_2017 = lambda : finalMVA_DNN_2lss1tau(tesYear = "2017" ,variations = jevariations)
+finalMVA2lss1tau_allVars_2018 = lambda : finalMVA_DNN_2lss1tau(tesYear = "2018" ,variations = jevariations)
 finalMVA2lss1tau_input = lambda : finalMVA_DNN_2lss1tau(doSystJEC=False, fillInputs=True)
 
 from CMGTools.TTHAnalysis.tools.nanoAOD.finalMVA_4l import FinalMVA_4L
@@ -476,6 +480,10 @@ ttH_2lss_dnn_pt_regression = lambda : Class_ttH_2lss_dnn_pt_regression(label='Hr
                                                                        variations=jevariations,
                                                          btagDeepCSVveto = 'M')
 pt_regression_2lss1tau_allvars = lambda : ttH_2lss1tau_ptregression(variations=jevariations)
+pt_regression_2lss1tau_allvars_2016 = lambda : ttH_2lss1tau_ptregression(tesYear = "2016_postVFP",variations=jevariations)
+pt_regression_2lss1tau_allvars_2016APV = lambda : ttH_2lss1tau_ptregression(tesYear = "2016_preVFP",variations=jevariations)
+pt_regression_2lss1tau_allvars_2017 = lambda : ttH_2lss1tau_ptregression(tesYear = "2017",variations=jevariations)
+pt_regression_2lss1tau_allvars_2018 = lambda : ttH_2lss1tau_ptregression(tesYear = "2018",variations=jevariations)
 
 from CMGTools.TTHAnalysis.tools.nanoAOD.ttH_genericTreeVarForSR import ttH_genericTreeVarForSR
 

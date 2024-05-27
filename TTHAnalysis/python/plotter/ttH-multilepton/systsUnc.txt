@@ -17,16 +17,21 @@ $alias : FRAll  : data_fakes|.*_promptsub|TT_FR_QCD
 
 ### Uncertainties
 # lumi from https://twiki.cern.ch/twiki/bin/view/CMS/TWikiLUM#LumiComb
-lumi_13TeV_2016		: $PromptFromMC : .* : normSymm : 1.010; year="2016\,2016APV"
-lumi_13TeV_2017		  : $PromptFromMC : .* : normSymm : 1.020; year="2017"
-lumi_13TeV_2018		    : $PromptFromMC : .* : normSymm : 1.015; year="2018"
+#lumi_13TeV_Uncorrelated_2016,lumi_13TeV_Uncorrelated_2017,lumi_13TeV_Uncorrelated_2018,lumi_13TeV_Correlated,lumi_13TeV_Correlated1718
 
-lumi_13TeV_correlated   : $PromptFromMC : .* : normSymm : 1.006; year="2016\,2016APV"
-lumi_13TeV_correlated   : $PromptFromMC : .* : normSymm : 1.009; year="2017"
-lumi_13TeV_correlated   : $PromptFromMC : .* : normSymm : 1.020; year="2018"
+lumi_13TeV_Uncorrelated_2016		: $PromptFromMC : .* : normSymm : 1.010; year="2016"
+lumi_13TeV_Uncorrelated_2016APV         : $PromptFromMC : .* : normSymm : 1.010; year="2016APV"
 
-lumi_13TeV_1718         : $PromptFromMC : .* : normSymm : 1.006; year="2017"
-lumi_13TeV_1718         : $PromptFromMC : .* : normSymm : 1.002; year="2018"
+lumi_13TeV_Uncorrelated_2017		  : $PromptFromMC : .* : normSymm : 1.020; year="2017"
+lumi_13TeV_Uncorrelated_2018		    : $PromptFromMC : .* : normSymm : 1.015; year="2018"
+
+lumi_13TeV_Correlated   : $PromptFromMC : .* : normSymm : 1.006; year="2016"
+lumi_13TeV_Correlated   : $PromptFromMC : .* : normSymm : 1.006; year="2016APV"
+lumi_13TeV_Correlated   : $PromptFromMC : .* : normSymm : 1.009; year="2017"
+lumi_13TeV_Correlated   : $PromptFromMC : .* : normSymm : 1.020; year="2018"
+
+lumi_13TeV_Correlated_1718         : $PromptFromMC : .* : normSymm : 1.006; year="2017"
+lumi_13TeV_Correlated_1718         : $PromptFromMC : .* : normSymm : 1.002; year="2018"
 
 
 # lepton efficiencies
@@ -58,9 +63,9 @@ CMS_ttHl18_FRjt_Add   : $PromptFromMC : .*2lss_1tau.* : templateAsymm ; AddWeigh
 
 
 ## L1 ECAL prefiring
-CMS_ttHl16_L1PreFiring : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2016"
-CMS_ttHl16_L1PreFiring : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2016APV"
-CMS_ttHl17_L1PreFiring : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2017"
+CMS_L1PreFiring_2016 : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2016"
+CMS_L1PreFiring_2016APV : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2016APV"
+CMS_L1PreFiring_2017 : $PromptFromMC : .* : templateAsymm; AddWeights=['L1PreFiringWeight_Up/L1PreFiringWeight_Nom'\,'L1PreFiringWeight_Dn/L1PreFiringWeight_Nom'], year="2017"
 
 
 # trigger efficiencies
@@ -90,10 +95,10 @@ CMS_ttHl17_trigger_3l      : $PromptFromMC : .*4l.* : normSymm : 1.01; year="201
 CMS_ttHl18_trigger_3l      : $PromptFromMC : .*4l.* : normSymm : 1.01; year="2018"
 
 #CMS_ttHl_pileup : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight']
-CMS_ttHl_pileup_2016 : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'], year="2016"
-CMS_ttHl_pileup_2016APV : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'], year="2016APV"
-CMS_ttHl_pileup_2017 : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'], year="2017"
-CMS_ttHl_pileup_2018 : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'],	year="2018"
+CMS_pileup_2016 : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'], year="2016"
+CMS_pileup_2016APV : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'], year="2016APV"
+CMS_pileup_2017 : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'], year="2017"
+CMS_pileup_2018 : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight'],	year="2018"
 
 CMS_scale_j_HF        : $PromptFromMC : .* : templateAsymm; \
                          FakeRates=['ttH-multilepton/frs-jecs/fr-jesHFUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesHFDown.txt']
@@ -253,34 +258,40 @@ CMS_jesHEMIssue      : $PromptFromMC : .* : templateAsymm; \
 #CMS_ttHl_UnclusteredEn : $PromptFromMC : .* : templateAsymm; \
 #        FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt']
 
-CMS_ttHl_UnclusteredEn_2016 : $PromptFromMC : .* : templateAsymm; \
+CMS_UnclusteredEn_2016 : $PromptFromMC : .* : templateAsymm; \
         FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt'], year="2016"
-CMS_ttHl_UnclusteredEn_2016APV : $PromptFromMC : .* : templateAsymm; \
+CMS_UnclusteredEn_2016APV : $PromptFromMC : .* : templateAsymm; \
         FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt'], year="2016APV"
-CMS_ttHl_UnclusteredEn_2017 : $PromptFromMC : .* : templateAsymm; \
+CMS_UnclusteredEn_2017 : $PromptFromMC : .* : templateAsymm; \
         FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt'], year="2017"
-CMS_ttHl_UnclusteredEn_2018 : $PromptFromMC : .* : templateAsymm; \
+CMS_UnclusteredEn_2018 : $PromptFromMC : .* : templateAsymm; \
         FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt'], year="2018"
 
 
-CMS_ttHl_btag_LF    : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lf/btagSF'\,'btagSFdown_lf/btagSF']
-CMS_ttHl_btag_HF    : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hf/btagSF'\,'btagSFdown_hf/btagSF']
-CMS_ttHl_btag_cErr1   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_cferr1/btagSF'\,'btagSFdown_cferr1/btagSF']
-CMS_ttHl_btag_cErr2   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_cferr2/btagSF'\,'btagSFdown_cferr2/btagSF']
+CMS_btag_LF    : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lf/btagSF'\,'btagSFdown_lf/btagSF']
+CMS_btag_HF    : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hf/btagSF'\,'btagSFdown_hf/btagSF']
+CMS_btag_cErr1   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_cferr1/btagSF'\,'btagSFdown_cferr1/btagSF']
+CMS_btag_cErr2   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_cferr2/btagSF'\,'btagSFdown_cferr2/btagSF']
 
 
-CMS_ttHl16_btag_LFStats1   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats1/btagSF'\,'btagSFdown_lfstats1/btagSF'], year="2016"
-CMS_ttHl16_btag_HFStats1   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats1/btagSF'\,'btagSFdown_hfstats1/btagSF'], year="2016"
-CMS_ttHl16_btag_LFStats2   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats2/btagSF'\,'btagSFdown_lfstats2/btagSF'], year="2016"
-CMS_ttHl16_btag_HFStats2   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats2/btagSF'\,'btagSFdown_hfstats2/btagSF'], year="2016"
-CMS_ttHl17_btag_LFStats1   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats1/btagSF'\,'btagSFdown_lfstats1/btagSF'], year="2017"
-CMS_ttHl17_btag_HFStats1   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats1/btagSF'\,'btagSFdown_hfstats1/btagSF'], year="2017"
-CMS_ttHl17_btag_LFStats2   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats2/btagSF'\,'btagSFdown_lfstats2/btagSF'], year="2017"
-CMS_ttHl17_btag_HFStats2   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats2/btagSF'\,'btagSFdown_hfstats2/btagSF'], year="2017"
-CMS_ttHl18_btag_LFStats1   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats1/btagSF'\,'btagSFdown_lfstats1/btagSF'], year="2018"
-CMS_ttHl18_btag_HFStats1   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats1/btagSF'\,'btagSFdown_hfstats1/btagSF'], year="2018"
-CMS_ttHl18_btag_LFStats2   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats2/btagSF'\,'btagSFdown_lfstats2/btagSF'], year="2018"
-CMS_ttHl18_btag_HFStats2   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats2/btagSF'\,'btagSFdown_hfstats2/btagSF'], year="2018"
+CMS_btag_LFStats1_2016   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats1/btagSF'\,'btagSFdown_lfstats1/btagSF'], year="2016"
+CMS_btag_HFStats1_2016   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats1/btagSF'\,'btagSFdown_hfstats1/btagSF'], year="2016"
+CMS_btag_LFStats2_2016   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats2/btagSF'\,'btagSFdown_lfstats2/btagSF'], year="2016"
+CMS_btag_HFStats2_2016   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats2/btagSF'\,'btagSFdown_hfstats2/btagSF'], year="2016"
+
+CMS_btag_LFStats1_2016APV   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats1/btagSF'\,'btagSFdown_lfstats1/btagSF'], year="2016APV"
+CMS_btag_HFStats1_2016APV   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats1/btagSF'\,'btagSFdown_hfstats1/btagSF'], year="2016APV"
+CMS_btag_LFStats2_2016APV   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats2/btagSF'\,'btagSFdown_lfstats2/btagSF'], year="2016APV"
+CMS_btag_HFStats2_2016APV   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats2/btagSF'\,'btagSFdown_hfstats2/btagSF'], year="2016APV"
+
+CMS_btag_LFStats1_2017   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats1/btagSF'\,'btagSFdown_lfstats1/btagSF'], year="2017"
+CMS_btag_HFStats1_2017   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats1/btagSF'\,'btagSFdown_hfstats1/btagSF'], year="2017"
+CMS_btag_LFStats2_2017   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats2/btagSF'\,'btagSFdown_lfstats2/btagSF'], year="2017"
+CMS_btag_HFStats2_2017   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats2/btagSF'\,'btagSFdown_hfstats2/btagSF'], year="2017"
+CMS_btag_LFStats1_2018   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats1/btagSF'\,'btagSFdown_lfstats1/btagSF'], year="2018"
+CMS_btag_HFStats1_2018   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats1/btagSF'\,'btagSFdown_hfstats1/btagSF'], year="2018"
+CMS_btag_LFStats2_2018   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_lfstats2/btagSF'\,'btagSFdown_lfstats2/btagSF'], year="2018"
+CMS_btag_HFStats2_2018   : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSFup_hfstats2/btagSF'\,'btagSFdown_hfstats2/btagSF'], year="2018"
 
 
 # Diboson background

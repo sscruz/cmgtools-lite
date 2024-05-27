@@ -406,7 +406,7 @@ if options.queue:
         elif "fast" in options.env:
             super = "sbatch --partition cp3-fast --qos=cp3 "
         else:
-            super = "sbatch --partition cp3 --qos=cp3 "
+            super = "bash"#sbatch --partition cp3 --qos=cp3 "
     else: # Use lxbatch by default
         runner = options.runner
         super  = "bsub -q {queue}".format(queue = options.queue)
@@ -418,11 +418,11 @@ if options.queue:
     if not isNano: basecmd += " -T %s " % options.treeDir
 
     if options.queue == "cp3":
-        basecmd = "python {dir}/{self} -j 0 -N {chunkSize} -t {tree} {data} {output}".format(
+        basecmd = "sbatch -n1 -c1 el7 python {dir}/{self} -j 0 -N {chunkSize} -t {tree} {data} {output}".format(
                 dir = os.getcwd(), runner=runner, cmssw = os.environ['CMSSW_BASE'],
                 self=sys.argv[0], chunkSize=options.chunkSize,
                 tree=options.tree, data=args[0], output=theoutput)
-        if not isNano: basecmd = "python {dir}/{self} -j 0 -N {chunkSize} -T {tdir} -t {tree} {data} {output}".format(
+        if not isNano: basecmd = "sbatch -n1 -c1 el7 python {dir}/{self} -j 0 -N {chunkSize} -T {tdir} -t {tree} {data} {output}".format(
                 dir = os.getcwd(), runner=runner, cmssw = os.environ['CMSSW_BASE'],
                 self=sys.argv[0], chunkSize=options.chunkSize, tdir=options.treeDir,
                 tree=options.tree, data=args[0], output=theoutput)
@@ -491,8 +491,11 @@ if options.queue:
 """)
 
                 dacmd = "{base} -d {data} -c {chunk} {post}".format(base=basecmd, data=name, chunk=chunk, post=friendPost)
-                subfile.write("""srun -N1 -n1 -c1 --exclusive {cmd} &
+#                subfile.write("""srun -N1 -n1 -c1 --exclusive {cmd} &
+#wait
+                subfile.write("""{cmd} &
 wait
+
 
 """.format(cmd=dacmd))
                 subfile.close()
