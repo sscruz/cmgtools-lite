@@ -267,6 +267,7 @@ CMS_ttWl_WZ_lnU  : WZ : .*          : normSymm : 3.0 ; lnU=True
 CMS_ttWl_WZ_theo : WZ : .*3l.*      : normSymm : 1.07
 CMS_ttWl_WZ_theo : WZ : .*cr_3l.* : none
 CMS_ttWl_ZZ_lnU  : ZZ : .*          : normSymm : 3.0 ; lnU=True
+CMS_ttWl_TTZ_lnU  : TTZ : .*          : normSymm : 3.0 ; lnU=True
 
 
 # Other normalizations

@@ -3,6 +3,7 @@ import re
 import collections
 import math 
 import os,sys
+import numpy as np
 r.gROOT.ProcessLine(".x tdrstyle.cc")
 r.gStyle.SetOptStat(0)
 r.gStyle.SetOptTitle(0)
@@ -16,7 +17,9 @@ region = sys.argv[2]
 var = sys.argv[3]
 
 #Dictionary with allowed input varaibles 
-varname = {"lep1_pt":("p_{T} (lep1)"),"lep2_pt":("p_{T} (lep2)"),"lep1_eta":("#eta (lep1)"),"njets":("N Jet"),"nbjets":("N b-tag"),"jet1_pt":("p_{T} (jet)"),"deta_llss":("#Delta #eta (ll)"),"HT":("HT"),"dR_ll":("#Delta R (ll)"),"max_eta":("max(#eta) (ll)"), "pt3l": ("p_{T} 3l"), "m3l":("m_{3l}"),"dR_lbmedium":(" #Delta R (l bmedium)"),"mindr_lep1_jet25":("min #Delta R (lj)"),"dR_lbloose":(" #Delta R (l bloose)")}
+varname = {"lep1_pt":("p_{T} (lep1)"),"lep2_pt":("p_{T} (lep2)"),"lep1_eta":("#eta (lep1)"),"lep2_eta":("#eta (lep2)"),"njets":("N Jet"),"njets_7bins":("N Jet"),"nbjets":("N b-tag Loose"),"jet1_pt":("p_{T} (jet)"),"jet1_eta":("|#eta| (jet1)"),"deta_llss":("#Delta #eta (ll)"),"HT":("HT"),"dR_ll":("#Delta R (ll)"),"max_eta":("max(#eta) (ll)"), "pt3l": ("p_{T} 3l"), "m3l":("m_{3l}"),"dR_lbmedium":(" #Delta R (l bmedium)"),"mindr_lep1_jet25":("min #Delta R (lj)"),"dR_lbloose":(" #Delta R (l bloose)"),"jet2_pt":(" p_{T} (jet 2)"),"jet2_eta":(" |#eta| (jet 2)"),"bLooseLeadingJet_eta":(" |#eta| (bLoose 1)"),"bLooseLeadingJet_pt":(" p_{T}  (bLoose 1)"),"bMediumLeadingJet_eta":(" |#eta| (bMedium 1)"),"bMediumLeadingJet_pt":(" p_{T}  (bMedium 1)"),"sum_2lss_pt":(" p_{T}^{lep1}+p_{T}^{lep2}  "),"nbjets_medium":(" N b-tag medium ") ,"mll":(" m_ll ")  }
+
+
 
 if var not in varname.keys():
    print("Variable not included, please add")
@@ -31,8 +34,8 @@ elif "3l" in region:
 GenInfo=folder+"/ttW_"+regioncard+"_Gen_"+var
 
 #Get info needed from the fit
-Fit = folder+"/fitDiagnosticsnominal_"+var+"_"+region+".root"
-fit_st = folder+"/fitDiagnosticsfreezing_"+var+"_"+region+".root"
+Fit = folder+"/fitDiagnosticsNoasimov_nominal_"+var+"_"+region+".root"
+fit_st = folder+"/fitDiagnosticsNoasimov_freezing_"+var+"_"+region+".root"
 ws = folder+"/ws_"+var+"_"+region+".root"
 
 #and open it
@@ -124,16 +127,25 @@ def hypot(a,b):
     return math.sqrt(a**2+b**2)
 
 
-def doShadedUncertainty(h,lumi,relative = False):
+def doShadedUncertainty(h,unc_list_up,unc_list_dn,lumi,relative = False):
       xaxis = h.GetXaxis()
       points = []; errors = []
       for i in xrange(h.GetNbinsX()):
             N = h.GetBinContent(i+1)/lumi;
-            dN = h.GetBinError(i+1)/lumi
+            dNup = []
+            dNdn = []
+            for herr in unc_list_up:
+                var = herr.GetBinContent(i+1)/lumi
+                err  = (N-var)
+                dNup.append(err)
+            for herr in unc_list_dn:
+                var = herr.GetBinContent(i+1)/lumi
+                err  = (N-var)
+                dNdn.append(err)
             if N == 0 and (dN == 0 or relative): continue
             x = xaxis.GetBinCenter(i+1);
-            EYlow = dN
-            EYhigh =dN
+            EYhigh = math.sqrt(sum(np.array(dNup)*np.array(dNup)))
+            EYlow =math.sqrt(sum(np.array(dNdn)*np.array(dNdn)))
             EXhigh, EXlow = (xaxis.GetBinUpEdge(i+1)-x, x-xaxis.GetBinLowEdge(i+1))
             if relative:
                 errors.append( (EXlow,EXhigh,EYlow/N,EYhigh/N) )
@@ -238,7 +250,7 @@ for bin in range(reference.GetNbinsX()):
     grst.SetPointEYlow( bin,(dnvar_st)*reference.GetBinContent(bin+1)/lumi)
     maxim=xval+binwidth/2
     minX = reference.GetBinCenter(1)-binwidth/2
-    maxY  = max(maxY,  nom*reference.GetBinContent(bin+1)/lumi+(upvar)*reference.GetBinContent(bin+1)/lumi+reference.GetBinContent(bin+1)/lumi/10)*1.1
+    maxY  = max(maxY,  nom*reference.GetBinContent(bin+1)/lumi+(upvar)*reference.GetBinContent(bin+1)/lumi+reference.GetBinContent(bin+1)/lumi)*1.1
 
 
 ratio = gr.Clone()
@@ -300,7 +312,12 @@ referencen.Scale(1./lumi)
 reference.GetXaxis().SetRangeUser(lowedge,upperedge)
 referencen.Draw("Hsame")
 
-totalError = doShadedUncertainty(reference,lumi)  
+herrlistup = [Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_CMS_ttWl_thu_shape_ttWUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_QCDpdf_ttW_ACCEPTUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_FSRUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_ISR_ttWUp")]
+herrlistdn = [Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_CMS_ttWl_thu_shape_ttWDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_QCDpdf_ttW_ACCEPTDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_FSRDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_ISR_ttWDown")]
+
+
+
+totalError = doShadedUncertainty(reference,herrlistup,herrlistdn,lumi)  
 totalError.Draw("PE2 SAME")
 gr.SetLineWidth(3)
 gr.Draw("PE,same")
@@ -360,7 +377,7 @@ c1.Update()
 
 
 plot=var
-c1.SaveAs(folder+'/plot_%s.png'%(plot.replace('.','p')))
-c1.SaveAs(folder+'/plot_%s.pdf'%(plot.replace('.','p')))
+c1.SaveAs(folder+'/plot_noasimov_%s.png'%(plot.replace('.','p')))
+c1.SaveAs(folder+'/plot_noasimov_%s.pdf'%(plot.replace('.','p')))
     
                             

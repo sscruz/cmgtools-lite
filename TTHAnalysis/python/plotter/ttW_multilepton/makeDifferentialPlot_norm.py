@@ -8,7 +8,7 @@ r.gStyle.SetOptStat(0)
 r.gStyle.SetOptTitle(0)
 r.gROOT.SetBatch(True)
 
-lumi = 16.8+19.5+41.4+59.7#use the lumi used to normalized the gen histos (fb-1)
+lumi = 16.8+19.5+41.48+59.83#use the lumi used to normalized the gen histos (fb-1)
 
 #Inputs: folder region (2lss 3l) variable
 folder = sys.argv[1]
@@ -16,7 +16,7 @@ region = sys.argv[2]
 var = sys.argv[3]
 
 #Dictionary with allowed input varaibles 
-varname = {"lep1_pt":("p_{T} (lep1)"),"lep2_pt":("p_{T} (lep2)"),"lep1_eta":("#eta (lep1)"),"njets":("N Jet"),"nbjets":("N b-tag"),"jet1_pt":("p_{T} (jet)"),"deta_llss":("#Delta #eta (ll)"),"HT":("HT"),"dR_ll":("#Delta R (ll)"),"max_eta":("max(#eta) (ll)"), "pt3l": ("p_{T} 3l"), "m3l":("m_{3l}"),"dR_lbmedium":(" #Delta R (l bmedium)"),"mindr_lep1_jet25":("min #Delta R (lj)"),"dR_lbloose":(" #Delta R (l bloose)")}
+varname = {"lep1_pt":("p_{T} (lep1)"),"lep2_pt":("p_{T} (lep2)"),"lep1_eta":("#eta (lep1)"),"lep2_eta":("#eta (lep2)"),"njets":("N Jet"),"njets_7bins":("N Jet"),"nbjets":("N b-tag Loose"),"jet1_pt":("p_{T} (jet)"),"jet1_eta":("|#eta| (jet1)"),"deta_llss":("#Delta #eta (ll)"),"HT":("HT"),"dR_ll":("#Delta R (ll)"),"max_eta":("max(#eta) (ll)"), "pt3l": ("p_{T} 3l"), "m3l":("m_{3l}"),"dR_lbmedium":(" #Delta R (l bmedium)"),"mindr_lep1_jet25":("min #Delta R (lj)"),"dR_lbloose":(" #Delta R (l bloose)"),"jet2_pt":(" p_{T} (jet 2)"),"jet2_eta":(" |#eta| (jet 2)"),"bLooseLeadingJet_eta":(" |#eta| (bLoose 1)"),"bLooseLeadingJet_pt":(" p_{T}  (bLoose 1)"),"bMediumLeadingJet_eta":(" |#eta| (bMedium 1)"),"bMediumLeadingJet_pt":(" p_{T}  (bMedium 1)"),"sum_2lss_pt":(" p_{T}^{lep1}+p_{T}^{lep2}  "),"nbjets_medium":(" N b-tag medium ") ,"mll":(" m_ll ")  }
 
 theounc = ["_CMS_ttWl_thu_shape_ttW","_QCDpdf_ttW_ACCEPT","_FSR","_ISR_ttW"] 
 
@@ -34,8 +34,8 @@ elif "3l" in region:
 GenInfo=folder+"/ttW_"+regioncard+"_Gen_"+var
 
 #Get info needed from the fit
-Fit = folder+"/fitDiagnosticsnominal_"+var+"_"+region+".root"
-fit_st = folder+"/fitDiagnosticsfreezing_"+var+"_"+region+".root"
+Fit = folder+"/fitDiagnosticsNoasimov_nominal_"+var+"_"+region+".root"
+fit_st = folder+"/fitDiagnosticsNoasimov_freezing_"+var+"_"+region+".root"
 ws = folder+"/ws_"+var+"_"+region+".root"
 
 
@@ -64,7 +64,7 @@ _noDelete={}
 
 
 def Get_Genhisto(tf,tf1,tf2,tf3,name):
-    print(name)
+    ##print(name)
     reference1=tf.Get(name)
     reference2=tf1.Get(name)
     reference3=tf2.Get(name)
@@ -75,12 +75,12 @@ def Get_Genhisto(tf,tf1,tf2,tf3,name):
     reference.Add(reference2)
     reference.Add(reference3)
     reference.Add(reference4)
-    print(reference1.GetBinContent(1),reference1.GetBinError(1))
-    print(reference2.GetBinContent(1),reference2.GetBinError(1))
-    print(reference3.GetBinContent(1),reference3.GetBinError(1))
-    print(reference4.GetBinContent(1),reference4.GetBinError(1))
-    print(reference.GetBinContent(1),reference.GetBinError(1))
-    
+    ##print(reference1.GetBinContent(1),reference1.GetBinError(1))
+    ##print(reference2.GetBinContent(1),reference2.GetBinError(1))
+    ##print(reference3.GetBinContent(1),reference3.GetBinError(1))
+    ##print(reference4.GetBinContent(1),reference4.GetBinError(1))
+    ##print(reference.GetBinContent(1),reference.GetBinError(1))
+    print("refbins", reference.GetNbinsX(),reference.GetXaxis().GetXmin())
     return reference
 
 
@@ -120,7 +120,7 @@ def doLegend(entries, corner="TR",legWidth=0.18,textSize = 0.035):
         leg.SetTextFont(42)
         leg.SetTextSize(textSize)
         for i in range(0,nentries):
-            print(entries[i])
+            #print(entries[i])
             leg.AddEntry(entries[i][0],entries[i][1],entries[i][2])
         leg.Draw()
         ## assign it to a global variable so it's not deleted
@@ -161,12 +161,12 @@ def doShadedUncertainty(h,unc_dic,relative = False):
                 points.append( (x,N) )
               
       ret = r.TGraphAsymmErrors(len(points))
-      print(type(ret))
+      
       ret.SetName(h.GetName()+"_errors")
       for i,((x,y),(EXlow,EXhigh,EYlow,EYhigh)) in enumerate(zip(points,errors)):
             ret.SetPoint(i, x, y)
             ret.SetPointError(i, EXlow,EXhigh,EYlow,EYhigh)
-            print("e",y,EYlow,EYhigh)
+            ##print("e",y,EYlow,EYhigh)
        
       ret.SetFillStyle(3244);
       ret.SetFillColor(r.kOrange+1)
@@ -181,7 +181,7 @@ def UncPropagation(h_dSigma,fiducial, corr,npois ):
    corr: correlation matrix  
    '''
    hnormalized = h_dSigma.Clone("hnormalized")
-   print(h_dSigma.GetNbinsX(),npois)
+   ##print(h_dSigma.GetNbinsX(),npois)
    fid_unc = r.TMath.Sqrt(sum(corr[i-1][j-1] for i in range(1,npois+1) for j in range(1,npois+1)  ))
    for bin in range(1,h_dSigma.GetNbinsX()+1):
        corr_i_j = sum(corr[bin-1][j-1] for j in range(1,npois+1))
@@ -191,7 +191,7 @@ def UncPropagation(h_dSigma,fiducial, corr,npois ):
 
        hnormalized.SetBinContent(bin,  h_dSigma.GetBinContent(bin)/fiducial)
        hnormalized.SetBinError(bin,  uncertainty)
-       print(h_dSigma.GetBinContent(bin)/fiducial,uncertainty)
+       ##print(h_dSigma.GetBinContent(bin)/fiducial,uncertainty)
    return hnormalized
 
 
@@ -213,17 +213,22 @@ for unc in theounc:
     upn.Scale(1./up.Integral())  
     dnn.Scale(1./dn.Integral())
     unc_dic[unc] = [upn,dnn]
-print("dc",unc_dic)
+##print("dc",unc_dic)
 #create graphs to be filled:
-gr = r.TGraphAsymmErrors(len(reference))
-grst = r.TGraphAsymmErrors(len(reference))
+print("len",reference,len(reference))
+#gr = r.TGraphAsymmErrors(len(reference))
+#grst = r.TGraphAsymmErrors(len(reference))
+gr = r.TGraphAsymmErrors(reference.GetNbinsX())
+grst = r.TGraphAsymmErrors(reference.GetNbinsX())
+
 
 results = {}
+results_min = {}
 results_st = {}
 count =0
 
 numbbins = reference.GetNbinsX()
-print(reference.GetNbinsX(),fitResult.floatParsFinal())
+##print(reference.GetNbinsX(),fitResult.floatParsFinal())
 
 #Get POIS 
 poinames = []
@@ -231,16 +236,17 @@ poinames = []
 for v in fitResult.floatParsFinal():
         if "r_TTW" in v.GetName():
             count += 1
-            print(count)
-            print(v.GetName)
+            #print(count)
+            #print(v.GetName)
             results[v.GetName()] = [ v.getVal(), abs(v.getErrorLo()), v.getErrorHi(), v.getError() ]
-            print("kk")
+            results_min[v.GetName()] = [ v.getVal(),v.getError() ]
+            
             poinames.append(v.GetName())
-            print("kk2")
+            
             if count == reference.GetNbinsX(): break
 count2 = 0
 
-print("la dos")
+
 for v in fitResult_stat.floatParsFinal():
         if "r_TTW" in v.GetName():
             count2 += 1
@@ -248,8 +254,8 @@ for v in fitResult_stat.floatParsFinal():
             if count2 == reference.GetNbinsX(): break
 
 print("bins")
-print(results)
-print(results_st)
+print(results_min)
+#print(results_st)
 pois_0 = results.keys()
 
 #order pois by bin number
@@ -259,7 +265,7 @@ for p in pois_0:
      index.append(int(i))
 
 pois = [p for _,p in sorted(zip(index,pois_0))]
-print(pois)
+#print(pois)
 
 #Get Covariance Matrix
 poiList = r.RooArgList('poiList')
@@ -286,7 +292,7 @@ for bin in range(1,reference.GetNbinsX()+1):
     unc_st = values_st[3]
     
     nom=values[0]
-    print(nom, upvar, dnvar,unc,upvar_st,dnvar_st,unc_st)
+    ##print(nom, upvar, dnvar,unc,upvar_st,dnvar_st,unc_st)
     #gr.SetPoint(bin, xval, nom*reference.GetBinContent(bin+1)/xsec_fid)
     diffhisto.SetBinContent(bin,nom*reference.GetBinContent(bin)) #Histo with differential corss section
     diffhisto.SetBinError(bin,(unc)*reference.GetBinContent(bin) )
@@ -296,7 +302,7 @@ for bin in range(1,reference.GetNbinsX()+1):
     xval=reference.GetBinCenter(bin) 
     maxim=xval+binwidth/2
     minX = reference.GetBinCenter(1)-binwidth/2
-    maxY  = max(maxY,  nom*reference.GetBinContent(bin+1)/xsec_fid+(upvar))*1.1
+    maxY  = max(maxY,  nom*reference.GetBinContent(bin+1)/xsec_fid+(upvar))
 
 # Normalize to fiducial and propagate uncertainties
 hunc = UncPropagation(diffhisto,xsec_fid, cov,len(pois) )
@@ -358,13 +364,15 @@ frame.GetYaxis().SetTitleFont(42)
 frame.GetYaxis().SetTitleSize(0.12)
 frame.GetYaxis().SetLabelFont(42)
 frame.GetYaxis().SetLabelSize(0.12)
-print(var,varname)
-print("#frac{d#sigma}{d %s}"%varname[var])
+#print(var,varname)
+#print("#frac{d#sigma}{d %s}"%varname[var])
 frame.GetYaxis().SetTitle("(1/#sigma_{f})#frac{d#sigma}{d %s}"%varname[var])
 frame.GetXaxis().SetNdivisions(510)
-frame.GetYaxis().SetRangeUser(0,maxY)
+#frame.GetYaxis().SetRangeUser(0,maxY*0.5)
+frame.GetYaxis().SetRangeUser(0,1.01)
 lowedge = reference.GetBinLowEdge(1)
 upperedge =reference.GetBinLowEdge(numbbins+1)
+print("lowedge",lowedge)
 frame.GetXaxis().SetRangeUser(lowedge,upperedge)
 
 frame.Draw()
@@ -379,13 +387,14 @@ reference_norm.Draw("Hsame")
 
 totalError = doShadedUncertainty(reference_norm,unc_dic)  
 totalError.Draw("PE2 SAME")
+print("totalErrorref", totalError.GetXaxis().GetXmin())
 gr.SetLineWidth(3)
 gr.Draw("PE,same")
 
 grst.SetLineWidth(3)
 grst.SetLineColor(r.kAzure-2)
 grst.Draw("PE,same")
-
+print(gr.GetXaxis().GetBinLowEdge(0))
 t.Draw()
 t1.Draw()
 
@@ -422,7 +431,7 @@ frame.GetYaxis().SetTitleSize(0.06)
 frame.GetYaxis().SetTitleOffset(1.2)
 frame.GetYaxis().SetLabelSize(0.05)
 frame.GetYaxis().SetLabelOffset(0.007)
-
+frame.GetXaxis().SetRangeUser(lowedge,upperedge)
 
 
 p2.cd()
@@ -433,11 +442,11 @@ ratio.SetLineWidth(3)
 ratio.Draw("p,E,same")
 
 c1.Update()
-#gr_ratio.Draw('p,E,same')
 
 
-plot=var+"_"+region
-c1.SaveAs(folder+'/plot_normalized_%s.png'%(plot.replace('.','p')))
-c1.SaveAs(folder+'/plot_normalized_%s.pdf'%(plot.replace('.','p')))
+
+plot=var
+c1.SaveAs(folder+'/plot_normalized_noasimov_%s.png'%(plot.replace('.','p')))
+c1.SaveAs(folder+'/plot_normalized_noasimov_%s.pdf'%(plot.replace('.','p')))
     
                             
