@@ -18,7 +18,10 @@ if len(sys.argv) == 5:
    os.system("mkdir -p %s"%outfolder)
 
 lumi = 16.8+19.5+41.4+59.7#use the lumi used to normalized the gen histos (fb-1)
-varname = {"lep1_pt":("p_{T} (lep1)"),"lep2_pt":("p_{T} (lep2)"),"lep1_eta":("#eta (lep1)"),"njets":("N Jet"),"nbjets":("N b-tag"),"jet1_pt":("p_{T} (jet)"),"deta_llss":("#Delta #eta (ll)"),"HT":("HT"),"dR_ll":("#Delta R (ll)"),"max_eta":("max(#eta) (ll)"), "pt3l": ("p_{T} 3l"), "m3l":("m_{3l}"),"dR_lbmedium":(" #Delta R (l bmedium)"),"mindr_lep1_jet25":("min #Delta R (lj)"),"dR_lbloose":(" #Delta R (l bloose)")}
+
+varname = {"lep1_pt":("p_{T} (lep1)"),"lep2_pt":("p_{T} (lep2)"),"lep1_eta":("#eta (lep1)"),"lep2_eta":("#eta (lep2)"),"njets":("N Jet"),"njets_7bins":("N Jet"),"nbjets":("N b-tag Loose"),"jet1_pt":("p_{T} (jet)"),"jet1_eta":("|#eta| (jet1)"),"deta_llss":("#Delta #eta (ll)"),"HT":("HT"),"dR_ll":("#Delta R (ll)"),"max_eta":("max(#eta) (ll)"), "pt3l": ("p_{T} 3l"), "m3l":("m_{3l}"),"dR_lbmedium":(" #Delta R (l bmedium)"),"mindr_lep1_jet25":("min #Delta R (lj)"),"dR_lbloose":(" #Delta R (l bloose)"),"jet2_pt":(" p_{T} (jet 2)"),"jet2_eta":(" |#eta| (jet 2)"),"bLooseLeadingJet_eta":(" |#eta| (bLoose 1)"),"bLooseLeadingJet_pt":(" p_{T}  (bLoose 1)"),"bMediumLeadingJet_eta":(" |#eta| (bMedium 1)"),"bMediumLeadingJet_pt":(" p_{T}  (bMedium 1)"),"sum_2lss_pt":(" p_{T}^{lep1}+p_{T}^{lep2}  "),"nbjets_medium":(" N b-tag medium ") ,"mll":(" m_ll ")  }
+
+
 
 if var not in varname.keys():
    print("Variable not included, please add")
@@ -36,8 +39,8 @@ GenInfo=folder+"/ttW_"+regioncard+"_Gen_"+var
 RecoInfo=folder+"/ttW_"+regioncard+"_"+var 
 
 #Get info needed from the fit
-Fit = folder+"/fitDiagnosticsnominal_"+var+"_"+region+".root"
-fit_st = folder+"/fitDiagnosticsfreezing_"+var+"_"+region+".root"
+Fit = folder+"/fitDiagnosticsNoasimov_nominal_"+var+"_"+region+".root"
+fit_st = folder+"/fitDiagnosticsNoasimov_freezing_"+var+"_"+region+".root"
 ws = folder+"/ws_"+var+"_"+region+".root"
 
 r.gROOT.ProcessLine(".x tdrstyle.cc")
@@ -320,10 +323,10 @@ t1 = doSpam('138 fb^{-1} (13 TeV)',  0.67, .955,0.99, .995, align=12, textSize=0
 
 #frame.Draw()
 reco_particle.GetXaxis().SetTitleSize(0.055)
-reco_particle.GetYaxis().SetTitle("Detector level %s"%varname[var])
+reco_particle.GetYaxis().SetTitle("Particle level %s"%varname[var])
 reco_particle.GetXaxis().SetTitleOffset(1.1)
 reco_particle.GetYaxis().SetTitleSize(0.055)
-reco_particle.GetXaxis().SetTitle("Particle level %s"%varname[var])
+reco_particle.GetXaxis().SetTitle("Detector level %s"%varname[var])
 reco_particle.GetZaxis().SetTitle("Events ")
 reco_particle.GetZaxis().SetTitleOffset(1.2)
 reco_particle.GetZaxis().SetTitleOffset(0.8)
@@ -338,98 +341,75 @@ c1.SaveAs(outfolder+'/response_%s_%s.png'%(plot.replace('.','p'),region))
 # X: detector level
 # Y: particle level
 
-def compute_purity(hist, reference):
+
+def compute_purity(hist, low_bin, high_bin):
     """ 
     Sum over particle level for a given detector level bin 
-    """
+        p_j = M(j, j) / ( sum_i[M(i, j)] ) = num / denom
+    p_j: purity in bin j (detector level bin)
+    M(j, j): Events that fall in the same bin in the folded and unfolded spaces.
+    M(i, j): response matrix (here we fix the particle level bin, hence "i")   
     
+    Note: there must be as many purity values as unfolded bins.
+    """
+
     nBinsX = hist.GetNbinsX()
     nBinsY = hist.GetNbinsY()
-    isSquare = (nBinsX == nBinsY)
+    purity_h = r.TH1D("purity", "", nBinsX, low_bin, high_bin)
 
-    purity_h = deepcopy(reference.Clone("purity_h")) 
-    if not isSquare:
-       sign = 1 
-       for j in range(1, nBinsY + 1, 2):
-           particle_index = int(np.floor( (j+1)/2 ))
-           num = hist.GetBinContent(particle_index, j) + hist.GetBinContent(particle_index, j+1)
-           denom = sum([ hist.GetBinContent(i, j) for i in range(1, 1+nBinsX)])
-           denom += sum([ hist.GetBinContent(i, j+1) for i in range(1, 1+nBinsX)])
+    for j in range(1, nBinsY + 1):
+        num = hist.GetBinContent(j, j)
+        denom = sum([ hist.GetBinContent(i, j) for i in range(1, 1+nBinsX)])
 
-           #print("    + Num: M(%d, %d)"%(particle_index, j))
-           #print("    + den: sum_i[ M(i, %d) + M(i, %d)]"%(j, j+sign))
-           
-           pj = num / denom if denom else 0
-           sign *= -1
-           #print("    + Purity in bin %d: %3.2f"%(j, pj))
-           #print(" ------ ")
-           purity_h.SetBinContent(particle_index, pj)
-    else:
-       for j in range(1, nBinsY + 1):
-           num = hist.GetBinContent(j, j)
-           denom = sum([ hist.GetBinContent(i, j) for i in range(1, 1+nBinsX)])
+        pj = num / denom if denom else 0
+        purity_h.SetBinContent(j, pj)
 
-
-           #print("    + Num: M(%d, %d)"%(particle_index, j))
-           #print("    + den: sum_i[ M(i, %d) + M(i, %d)]"%(j, j+sign))
-           
-           pj = num / denom if denom else 0
-           #print("    + Purity in bin %d: %3.2f"%(j, pj))
-           #print(" ------ ")
-           purity_h.SetBinContent(j, pj)
-          
     return purity_h
 
-def compute_stability(hist, reference):
+def compute_stability(hist, low_bin, high_bin):
     """ 
     Sum over particle level for a given detector level bin 
+        s_i = M(i, i) / ( sum_j[M(i, j)] ) = num / denom
+    s_i: purity in bin i (particle level bin)
+    M(i, i): Events that fall in the same bin in the folded and unfolded spaces.
+    M(i, j): response matrix (here we fix the detector level bin, hence "j")   
+    
+    Note: there must be as many stability values as folded bins.
     """
 
     nBinsX = hist.GetNbinsX()
     nBinsY = hist.GetNbinsY()
+    stability_h = r.TH1D("stability", "", nBinsY,  low_bin, high_bin)
 
-    isSquare = (nBinsX == nBinsY)
+    for i in range(1, nBinsX + 1):
+        num = hist.GetBinContent(i, i)
+        denom = sum([ hist.GetBinContent(i, j) for j in range(1, 1+nBinsY)])
+        s = num / denom if denom else 0
 
-    stability_h = deepcopy(reference.Clone("stability_h")) 
-   
-    if not isSquare: 
-        sign = 1
-        for i in range(1, nBinsX + 1):
-            reco_index = 2*i-1 
-            num = hist.GetBinContent(i, reco_index) + hist.GetBinContent(i, reco_index+1) 
-            denom = sum([ hist.GetBinContent(i, j) for j in range(1, 1+nBinsY)])
-            s = num / denom if denom else 0
-            #print("    + Num: M(%d, %d) + M(%d, %d)"%(i, reco_index, i, reco_index+1))
-            #print("    + den: sum_j[M(%d, j)]"%(i))
-            #print("    + Stability in bin %d: %3.2f"%(j+1, s))
-            #print(" ------ ")
-            sign *= -1
-            stability_h.SetBinContent(i, s)
-    else:
-        for i in range(1, nBinsX + 1):
-            num = hist.GetBinContent(i, i)
-            denom = sum([ hist.GetBinContent(i, j) for j in range(1, 1+nBinsY)])
-            s = num / denom if denom else 0
-            #print("    + Num: M(%d, %d) + M(%d, %d)"%(i, reco_index, i, reco_index+1))
-            #print("    + den: sum_j[M(%d, j)]"%(i))
-            #print("    + Stability in bin %d: %3.2f"%(j+1, s))
-            #print(" ------ ")
-            stability_h.SetBinContent(i, s)
-    
+        stability_h.SetBinContent(i, s)
+
     return stability_h
 
-purity_histo    = compute_purity(reco_particle, reference)
-stability_histo = compute_stability(reco_particle, reference)
+# Get binnings
+from differential_variables import all_vars
+
+observable = all_vars[(var, "2lss")]
+
+reco_bins = observable.CATBINS
+reco_bins = reco_bins.strip("[").strip("]").split(",")
+
+purity_histo    = compute_purity(reco_particle, float(reco_bins[0]), float(reco_bins[-1]))
+stability_histo = compute_stability(reco_particle, float(reco_bins[0]), float(reco_bins[-1]))
 
 # Add some cosmetics
 purity_histo.SetLineColor(r.kRed)
 purity_histo.SetLineWidth(2)
 
+
 stability_histo.SetLineColor(r.kBlue)
 stability_histo.SetLineWidth(2)
-stability_histo.GetYaxis().SetRangeUser(0, 1.1)
+stability_histo.GetYaxis().SetRangeUser(0, 1.05)
 stability_histo.GetXaxis().SetTitle(varname[var])
-
 
 
 t2 = doSpam('138 fb^{-1} (13 TeV)',  0.52, .955, 0.89, .995, align=12, textSize=0.033*1.4)
@@ -452,22 +432,10 @@ p1.SetRightMargin(0.14)
 p1.Draw()
 p1.cd()
 
-# Reduce label size for HT 
-if var == "HT": 
-    #stability_histo.GetXaxis().SetLabelSize(0.03)
-    stability_histo.GetXaxis().SetNdivisions(-4)
 stability_histo.Draw("hist")
-
 purity_histo.Draw("hist same")
 t.Draw("same")
 t2.Draw("same")
 l.Draw("same")
 
-c1.SaveAs(outfolder+'/purityAndStability_%s.png'%(plot.replace('.','p')))
-c1.SaveAs(outfolder+'/purityAndStability_%s.pdf'%(plot.replace('.','p')))
-
-# Write a log with the values
-f = open(outfolder+"/purityAndStability_%s.txt"%(plot.replace('.', 'p')), "w")
-for bini in range(1, 1+purity_histo.GetNbinsX()):
-    f.write("+ Bin: %d, purity=%3.2f, stability=%3.2f\n"%(bini, purity_histo.GetBinContent(bini), stability_histo.GetBinContent(bini)))
-f.close()
+c1.SaveAs(folder+'/purityAndStability_%s.pdf'%(plot.replace('.','p')))

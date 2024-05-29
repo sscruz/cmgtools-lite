@@ -63,12 +63,12 @@ if todo == "2":
    for signal in signals:
        params += "r_%s=1,"%(signal)
 
-   rf = "combine -M FitDiagnostics {WS_NAME} -m 125 -t -1 --setParameters {POIS}  --freezeParameters MH  -n nominal_{VAR} --robustFit 1 --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_analytic  --X-rtd MINIMIZER_MaxCalls=5000000 --saveWorkspace --saveShapes --saveWithUncertainties".format(WS_NAME ="ws_"+var+"_"+region+".root", VAR= var+"_"+region,POIS = params )
+   rf = "combine -M FitDiagnostics {WS_NAME} -m 125 --setParameters {POIS}  --freezeParameters MH  -n Noasimov_nominal_{VAR} --robustFit 1 --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_analytic  --X-rtd MINIMIZER_MaxCalls=5000000 --saveWorkspace --saveShapes --saveWithUncertainties".format(WS_NAME ="ws_"+var+"_"+region+".root", VAR= var+"_"+region,POIS = params )
    
 
    #Run fit for stat
    #--saveWorkspace --saveShapes --saveWithUncertainties
-   rff = "combine -M FitDiagnostics %s -m 125 -t -1 --setParameters %s --freezeParameters MH,'rgx{lumi.*}','rgx{CMS_eff.*}','rgx{CMS_ttWl.*}','rgx{CMS_ttHl.*}','rgx{CMS_scale_j.*}',CMS_jesHEMIssue,'rgx{CMS_res_j.*}','rgx{QCDscale_.*}','rgx{pdf_.*}','rgx{BR_.*}',CMS_ttWl_UnclusteredEn   -n freezing_%s --robustFit 1 --cminDefaultMinimizerStrategy 0  --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --saveWorkspace --saveShapes --saveWithUncertainties"%("ws_"+var+"_"+region+".root",params, var+"_"+region )
+   rff = "combine -M FitDiagnostics %s -m 125 --setParameters %s --freezeParameters MH,'rgx{lumi.*}','rgx{CMS_eff.*}','rgx{CMS_ttWl.*}','rgx{CMS_ttHl.*}','rgx{CMS_scale_j.*}',CMS_jesHEMIssue,'rgx{CMS_res_j.*}','rgx{QCDscale_.*}','rgx{pdf_.*}','rgx{BR_.*}',CMS_ttWl_UnclusteredEn   -n Noasimov_freezing_%s --robustFit 1 --cminDefaultMinimizerStrategy 0  --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --saveWorkspace --saveShapes --saveWithUncertainties"%("ws_"+var+"_"+region+".root",params, var+"_"+region )
    os.chdir(folder)
    print('sbatch -c 5 -p batch --wrap "'+rf+'"')
    print('sbatch -c 5 -p batch --wrap "'+rff+'"')
