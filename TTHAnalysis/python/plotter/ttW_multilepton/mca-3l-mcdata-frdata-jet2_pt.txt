@@ -1,0 +1,9 @@
+incl_sig : + ; IncludeMca="ttW_multilepton/mca-includes/mca-3l-sigprompt-jet2_pt.txt"
+incl_bkg : + ; IncludeMca="ttW_multilepton/mca-includes/mca-3l-bkgprompt.txt"
+incl_convs     : + ; IncludeMca="ttW_multilepton/mca-includes/mca-3l-convs.txt"
+incl_datafakes  : + ; IncludeMca="ttW_multilepton/mca-includes/mca-data.txt", FakeRate="ttW_multilepton/fakeRate-3l-frdata.txt", Label="Non-prompt", FillColor=ROOT.kBlack, FillStyle=3005, PostFix='_fakes'
+incl_promptsub : + ; IncludeMca="ttW_multilepton/mca-includes/mca-3l-sigprompt-inclusive.txt", FakeRate="ttW_multilepton/fakeRate-3l-frdata.txt", PostFix='_promptsub', AddWeight="-1"
+incl_promptsub : + ; IncludeMca="ttW_multilepton/mca-includes/mca-3l-bkgprompt.txt", FakeRate="ttW_multilepton/fakeRate-3l-frdata.txt", PostFix='_promptsub', AddWeight="-1"
+
+
+incl_data : + ; IncludeMca="ttW_multilepton/mca-includes/mca-data.txt"

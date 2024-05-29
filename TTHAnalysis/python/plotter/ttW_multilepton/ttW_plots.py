@@ -10,9 +10,9 @@ lumis = {
     '2016APV': '19.5',
     '2016': '16.8',
     '2016APV_2016': '19.5,16.8',
-    '2017': '41.5',
-    '2018': '59.7',
-    'all' : '19.5,16.8,41.4,59.7',
+    '2017': '41.48',
+    '2018': '59.83',
+    'all' : '19.5,16.8,41.48,59.83',
 }
 
 
@@ -28,9 +28,9 @@ nCores = 16
 if 'fanae' in os.environ['HOSTNAME']:
     nCores = 32
     #submit = 'sbatch -c %d -p cpupower  --wrap "{command}"'%nCores
-    P0     = "/beegfs/data/nanoAODv9/ttH_differential/"
+    P0     = "/lustrefs/hdd_pool_dir/nanoAODv9/ttH_differential/"
 if 'gae' in os.environ['HOSTNAME']: 
-    P0     = "/beegfs/data/nanoAODv9/ttH_differential/"
+    P0     = "/lustrefs/hdd_pool_dir/nanoAODv9/ttH_differential/"
 
 if 'cism.ucl.ac.be' in os.environ['HOSTNAME']:
     P0   = "/nfs/user/pvischia/tth/v6" 
@@ -39,30 +39,31 @@ if ".psi.ch" in os.environ['HOSTNAME']:
     P0 = "/pnfs/psi.ch/cms/trivcat/store/user/sesanche"
     #submit = 'sbatch -c %d -p short --wrap "{command}"'%nCores
 
-TREESALL = "--xf GGHZZ4L_new,qqHZZ4L,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW  --FMCs {P}/0_jmeUnc_v1  --FMCs {P}/2_btagSF_fixedWP/ --FMCs {P}/2_scalefactors_lep/  --Fs {P}/4_evtVars --Fs {P}/1_recl --Fs {P}/6_ttWforlepton  " 
+TREESALL = "--xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW  --FMCs {P}/0_jmeUnc_v1  --FMCs {P}/2_btag_SFs_WPfixed_25GeV/ --FMCs {P}/2_scalefactors_lep/  --Fs {P}/4_evtVars --Fs {P}/1_recl --Fs {P}/6_ttWforlepton  --Fs {P}/7_Vars_forttWDiff_25 " 
 YEARDIR=YEAR if YEAR not in ['all','2016APV_2016'] else ''
 TREESONLYFULL     = "-P "+P0+"/NanoTrees_UL_v2_060422/%s          --Fs  {P}/1_recl_new "%(YEARDIR,)         
-TREESONLYSKIM     = "-P "+P0+"/NanoTrees_UL_v2_060422_newfts_skim2lss/%s  --Fs {P}/1_recl  "%(YEARDIR,)
+TREESONLYSKIM     = "-P "+P0+"/NanoTrees_UL_v2_060422_skim2lss_newfts/%s  --Fs {P}/1_recl  "%(YEARDIR,)
 
 
 def base(selection):
     THETREES = TREESALL
     CORE=' '.join([THETREES,TREESONLYSKIM])
     CORE+=" -f -j %d -l %s  --tree NanoAOD --mcc ttW_multilepton/lepchoice-ttW-FO.txt --split-factor=-1 --WA prescaleFromSkim --year %s  --mcc ttW_multilepton/mcc-METchoice-prefiring.txt"%(nCores, lumis[YEAR],YEAR if YEAR not in ['all','2016APV_2016'] else '2016APV,2016,2017,2018' if YEAR == 'all' else '2016APV,2016' if YEAR == '2016APV_2016' else '')# --neg" --s2v 
-    RATIO= " --maxRatioRange 0.0  1.99 --ratioYNDiv 505 "
+    RATIO= " --maxRatioRange 0.0  1.99 --ratioYNDiv 210 "
     RATIO2=" --showRatio --attachRatioPanel --fixRatioRange "
-    LEGEND=" --legendColumns 2 --legendWidth 0.25 "
-    LEGEND2=" --legendFontSize 0.042 "
+    LEGEND=" --legendColumns 3 --legendWidth 0.7 "
+    LEGEND2=" --legendFontSize 0.022 "
     SPAM=" --noCms --topSpamSize 1.1 --lspam '#scale[1.1]{#bf{CMS}} #scale[0.9]{#it{Preliminary}}' "
     if dowhat == "plots": CORE+=RATIO+RATIO2+LEGEND+LEGEND2+SPAM+"  --showMCError --rebin 4 --xP 'nT_.*' --xP 'debug_.*' -L ttW_multilepton/functionsTTW.cc"
 
     if selection=='2lss':
-        GO="%s ttW_multilepton/mca-2lss-mc.txt ttW_multilepton/2lss_tight.txt --xp TTW_jet1_pt.*,TTW_nbjets.*,TTW_njets.*,TTW_lep1_pt.*,TTW_lep1_eta.*,TTW_deta_llss.*,TTW_ooa.*,TTW_dR_lbMedium.*,TTW_dR_lbLoose.*,TTW_mindr_lep1_jet25.*,TTW_HT_bin.*,TTW_dR_ll.*,TTW_max_eta.*"%CORE
+        GO="%s ttW_multilepton/mca-2lss-mc.txt ttW_multilepton/2lss_tight.txt "%CORE
         GO="%s -W 'L1PreFiringWeight_Nom*puWeight*btagSF*leptonSF_2lss*triggerSF_2lss'"%GO
         if dowhat in ["plots","ntuple"]: GO+=" ttW_multilepton/2lss_3l_plots.txt --xP '^lep(3|4)_.*' --xP '^(3|4)lep_.*' --xP 'kinMVA_3l_.*' "
         if dowhat == "plots": GO=GO.replace(LEGEND, " --legendColumns 3 --legendWidth 0.52 ")
         if dowhat == "plots": GO=GO.replace(RATIO,  " --maxRatioRange 0.6  1.99 --ratioYNDiv 210 ")
         GO += " --binname 2lss "
+    
     elif selection=='3l':
         GO="%s ttW_multilepton/mca-3l-mc.txt ttW_multilepton/3l_tight.txt "%CORE
         GO="%s -W 'L1PreFiringWeight_Nom*puWeight*btagSF*leptonSF_3l*triggerSF_3l'"%GO
@@ -116,6 +117,8 @@ if __name__ == '__main__':
         x = base('2lss')
         if 'diff' in torun:
             x = x.replace('2lss_3l_plots.txt', '2lss_3l_plots_diff.txt').replace('--showMCError', '-X --showMCError')
+            var = re.split("diff_",torun)[1]
+            x = x.replace("ttW_multilepton/mca-2lss-mc.txt", "ttW_multilepton/mca-2lss-mcdata-frdata-"+var+".txt")
         if '_norebin' in torun: x = x.replace('--rebin 4','')
         if '_appl' in torun: x = add(x,'-I ^TT ')
         if '_legacy' in torun: x = x.replace('ttW_multilepton/2lss_tight.txt',"ttW_multilepton/2lss_tight_legacy.txt")
@@ -142,6 +145,7 @@ if __name__ == '__main__':
         if '_mll200' in torun:
             x = add(x,"-E ^mll200 ")
 
+        
         if '_splitfakes' in torun:
             x = x.replace('mca-2lss-mc.txt','mca-2lss-mc-flavsplit.txt')
     
@@ -212,6 +216,10 @@ if __name__ == '__main__':
             x = add(x, "--sP 'kinMVA_2lss_cat.*'")
 
         runIt(x,'%s'%torun)
+        if '_charge' in torun:
+            for charge in ['plusplus','minusminus']: 
+                runIt(add(x,'-E ^%s'%charge).replace("--binname 2lss","--binname 2lss_"+charge),'%s/%s'%(torun,charge))
+
         if '_flav' in torun:
             for flav in ['mm','ee','em']: 
                 runIt(add(x,'-E ^%s'%flav).replace("--binname 2lss","--binname 2lss_"+flav),'%s/%s'%(torun,flav))
@@ -231,6 +239,11 @@ if __name__ == '__main__':
 
     if '3l_' in torun and not('cr') in torun:
         x = base('3l')
+        if 'diff' in torun:
+            x = x.replace('2lss_3l_plots.txt', '2lss_3l_plots_diff.txt').replace('--showMCError', '-X --showMCError')
+            var = re.split("diff_",torun)[1]
+            x = x.replace("ttW_multilepton/mca-3l-mc.txt", "ttW_multilepton/mca-3l-mcdata-frdata-"+var+".txt")
+            x = x + "  -E nbtagdiff -X ^2b1B "
         if '_norebin' in torun: x = x.replace('--rebin 4','')
         if '_appl' in torun: x = add(x,'-I ^TTT ')
         if '_legacy' in torun: x = x.replace('ttW_multilepton/3l_tight.txt',"ttW_multilepton/3l_tight_legacy.txt")
@@ -306,7 +319,7 @@ if __name__ == '__main__':
             # match --sP. Only one plot at a time makes sense
             extra_given = " ".join(sys.argv[4:])
             
-            x = x.replace('2lss_3l_plots.txt', '3l_plots_diff.txt')
+            x = x.replace('2lss_3l_plots.txt', '2lss_3l_plots_diff.txt')
             if "genlevel" in torun:
                 if "--sP" in extra_given:
                     plotname = re.match("--sP (.*)", extra_given).groups()[0]

@@ -22,7 +22,7 @@ debug_scaleFactor_btag : $DATA{1} $MC{btagSF} : 120,0.6,1.4; XTitle="btagSF"
 #debug_scaleFactor_PU : puw2016_nTrueInt_36fb(nTrueInt) : 120,0.6,1.4; XTitle="PU weight"
 
 debug_badMuonFilter : Flag_badMuonMoriond2017 || Flag_badCloneMuonMoriond2017 : 2,-0.5,1.5; XTitle = "Bad muon event", Logy
-nJet25_from0:	    	nJet25					: [-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5] ; XTitle='N(jet\, p_{T} > 25 GeV)', XNDiv=5, xBinLabels="2\,3\,4\,5\,6\,#geq 7"
+nJet25_from0:	    	nJet25					: [-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5] ; XTitle='N(jet\, p_{T} > 25 GeV)', XNDiv=5, xBinLabels="2\,3\,4\,5\,6\,#geq 7",YMin=0 , YMax=600, 
 nJet30_from0:	    	nJet30					: [-0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5] ; XTitle='N(jet\, p_{T} > 30 GeV)', XNDiv=5, xBinLabels="2\,3\,4\,5\,6\,#geq 7", YMax=2000
 nJet25:	    	nJet25					: [1.5,2.5,3.5,4.5,5.5,6.5,7.5] ; XTitle='N(jet\, p_{T} > 25 GeV)', XNDiv=5, xBinLabels="2\,3\,4\,5\,6\,#geq 7"
 2lep_nJet25_from4:  	nJet25					: [3.5,4.5,5.5,6.5,7.5] ; XTitle='N(jet\, p_{T} > 25 GeV)', XNDiv=5, xBinLabels="4\,5\,6\,#geq 7"
@@ -115,7 +115,7 @@ met: 		MET_pt					: 40,0,400 ; XTitle="E_{T}^{miss} (GeV)"
 metT1: 		MET_T1_pt					: 40,0,400 ; XTitle="E_{T}^{miss} (GeV)"
 metT1_smear: 		MET_T1Smear_pt					: 40,0,400 ; XTitle="E_{T}^{miss} (GeV)"
 metLD:		MET_pt*0.6 + mhtJet25*0.4  	        : 40,0,400; XTitle="E_{T}^{miss} LD (GeV)"
-minMllAFAS:	minMllAFAS				: 20,0,200; XTitle="min M_{ll} (GeV)", Legend='TR'
+minMllAFAS:	minMllAFAS				: 20,0,200; XTitle="min M_{ll} (GeV)", Legend='TR',YMin=0 , YMax=180,
 minMllAFOS:     minMllAFOS                              : 20,0,200; XTitle="min M_{ll} (GeV)", Legend='TR'
 minMllSFOS:     minMllSFOS                              : 20,0,200; XTitle="min M_{ll} (GeV)", Legend='TR'
 mZ1:		mZ1					: 80,50,130; XTitle="Best Z candidate mass (GeV)"
@@ -229,7 +229,7 @@ nLepFO:  nLepFO: [-0.5,0.5,1.5,2.5,3.5,4.5,5.5] ; XTitle="Number of fakeable lep
 nLepTight:   nLepTight : [-0.5,0.5,1.5,2.5,3.5,4.5,5.5] ; XTitle="Number of tight leptons", XNDdiv=505
 
 lep1_pt: 	 LepGood1_pt					 : 25,0,200; XTitle="Leading lepton p_{T} (GeV)"
-lep1_conePt: 	 LepGood1_conePt				 : 40,0,200; XTitle="Leading lepton cone p_{T} (GeV)"
+lep1_conePt: 	 LepGood1_conePt				 : 40,0,200; XTitle="Leading lepton cone p_{T} (GeV)",YMin=0 , YMax=400, 
 lep1_eta: 	 LepGood1_eta					 : 15,-2.5,2.5; XTitle="Leading lepton #eta"
 lep1_phi: 	 LepGood1_phi					 : 20,-3.14,3.14; XTitle="Leading lepton #phi"
 lep1_pdgId:	 0.5*LepGood1_pdgId/abs(LepGood1_pdgId)*(abs(LepGood1_pdgId)-10) : [-2,-1,0,1,2]; XTitle="Leading lepton PDG ID (#mu^{-}/e^{-}/e^{+}/#mu^{+})", XNDdiv=505
@@ -368,6 +368,7 @@ met_phi : MET_phi : 40,-3.14,3.14; XTitle="MET #phi"
 
 #Control regions
 cr_3l: ttH_3l_clasifier(nJet25, nBJetMedium25): [0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5]; XTitle="nJet nBJet clasification", Logy,YMin=1 , YMax=20e3,  XNDdiv=505, IncludeOverflows=False, xBinLabels="1j\,2j\,3j\,>3j\,2j\,3j\,4j\,>4j\,2j\,3j\,4j\,>4j"
+cr_3l_loose: ttH_3l_clasifier(nJet25, nBJetLoose25): [0.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5]; XTitle="nJet nBJet clasification", Logy,YMin=1 , YMax=20e3,  XNDdiv=505, IncludeOverflows=False, xBinLabels="1j\,2j\,3j\,>3j\,2j\,3j\,4j\,>4j\,2j\,3j\,4j\,>4j"
 cr_4l: ttH_4l_clasifier(nJet25, nBJetMedium25,mZ2): [0.5,1.5,2.5,3.5,4.5]; XTitle="4l Control Region", Logy, YMin=0.1 ,  XNDdiv=505, IncludeOverflows=False, xBinLabels="1\,2\,3\,4"
 mu_fake_origin : (abs(LepGood1_pdgId)==13 && LepGood1_mcMatchId==0 && LepGood1_mcPromptGamma==0 )*LepGood1_genPartFlav + (abs(LepGood2_pdgId)==13 && LepGood2_mcMatchId==0 && LepGood2_mcPromptGamma==0 )*LepGood2_genPartFlav : [ -0.5,0.5,1.5,2.5,3.5,4.5,5.5,6.5]; XTitle="Fake muon genPartFlav" 
 

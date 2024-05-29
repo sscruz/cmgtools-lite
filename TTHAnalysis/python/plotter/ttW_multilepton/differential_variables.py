@@ -11,7 +11,7 @@ class Observable:
 all_vars={}
 
 for REGION in ["2lss", "3l"]:
-    for OBSERVABLE in ["njets","nbjets","lep1_pt","lep2_pt", "dR_ll","lep1_eta", "lep2_eta", "max_eta","jet1_pt", "jet2_pt", "jet1_eta", "jet2_eta", "bMediumSelJet1_pt", "bMediumSelJet1_eta", "bLooseSelJet1_pt", "bLooseSelJet1_eta", "mll", "sum_2lss_pt", "deta_llss","dR_lbmedium","dR_lbloose","mindr_lep1_jet25","HT","m3l","pt3l"]:
+    for OBSERVABLE in ["njets","njets_7bins","nbjets_medium","nbjets","lep1_pt","lep2_pt", "dR_ll","lep1_eta", "lep2_eta", "max_eta","jet1_pt", "jet2_pt", "jet1_eta", "jet2_eta", "bMediumLeadingJet_pt", "bMediumLeadingJet_eta", "bLooseLeadingJet_pt", "bLooseLeadingJet_eta", "mll", "sum_2lss_pt", "deta_llss","dR_lbmedium","dR_lbloose","mindr_lep1_jet25","HT","m3l","pt3l"]:
         if OBSERVABLE == "njets":
             FUNCTION_2L="nDressSelJet"
             FUNCTION_2Lreco="nJet25"
@@ -21,7 +21,28 @@ for REGION in ["2lss", "3l"]:
             elif REGION == "3l":
                 CATBINS      ="[2.5,3.5,4.5,5.5]"
                 CATBINS_Gen  = CATBINS
+
+        if OBSERVABLE == "njets_7bins":
+            FUNCTION_2L="nDressSelJet"
+            FUNCTION_2Lreco="nJet25"
+            if REGION == "2lss":
+                CATBINS      ="[2.5,3.5,4.5,5.5,6.5,7.5]"
+                CATBINS_Gen  = CATBINS
+            elif REGION == "3l":
+                CATBINS      ="[2.5,3.5,4.5,5.5,6.5,7.5]"
+                CATBINS_Gen  = CATBINS
                 
+                
+        elif OBSERVABLE == "nbjets_medium":
+            FUNCTION_2L="nDressBSelJet"
+            FUNCTION_2Lreco="nBJetLoose25"
+            if REGION == "2lss":
+                CATBINS    ="[0.5,1.5,2.5,3.5]"
+                CATBINS_Gen  = CATBINS
+            elif REGION == "3l":
+                CATBINS    ="[0.5,1.5,2.5,3.5]"
+
+                CATBINS_Gen  = CATBINS
         elif OBSERVABLE == "nbjets":
             FUNCTION_2L="nDressBSelJet"
             FUNCTION_2Lreco="nBJetLoose25"
@@ -62,7 +83,7 @@ for REGION in ["2lss", "3l"]:
                 continue # Not implemented
 
         elif OBSERVABLE == "mll":
-            FUNCTION_2L="mass_2(GenDressedLepton_pt[iDressSelLep[0]], GenDressedLepton_pt[iDressSelLep[0]], GenDressedLepton_pt[iDressSelLep[0]], 0, GenDressedLepton_pt[iDressSelLep[1]], GenDressedLepton_eta[iDressSelLep[1]], GenDressedLepton_phi[iDressSelLep[1]], 0)"
+            FUNCTION_2L="mass_2(GenDressedLepton_pt[iDressSelLep[0]], GenDressedLepton_eta[iDressSelLep[0]], GenDressedLepton_phi[iDressSelLep[0]], 0, GenDressedLepton_pt[iDressSelLep[1]], GenDressedLepton_eta[iDressSelLep[1]], GenDressedLepton_phi[iDressSelLep[1]], 0)"
             FUNCTION_2Lreco="mass_2(LepGood1_conePt, LepGood1_eta, LepGood1_phi, 0, LepGood2_conePt, LepGood2_eta, LepGood2_phi, 0)"
             if REGION == "2lss":
                 CATBINS    = "[0.0, 50.0, 100.0, 150.0, 200.0, 250.0, 300.0, 350.0, 400.0]"
@@ -74,7 +95,7 @@ for REGION in ["2lss", "3l"]:
             FUNCTION_2L="deltaR(GenDressedLepton_eta[iDressSelLep[0]],GenDressedLepton_phi[iDressSelLep[0]],GenDressedLepton_eta[iDressSelLep[1]],GenDressedLepton_phi[iDressSelLep[1]])"
             FUNCTION_2Lreco="deltaR(LepGood1_eta,LepGood1_phi,LepGood2_eta,LepGood2_phi)"
             if REGION == "2lss":
-                CATBINS    = "[0, 0.8, 1.6, 2.1, 2.5, 2.9 3.3, 4.1, 5]"
+                CATBINS    = "[0.0,0.8,1.6,2.1,2.9,3.3,4.1,5.0]"
                 CATBINS_Gen    ="[0, 1.6, 2.5, 3.3, 5]"
             elif REGION == "3l":
                 continue # Not implemented
@@ -100,17 +121,17 @@ for REGION in ["2lss", "3l"]:
                 CATBINS_Gen    ="[0.0,0.4,0.8,1.3,2.5]"
                                 
         elif OBSERVABLE == "max_eta":
-            FUNCTION_2L="max(GenDressedLepton_eta[iDressSelLep[0]],GenDressedLepton_eta[iDressSelLep[1]])"
-            FUNCTION_2Lreco="max(LepGood1_eta,LepGood2_eta)"
+            FUNCTION_2L="max(abs(GenDressedLepton_eta[iDressSelLep[0]]),abs(GenDressedLepton_eta[iDressSelLep[1]]))"
+            FUNCTION_2Lreco="max(abs(LepGood1_eta),abs(LepGood2_eta))"
             if REGION == "2lss":
                 CATBINS    ="[0, 0.5, 1.0, 1.25, 1.5, 1.75, 2, 2.25, 2.5]"
                 CATBINS_Gen    ="[0, 1.0, 1.5, 2, 2.5]"
             elif REGION == "3l":
                 continue # Not implemented
 
-        elif OBSERVABLE == "bLooseSelJet1_pt":
+        elif OBSERVABLE == "bLooseLeadingJet_pt":
             FUNCTION_2L="GenJet_pt[iDressSelBJet[0]]"
-            FUNCTION_2Lreco="bLooseSelJet1_pt"
+            FUNCTION_2Lreco="bLooseLeadingJet_pt"
             if REGION == "2lss":
                 CATBINS        ="[25, 55, 85, 118.0, 150, 175.0, 200]"
                 CATBINS_Gen    ="[25.0, 85.0, 150.0, 200.0]"
@@ -118,9 +139,9 @@ for REGION in ["2lss", "3l"]:
                 CATBINS        ="[25,95,150,200,300,450]"
                 CATBINS_Gen    ="[25,150,300,450]"
  
-        elif OBSERVABLE == "bMediumSelJet1_pt":
+        elif OBSERVABLE == "bMediumLeadingJet_pt":
             FUNCTION_2L="GenJet_pt[iDressSelBJet[0]]"
-            FUNCTION_2Lreco="bMediumSelJet1_pt"
+            FUNCTION_2Lreco="bMediumLeadingJet_pt"
             if REGION == "2lss":
                 CATBINS        ="[25, 55, 85, 118.0, 150, 175.0, 200]"
                 CATBINS_Gen    ="[25.0, 85.0, 150.0, 200.0]"
@@ -128,9 +149,9 @@ for REGION in ["2lss", "3l"]:
                 CATBINS        ="[25,95,150,200,300,450]"
                 CATBINS_Gen    ="[25,150,300,450]"       
 
-        elif OBSERVABLE == "bMediumSelJet1_eta":
+        elif OBSERVABLE == "bMediumLeadingJet_eta":
             FUNCTION_2L="abs(GenJet_eta[iDressSelBJet[0]])"
-            FUNCTION_2Lreco="bMediumSelJet1_eta"
+            FUNCTION_2Lreco="bMediumLeadingJet_eta"
             if REGION == "2lss":
                 CATBINS    ="[0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5]"
                 CATBINS_Gen    ="[0, 0.5, 1.0, 1.5, 2.5]"
@@ -138,9 +159,9 @@ for REGION in ["2lss", "3l"]:
                 CATBINS    ="[0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5]"
                 CATBINS_Gen    ="[0, 0.5, 1.0, 1.5, 2.5]"
 
-        elif OBSERVABLE == "bLooseSelJet1_eta":
+        elif OBSERVABLE == "bLooseLeadingJet_eta":
             FUNCTION_2L="abs(GenJet_eta[iDressSelBJet[0]])"
-            FUNCTION_2Lreco="bLooseSelJet1_eta"
+            FUNCTION_2Lreco="bLooseLeadingJet_eta"
             if REGION == "2lss":
                 CATBINS    ="[0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5]"
                 CATBINS_Gen    ="[0, 0.5, 1.0, 1.5, 2.5]"
@@ -254,3 +275,4 @@ for REGION in ["2lss", "3l"]:
                 CATBINS_Gen    ="[0.0, 150., 250., 350., 800.]"
         
         all_vars[(OBSERVABLE,REGION)]=Observable(FUNCTION_2L, FUNCTION_2Lreco, CATBINS, CATBINS_Gen, REGION)
+

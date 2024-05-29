@@ -21,10 +21,10 @@ class EventVars2LSS(Module):
                               "MT_met_lep3",
                               'mbb_loose',
                               'mbb_medium',
-                              'bMediumSelJet1_pt',
-                              'bMediumSelJet1_eta',
-                              'bLooseSelJet1_pt',
-                              'bLooseSelJet1_eta'
+                              'bMediumLeadingJet_pt',
+                              'bMediumLeadingJet_eta',
+                              'bLooseLeadingJet_pt',
+                              'bLooseLeadingJet_eta',
                               'min_Deta_leadfwdJet_jet',
                               'dEtaLL_BBframe_2lss',
                               'dEtaBB_LLframe_2lss',
@@ -147,12 +147,12 @@ class EventVars2LSS(Module):
             bloose  = filter(lambda x : x.btagDeepFlavB > _btagWPs["DeepFlav_%d_%s"%(event.year,"L")][1], jets)
             if len(bloose) >= 1:
                 bloose.sort(key = lambda x : getattr(x,'pt%s'%self.systsJEC[_var]), reverse = True)
-                ret['bLooseSelJet1_pt'] = bloose[0].pt
-                ret['bLooseSelJet1_eta'] = bloose[0].eta
+                ret['bLooseLeadingJet_pt'] = bloose[0].pt
+                ret['bLooseLeadingJet_eta'] = bloose[0].eta
             if len(bmedium) >= 1:
                 bmedium.sort(key = lambda x : getattr(x,'pt%s'%self.systsJEC[_var]), reverse = True)
-                ret['bMediumSelJet1_pt'] = bmedium[0].pt
-                ret['bMediumSelJet1_eta'] = bmedium[0].eta
+                ret['bMediumLeadingJet_pt'] = bmedium[0].pt
+                ret['bMediumLeadingJet_eta'] = bmedium[0].eta
             if len(bmedium) >1: 
                 bmedium.sort(key = lambda x : getattr(x,'pt%s'%self.systsJEC[_var]), reverse = True)
                 b1 = bmedium[0].p4()

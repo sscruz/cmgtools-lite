@@ -1,0 +1,1 @@
+TTW_inclusive+     : TTWToLNu_fxfx : 0.2269 : 1 ;  FillColor=ROOT.kGreen-5, Label="ttW (inclusive)", FillStyle=3005, FriendsSimple="{P}/A_ttW_diff_info_extended_25gev_fixed/"

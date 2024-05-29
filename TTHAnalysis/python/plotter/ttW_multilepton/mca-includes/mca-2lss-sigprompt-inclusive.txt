@@ -1,2 +1,2 @@
-TTW_inclusive+     : TTWToLNu_fxfx_withGen : 0.2357 : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ;  FillColor=ROOT.kGreen-5, Label="ttW (inclusive)", FriendsSimple="{P}/A_ttW_diff_info_extended_25gev/"
-TTW_inclusive+     : TTWJetsToLNu_EWK_5f_NLO_withGen : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kGreen-5, Label="ttW (inclusive)", FriendsSimple="{P}/A_ttW_diff_info_extended_25gev/"
+TTW_inclusive+     : TTWToLNu_fxfx_withGen : 0.2357 : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ;  FillColor=ROOT.kGreen-5, Label="ttW (inclusive)", FriendsSimple="{P}/A_ttW_diff_info_extended_25gev_fixed/"
+TTW_inclusive+     : TTWJetsToLNu_EWK_5f_NLO_withGen : xsec : LepGood1_isMatchRightCharge && LepGood2_isMatchRightCharge ; FillColor=ROOT.kGreen-5, Label="ttW (inclusive)", FriendsSimple="{P}/A_ttW_diff_info_extended_25gev_fixed/"
