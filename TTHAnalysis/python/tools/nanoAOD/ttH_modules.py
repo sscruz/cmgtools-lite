@@ -88,6 +88,9 @@ def smoothBFlav(jetpt,ptmin,ptmax,year, subera,scale_loose=1.0):
 
 def clean_and_FO_selection_TTH(lep,year, subera):
     bTagCut = ([0.2598,0.2489], [0.3040], [0.2783])[year-2016][subera]
+
+
+
     return lep.conept>10 and lep.jetBTagDeepFlav<bTagCut and (abs(lep.pdgId)!=11 or (ttH_idEmu_cuts_E3(lep) )) \
         and (lep.mvaTTHUL>(0.85 if abs(lep.pdgId)==13 else 0.90) or \
              (abs(lep.pdgId)==13 and lep.jetBTagDeepFlav< smoothBFlav(0.9*lep.pt*(1+lep.jetRelIso), 20, 45, year, subera) and lep.jetRelIso < 0.50) or \
@@ -97,7 +100,7 @@ tightLeptonSel = lambda lep,year,era : clean_and_FO_selection_TTH(lep,year,era) 
 
 foTauSel = lambda tau: tau.pt > 20 and abs(tau.eta)<2.3 and abs(tau.dxy) < 1000 and abs(tau.dz) < 0.2  and (int(tau.idDeepTau2017v2p1VSjet)>>1 & 1) # VVLoose WP
 tightTauSel = lambda tau: (int(tau.idDeepTau2017v2p1VSjet)>>2 & 1) # VLoose WP
-jevariations=['jes%s'%x for x in ["FlavorQCD", "RelativeBal", "HF", "BBEC1", "EC2", "Absolute", "BBEC1_year", "EC2_year", "Absolute_year", "HF_year", "RelativeSample_year", "HEMIssue" ]] + ['jer%d'%j for j in range(6)]
+jevariations=['jes%s'%x for x in ["FlavorQCD", "RelativeBal", "HF", "BBEC1", "EC2", "Absolute", "BBEC1_year", "EC2_year", "Absolute_year", "HF_year", "RelativeSample_year", "HEMIssue", 'FlavorPureGluon', 'FlavorPureQuark', 'FlavorPureCharm', 'FlavorPureBottom' ]] + ['jer%d'%j for j in range(6)]
 from CMGTools.TTHAnalysis.tools.combinedObjectTaggerForCleaning import CombinedObjectTaggerForCleaning
 from CMGTools.TTHAnalysis.tools.nanoAOD.fastCombinedObjectRecleaner import fastCombinedObjectRecleaner
 recleaner_step1 = lambda : CombinedObjectTaggerForCleaning("InternalRecl",
@@ -186,6 +189,11 @@ jetmetUncertainties2016APVAll = createJMECorrector(dataYear='UL2016_preVFP', jes
 jetmetUncertainties2016All    = createJMECorrector(dataYear='UL2016'       , jesUncert="Merged", splitJER=True, applyHEMfix=True)
 jetmetUncertainties2017All    = createJMECorrector(dataYear='UL2017'       , jesUncert="Merged", splitJER=True, applyHEMfix=True)
 jetmetUncertainties2018All    = createJMECorrector(dataYear='UL2018'       , jesUncert="Merged", splitJER=True, applyHEMfix=True)
+
+jetmetUncertainties2016APVFlavor = createJMECorrector(dataYear='UL2016_preVFP', jesUncert='FlavorPureGluon,FlavorPureQuark,FlavorPureCharm,FlavorPureBottom', splitJER=True, applyHEMfix=True)
+jetmetUncertainties2016Flavor    = createJMECorrector(dataYear='UL2016'       , jesUncert='FlavorPureGluon,FlavorPureQuark,FlavorPureCharm,FlavorPureBottom', splitJER=True, applyHEMfix=True)
+jetmetUncertainties2017Flavor    = createJMECorrector(dataYear='UL2017'       , jesUncert='FlavorPureGluon,FlavorPureQuark,FlavorPureCharm,FlavorPureBottom', splitJER=True, applyHEMfix=True)
+jetmetUncertainties2018Flavor    = createJMECorrector(dataYear='UL2018'       , jesUncert='FlavorPureGluon,FlavorPureQuark,FlavorPureCharm,FlavorPureBottom', splitJER=True, applyHEMfix=True)
 
 jetmetUncertainties2016APVTotal = createJMECorrector(dataYear='UL2016_preVFP', jesUncert="Total", applyHEMfix=True)
 jetmetUncertainties2016Total    = createJMECorrector(dataYear='UL2016'       , jesUncert="Total", applyHEMfix=True)
