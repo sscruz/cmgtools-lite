@@ -87,162 +87,168 @@ CMS_ttWl18_trigger_3l      : $PromptFromMC : .*4l.* : normSymm : 1.01; year="201
 CMS_ttWl_pileup : $PromptFromMC : .* : templateAsymm; AddWeights=['puWeightUp/puWeight'\,'puWeightDown/puWeight']
 
 CMS_scale_j_HF        : $PromptFromMC : .* : templateAsymm; \
-                         FakeRates=['ttH-multilepton/frs-jecs/fr-jesHFUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesHFDown.txt']
+                         FakeRates=['ttW_multilepton/frs-jecs/fr-jesHFUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesHFDown.txt']
 CMS_scale_j_BBEC1_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesBBEC1_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesBBEC1_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesBBEC1_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesBBEC1_yearDown.txt'], \
                              year="2016"
 CMS_scale_j_BBEC1_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesBBEC1_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesBBEC1_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesBBEC1_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesBBEC1_yearDown.txt'], \
                              year="2016APV"
 CMS_scale_j_BBEC1_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesBBEC1_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesBBEC1_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesBBEC1_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesBBEC1_yearDown.txt'], \
                              year="2017"
 CMS_scale_j_BBEC1_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesBBEC1_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesBBEC1_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesBBEC1_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesBBEC1_yearDown.txt'], \
                              year="2018"
-CMS_scale_j_FlavorQCD        : $PromptFromMC : .* : templateAsymm; \
-                         FakeRates=['ttH-multilepton/frs-jecs/fr-jesFlavorQCDUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesFlavorQCDDown.txt']
+CMS_scale_j_FlavorPureGluon        : $PromptFromMC : .* : templateAsymm; \
+                         FakeRates=['ttW_multilepton/frs-jecs/fr-jesFlavorPureGluonUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesFlavorPureGluonDown.txt']
+CMS_scale_j_FlavorPureQuark        : $PromptFromMC : .* : templateAsymm; \
+                         FakeRates=['ttW_multilepton/frs-jecs/fr-jesFlavorPureQuarkUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesFlavorPureQuarkDown.txt']
+CMS_scale_j_FlavorPureCharm        : $PromptFromMC : .* : templateAsymm; \
+                         FakeRates=['ttW_multilepton/frs-jecs/fr-jesFlavorPureCharmUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesFlavorPureCharmDown.txt']
+CMS_scale_j_FlavorPureBottom        : $PromptFromMC : .* : templateAsymm; \
+                         FakeRates=['ttW_multilepton/frs-jecs/fr-jesFlavorPureBottomUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesFlavorPureBottomDown.txt']
 CMS_scale_j_RelativeSample_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesRelativeSample_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesRelativeSample_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesRelativeSample_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesRelativeSample_yearDown.txt'], \
                              year="2016"
 CMS_scale_j_RelativeSample_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesRelativeSample_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesRelativeSample_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesRelativeSample_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesRelativeSample_yearDown.txt'], \
                              year="2016APV"
 CMS_scale_j_RelativeSample_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesRelativeSample_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesRelativeSample_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesRelativeSample_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesRelativeSample_yearDown.txt'], \
                              year="2017"
 CMS_scale_j_RelativeSample_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesRelativeSample_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesRelativeSample_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesRelativeSample_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesRelativeSample_yearDown.txt'], \
                              year="2018"
 CMS_scale_j_EC2        : $PromptFromMC : .* : templateAsymm; \
-                         FakeRates=['ttH-multilepton/frs-jecs/fr-jesEC2Up.txt'\,'ttH-multilepton/frs-jecs/fr-jesEC2Down.txt']
+                         FakeRates=['ttW_multilepton/frs-jecs/fr-jesEC2Up.txt'\,'ttW_multilepton/frs-jecs/fr-jesEC2Down.txt']
 CMS_scale_j_HF_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesHF_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesHF_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesHF_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesHF_yearDown.txt'], \
 			     year="2016"
 CMS_scale_j_HF_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesHF_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesHF_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesHF_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesHF_yearDown.txt'], \
 			     year="2016APV"
 CMS_scale_j_HF_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesHF_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesHF_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesHF_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesHF_yearDown.txt'], \
                              year="2017"
 CMS_scale_j_HF_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesHF_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesHF_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesHF_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesHF_yearDown.txt'], \
                              year="2018"
 CMS_scale_j_RelativeBal        : $PromptFromMC : .* : templateAsymm; \
-                         FakeRates=['ttH-multilepton/frs-jecs/fr-jesRelativeBalUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesRelativeBalDown.txt']
+                         FakeRates=['ttW_multilepton/frs-jecs/fr-jesRelativeBalUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesRelativeBalDown.txt']
 CMS_scale_j_Absolute_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesAbsolute_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesAbsolute_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesAbsolute_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesAbsolute_yearDown.txt'], \
                              year="2016"
 CMS_scale_j_Absolute_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesAbsolute_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesAbsolute_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesAbsolute_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesAbsolute_yearDown.txt'], \
                              year="2016APV"
 CMS_scale_j_Absolute_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesAbsolute_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesAbsolute_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesAbsolute_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesAbsolute_yearDown.txt'], \
                              year="2017"
 CMS_scale_j_Absolute_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesAbsolute_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesAbsolute_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesAbsolute_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesAbsolute_yearDown.txt'], \
                              year="2018"
 CMS_scale_j_BBEC1        : $PromptFromMC : .* : templateAsymm; \
-                         FakeRates=['ttH-multilepton/frs-jecs/fr-jesBBEC1Up.txt'\,'ttH-multilepton/frs-jecs/fr-jesBBEC1Down.txt'],
+                         FakeRates=['ttW_multilepton/frs-jecs/fr-jesBBEC1Up.txt'\,'ttW_multilepton/frs-jecs/fr-jesBBEC1Down.txt'],
 CMS_scale_j_EC2_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesEC2_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesEC2_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesEC2_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesEC2_yearDown.txt'], \
                              year="2016"
 CMS_scale_j_EC2_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesEC2_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesEC2_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesEC2_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesEC2_yearDown.txt'], \
                              year="2016APV"
 CMS_scale_j_EC2_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesEC2_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesEC2_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesEC2_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesEC2_yearDown.txt'], \
                              year="2017"
 CMS_scale_j_EC2_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jesEC2_yearUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesEC2_yearDown.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jesEC2_yearUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesEC2_yearDown.txt'], \
                              year="2018"
 CMS_scale_j_Absolute        : $PromptFromMC : .* : templateAsymm; \
-                         FakeRates=['ttH-multilepton/frs-jecs/fr-jesAbsoluteUp.txt'\,'ttH-multilepton/frs-jecs/fr-jesAbsoluteDown.txt']
+                         FakeRates=['ttW_multilepton/frs-jecs/fr-jesAbsoluteUp.txt'\,'ttW_multilepton/frs-jecs/fr-jesAbsoluteDown.txt']
 
 CMS_res_j_barrel_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer0Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer0Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer0Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer0Down.txt'], \
                              year="2016"
 CMS_res_j_barrel_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                                  FakeRates=['ttH-multilepton/frs-jecs/fr-jer0Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer0Down.txt'], \
+                                  FakeRates=['ttW_multilepton/frs-jecs/fr-jer0Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer0Down.txt'], \
                                   year="2016APV"
 CMS_res_j_barrel_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer0Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer0Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer0Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer0Down.txt'], \
                              year="2017"
 CMS_res_j_barrel_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer0Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer0Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer0Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer0Down.txt'], \
                              year="2018"
 
 CMS_res_j_endcap1_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer1Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer1Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer1Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer1Down.txt'], \
                              year="2016"
 CMS_res_j_endcap1_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                                  FakeRates=['ttH-multilepton/frs-jecs/fr-jer1Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer1Down.txt'], \
+                                  FakeRates=['ttW_multilepton/frs-jecs/fr-jer1Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer1Down.txt'], \
                                   year="2016APV"
 CMS_res_j_endcap1_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer1Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer1Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer1Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer1Down.txt'], \
                              year="2017"
 CMS_res_j_endcap1_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer1Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer1Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer1Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer1Down.txt'], \
                              year="2018"
 
 CMS_res_j_endcap2highpt_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer2Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer2Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer2Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer2Down.txt'], \
                              year="2016"
 CMS_res_j_endcap2highpt_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                                  FakeRates=['ttH-multilepton/frs-jecs/fr-jer2Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer2Down.txt'], \
+                                  FakeRates=['ttW_multilepton/frs-jecs/fr-jer2Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer2Down.txt'], \
                                   year="2016APV"
 CMS_res_j_endcap2highpt_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer2Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer2Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer2Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer2Down.txt'], \
                              year="2017"
 CMS_res_j_endcap2highpt_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer2Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer2Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer2Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer2Down.txt'], \
                              year="2018"
 
 CMS_res_j_endcap2lowpt_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer3Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer3Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer3Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer3Down.txt'], \
                              year="2016"
 CMS_res_j_endcap2lowpt_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                                  FakeRates=['ttH-multilepton/frs-jecs/fr-jer3Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer3Down.txt'], \
+                                  FakeRates=['ttW_multilepton/frs-jecs/fr-jer3Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer3Down.txt'], \
                                   year="2016APV"
 CMS_res_j_endcap2lowpt_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer3Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer3Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer3Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer3Down.txt'], \
                              year="2017"
 CMS_res_j_endcap2lowpt_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer3Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer3Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer3Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer3Down.txt'], \
                              year="2018"
 
 CMS_res_j_forwardlowpt_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer4Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer4Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer4Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer4Down.txt'], \
                              year="2016"
 CMS_res_j_forwardlowpt_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                                  FakeRates=['ttH-multilepton/frs-jecs/fr-jer4Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer4Down.txt'], \
+                                  FakeRates=['ttW_multilepton/frs-jecs/fr-jer4Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer4Down.txt'], \
                                   year="2016APV"
 CMS_res_j_forwardlowpt_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer4Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer4Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer4Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer4Down.txt'], \
                              year="2017"
 CMS_res_j_forwardlowpt_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer4Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer4Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer4Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer4Down.txt'], \
                              year="2018"
 
 CMS_res_j_forwardhighpt_2016        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer5Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer5Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer5Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer5Down.txt'], \
                              year="2016"
 CMS_res_j_forwardhighpt_2016APV        : $PromptFromMC : .* : templateAsymm; \
-                                  FakeRates=['ttH-multilepton/frs-jecs/fr-jer5Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer5Down.txt'], \
+                                  FakeRates=['ttW_multilepton/frs-jecs/fr-jer5Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer5Down.txt'], \
                                   year="2016APV"
 CMS_res_j_forwardhighpt_2017        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer5Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer5Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer5Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer5Down.txt'], \
                              year="2017"
 CMS_res_j_forwardhighpt_2018        : $PromptFromMC : .* : templateAsymm; \
-                             FakeRates=['ttH-multilepton/frs-jecs/fr-jer5Up.txt'\,'ttH-multilepton/frs-jecs/fr-jer5Down.txt'], \
+                             FakeRates=['ttW_multilepton/frs-jecs/fr-jer5Up.txt'\,'ttW_multilepton/frs-jecs/fr-jer5Down.txt'], \
                              year="2018"
 
 CMS_jesHEMIssue      : $PromptFromMC : .* : templateAsymm; \
-		    FakeRates=['ttH-multilepton/frs-jecs/fr_jesHEMIssueUp.txt'\,'ttH-multilepton/frs-jecs/fr_jesHEMIssueDown.txt'], \
+		    FakeRates=['ttW_multilepton/frs-jecs/fr_jesHEMIssueUp.txt'\,'ttW_multilepton/frs-jecs/fr_jesHEMIssueDown.txt'], \
                     year="2018"
 
 CMS_ttWl_UnclusteredEn : $PromptFromMC : .* : templateAsymm; \
-        FakeRates=['ttH-multilepton/fr-unclUp.txt'\,'ttH-multilepton/fr-unclDn.txt']
+        FakeRates=['ttW_multilepton/fr-unclUp.txt'\,'ttW_multilepton/fr-unclDn.txt']
 
 CMS_ttWl_btag_LF    : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSF_light_up_correlated/btagSF'\,'btagSF_light_down_correlated/btagSF']
 CMS_ttWl_btag_HF    : $PromptFromMC : .* : templateAsymm; AddWeights=['btagSF_heavy_up_correlated/btagSF'\,'btagSF_heavy_down_correlated/btagSF']
@@ -288,8 +294,8 @@ QCDscale_tHW   : $tHW  : .* : normAsymm : 0.939 : 1.046
 #QCDscale_ttWW  : TTWW  : .* : normAsymm : 0.891 : 1.081
 QCDscale_WH    : $WH   : .* : normAsymm : 0.950 : 1.070
 QCDscale_ZH    : $ZH   : .* : normAsymm : 0.962 : 1.031
-QCDscale_WZ    : $WZ   : .* : normAsymm : 0.968 : 1.039
-QCDscale_ZZ    : $ZZ   : .* : normAsymm : 0.982 : 1.02
+QCDscale_WZ    : WZ   : .* : normAsymm : 0.968 : 1.039
+QCDscale_ZZ    : ZZ   : .* : normAsymm : 0.982 : 1.02
 pdf_Higgs_ttH  : $ttH  : .* : normSymm : 1.036
 pdf_gg         : TTZ   : .* : normSymm : 0.966
 pdf_qg	       : $tHq  : .* : normSymm : 1.01
@@ -298,8 +304,8 @@ pdf_qg	       : $tHW  : .* : normSymm : 1.027
 pdf_TTWW       : TTWW  : .* : normSymm : 1.03
 pdf_WH	       : $WH   : .* : normSymm : 1.019
 pdf_ZH	       : $ZH   : .* : normSymm : 1.016
-pdf_WZ	       : $WZ   : .* : normSymm : 1.014
-pdf_ZZ	       : $ZZ   : .* : normSymm : 1.015
+pdf_WZ	       : WZ   : .* : normSymm : 1.014
+pdf_ZZ	       : ZZ   : .* : normSymm : 1.015
 
 BR_hbb         : ttH$  	       : .* : normSymm : 1.0126 # in this analysis un-splitted ttH sample is TTHnobb
 BR_hbb         : WH$  	       : .* : normSymm : 1.0126
@@ -382,18 +388,41 @@ CMS_ttWl18_Clos_e_shape : $FRAll  : .*2lss.*    : templateSymm ; Normalize=False
 CMS_ttWl18_Clos_e_shape : $FRAll  : .*3l.*    : templateSymm ; Normalize=False, AddWeight='if3(abs(LepGood1_conePt)==11\,lnN1D_p1(1.024\,LepGood1_conePt\,40\,120)\,1)*if3(abs(LepGood2_conePt)==11\,lnN1D_p1(1.024\,LepGood2_conePt\,40\,120)\,1)*if3(abs(LepGood3_conePt)==11\,lnN1D_p1(1.024\,LepGood3_conePt\,40\,120)\,1)', year="2018" 
 
 
-CMS_ttWl_thu_shape_WZ : WZ : .* : envelope ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttW_multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt']
-CMS_ttWl_thu_shape_ZZ : ZZ : .* : envelope ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttW_multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt']
+CMS_ttWl_thu_shape_WZ_muR : WZ : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_WZ_muF : WZ : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
 
-CMS_ttWl_thu_shape_ttH : $ttH : .* : envelope; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttW_multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt']
-CMS_ttWl_thu_shape_ttZ : TTZ  : .* : envelope; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttW_multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt'] 
-CMS_ttWl_thu_shape_ttW : $TTW  : .* : envelope; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttW_multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt'] 
-CMS_ttWl_thu_shape_tHW : $tHW : .* : envelope; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttW_multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt']
-CMS_ttWl_thu_shape_tHq : $tHq : .* : envelope; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttW_multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt']
-QCDscale_Rares_ACCEPT : Rares : .* : envelope; FakeRates=['ttH-multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttH-multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt']
-QCDscale_ttVV_ACCEPT : ttVV : .* : envelope; FakeRates=['ttH-multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttH-multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt']
-QCDscale_VVV_ACCEPT : VVV : .* : envelope; FakeRates=['ttH-multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttH-multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt']
-QCDscale_tZq_ACCEPT : tZq : .* : envelope; FakeRates=['ttH-multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt'\,'ttH-multilepton/frs-scales/fr-muR_2p0_muF_2p0.txt'\,'ttH-multilepton/frs-scales/fr-muR_0p5_muF_0p5.txt']
+CMS_ttWl_thu_shape_ZZ_muR : ZZ : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_ZZ_muF : ZZ : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_ttH_muR : $ttH : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_ttH_muF : $ttH : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_ttZ_muR : TTZ : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_ttZ_muF : TTZ : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_ttW_muR : $TTW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_ttW_muF : $TTW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_ttW_muR : $TTW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_ttW_muF : $TTW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_tHW_muR : $tHW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_tHW_muF : $tHW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_tHq_muR : $tHq : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_tHq_muF : $tHq : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_Rares_muR : Rares : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_Rares_muF : Rares : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_ttVV_muR : ttVV : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_ttVV_muF : ttVV : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_VVV_muR : VVV : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_VVV_muF : VVV : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
+
+CMS_ttWl_thu_shape_tZq_muR : tZq : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
+CMS_ttWl_thu_shape_tZq_muF : tZq : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
 
 ISR_ttW : $TTW : .*:templateAsymm;AddWeights=['PSWeight[0]'\,'PSWeight[2]']
 FSR : $TTW : .*:templateAsymm;AddWeights=['PSWeight[1]'\,'PSWeight[3]']
@@ -411,12 +440,417 @@ FSR : tZq : .*:templateAsymm;AddWeights=['PSWeight[1]'\,'PSWeight[3]']
 # Charge flip uncertainty
 CMS_ttWl_QF     : data_flips  : .* : normSymm : 1.3
 
+#PDF acceptance: for $TTW, $ttH, TTZ,tZq, correlating between processes. 1 nuisance per eigenvector. 
+QCDpdf_ACCEPT_0 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_0.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_0.txt']
+QCDpdf_ACCEPT_1 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_1.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_1.txt']
+QCDpdf_ACCEPT_2 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_2.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_2.txt']
+QCDpdf_ACCEPT_3 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_3.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_3.txt']
+QCDpdf_ACCEPT_4 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_4.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_4.txt']
+QCDpdf_ACCEPT_5 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_5.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_5.txt']
+QCDpdf_ACCEPT_6 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_6.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_6.txt']
+QCDpdf_ACCEPT_7 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_7.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_7.txt']
+QCDpdf_ACCEPT_8 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_8.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_8.txt']
+QCDpdf_ACCEPT_9 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_9.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_9.txt']
+QCDpdf_ACCEPT_10 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_10.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_10.txt']
+QCDpdf_ACCEPT_11 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_11.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_11.txt']
+QCDpdf_ACCEPT_12 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_12.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_12.txt']
+QCDpdf_ACCEPT_13 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_13.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_13.txt']
+QCDpdf_ACCEPT_14 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_14.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_14.txt']
+QCDpdf_ACCEPT_15 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_15.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_15.txt']
+QCDpdf_ACCEPT_16 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_16.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_16.txt']
+QCDpdf_ACCEPT_17 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_17.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_17.txt']
+QCDpdf_ACCEPT_18 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_18.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_18.txt']
+QCDpdf_ACCEPT_19 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_19.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_19.txt']
+QCDpdf_ACCEPT_20 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_20.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_20.txt']
+QCDpdf_ACCEPT_21 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_21.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_21.txt']
+QCDpdf_ACCEPT_22 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_22.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_22.txt']
+QCDpdf_ACCEPT_23 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_23.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_23.txt']
+QCDpdf_ACCEPT_24 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_24.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_24.txt']
+QCDpdf_ACCEPT_25 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_25.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_25.txt']
+QCDpdf_ACCEPT_26 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_26.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_26.txt']
+QCDpdf_ACCEPT_27 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_27.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_27.txt']
+QCDpdf_ACCEPT_28 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_28.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_28.txt']
+QCDpdf_ACCEPT_29 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_29.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_29.txt']
+QCDpdf_ACCEPT_30 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_30.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_30.txt']
+QCDpdf_ACCEPT_31 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_31.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_31.txt']
+QCDpdf_ACCEPT_32 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_32.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_32.txt']
+QCDpdf_ACCEPT_33 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_33.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_33.txt']
+QCDpdf_ACCEPT_34 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_34.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_34.txt']
+QCDpdf_ACCEPT_35 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_35.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_35.txt']
+QCDpdf_ACCEPT_36 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_36.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_36.txt']
+QCDpdf_ACCEPT_37 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_37.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_37.txt']
+QCDpdf_ACCEPT_38 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_38.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_38.txt']
+QCDpdf_ACCEPT_39 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_39.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_39.txt']
+QCDpdf_ACCEPT_40 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_40.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_40.txt']
+QCDpdf_ACCEPT_41 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_41.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_41.txt']
+QCDpdf_ACCEPT_42 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_42.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_42.txt']
+QCDpdf_ACCEPT_43 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_43.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_43.txt']
+QCDpdf_ACCEPT_44 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_44.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_44.txt']
+QCDpdf_ACCEPT_45 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_45.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_45.txt']
+QCDpdf_ACCEPT_46 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_46.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_46.txt']
+QCDpdf_ACCEPT_47 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_47.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_47.txt']
+QCDpdf_ACCEPT_48 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_48.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_48.txt']
+QCDpdf_ACCEPT_49 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_49.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_49.txt']
+QCDpdf_ACCEPT_50 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_50.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_50.txt']
+QCDpdf_ACCEPT_51 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_51.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_51.txt']
+QCDpdf_ACCEPT_52 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_52.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_52.txt']
+QCDpdf_ACCEPT_53 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_53.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_53.txt']
+QCDpdf_ACCEPT_54 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_54.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_54.txt']
+QCDpdf_ACCEPT_55 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_55.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_55.txt']
+QCDpdf_ACCEPT_56 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_56.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_56.txt']
+QCDpdf_ACCEPT_57 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_57.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_57.txt']
+QCDpdf_ACCEPT_58 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_58.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_58.txt']
+QCDpdf_ACCEPT_59 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_59.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_59.txt']
+QCDpdf_ACCEPT_60 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_60.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_60.txt']
+QCDpdf_ACCEPT_61 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_61.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_61.txt']
+QCDpdf_ACCEPT_62 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_62.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_62.txt']
+QCDpdf_ACCEPT_63 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_63.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_63.txt']
+QCDpdf_ACCEPT_64 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_64.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_64.txt']
+QCDpdf_ACCEPT_65 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_65.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_65.txt']
+QCDpdf_ACCEPT_66 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_66.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_66.txt']
+QCDpdf_ACCEPT_67 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_67.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_67.txt']
+QCDpdf_ACCEPT_68 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_68.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_68.txt']
+QCDpdf_ACCEPT_69 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_69.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_69.txt']
+QCDpdf_ACCEPT_70 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_70.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_70.txt']
+QCDpdf_ACCEPT_71 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_71.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_71.txt']
+QCDpdf_ACCEPT_72 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_72.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_72.txt']
+QCDpdf_ACCEPT_73 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_73.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_73.txt']
+QCDpdf_ACCEPT_74 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_74.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_74.txt']
+QCDpdf_ACCEPT_75 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_75.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_75.txt']
+QCDpdf_ACCEPT_76 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_76.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_76.txt']
+QCDpdf_ACCEPT_77 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_77.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_77.txt']
+QCDpdf_ACCEPT_78 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_78.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_78.txt']
+QCDpdf_ACCEPT_79 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_79.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_79.txt']
+QCDpdf_ACCEPT_80 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_80.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_80.txt']
+QCDpdf_ACCEPT_81 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_81.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_81.txt']
+QCDpdf_ACCEPT_82 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_82.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_82.txt']
+QCDpdf_ACCEPT_83 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_83.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_83.txt']
+QCDpdf_ACCEPT_84 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_84.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_84.txt']
+QCDpdf_ACCEPT_85 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_85.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_85.txt']
+QCDpdf_ACCEPT_86 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_86.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_86.txt']
+QCDpdf_ACCEPT_87 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_87.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_87.txt']
+QCDpdf_ACCEPT_88 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_88.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_88.txt']
+QCDpdf_ACCEPT_89 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_89.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_89.txt']
+QCDpdf_ACCEPT_90 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_90.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_90.txt']
+QCDpdf_ACCEPT_91 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_91.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_91.txt']
+QCDpdf_ACCEPT_92 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_92.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_92.txt']
+QCDpdf_ACCEPT_93 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_93.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_93.txt']
+QCDpdf_ACCEPT_94 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_94.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_94.txt']
+QCDpdf_ACCEPT_95 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_95.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_95.txt']
+QCDpdf_ACCEPT_96 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_96.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_96.txt']
+QCDpdf_ACCEPT_97 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_97.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_97.txt']
+QCDpdf_ACCEPT_98 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_98.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_98.txt']
+QCDpdf_ACCEPT_99 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_99.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_99.txt']
+QCDpdf_ACCEPT_100 : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_100.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_100.txt']
 
-QCDpdf_ACCEPT : $TTW  : .* : HessianPDFset; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_0.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_1.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_2.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_3.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_4.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_5.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_6.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_7.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_8.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_9.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_10.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_11.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_12.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_13.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_14.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_15.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_16.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_17.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_18.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_19.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_20.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_21.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_22.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_23.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_24.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_25.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_26.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_27.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_28.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_29.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_30.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_31.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_32.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_33.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_34.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_35.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_36.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_37.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_38.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_39.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_40.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_41.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_42.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_43.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_44.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_45.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_46.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_47.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_48.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_49.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_50.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_51.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_52.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_53.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_54.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_55.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_56.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_57.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_58.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_59.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_60.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_61.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_62.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_63.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_64.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_65.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_66.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_67.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_68.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_69.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_70.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_71.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_72.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_73.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_74.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_75.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_76.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_77.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_78.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_79.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_80.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_81.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_82.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_83.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_84.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_85.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_86.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_87.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_88.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_89.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_90.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_91.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_92.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_93.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_94.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_95.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_96.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_97.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_98.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_99.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_100.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_101.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_102.txt']
+QCDpdf_ACCEPT_0 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_0.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_0.txt']
+QCDpdf_ACCEPT_1 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_1.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_1.txt']
+QCDpdf_ACCEPT_2 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_2.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_2.txt']
+QCDpdf_ACCEPT_3 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_3.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_3.txt']
+QCDpdf_ACCEPT_4 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_4.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_4.txt']
+QCDpdf_ACCEPT_5 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_5.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_5.txt']
+QCDpdf_ACCEPT_6 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_6.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_6.txt']
+QCDpdf_ACCEPT_7 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_7.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_7.txt']
+QCDpdf_ACCEPT_8 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_8.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_8.txt']
+QCDpdf_ACCEPT_9 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_9.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_9.txt']
+QCDpdf_ACCEPT_10 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_10.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_10.txt']
+QCDpdf_ACCEPT_11 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_11.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_11.txt']
+QCDpdf_ACCEPT_12 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_12.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_12.txt']
+QCDpdf_ACCEPT_13 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_13.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_13.txt']
+QCDpdf_ACCEPT_14 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_14.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_14.txt']
+QCDpdf_ACCEPT_15 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_15.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_15.txt']
+QCDpdf_ACCEPT_16 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_16.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_16.txt']
+QCDpdf_ACCEPT_17 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_17.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_17.txt']
+QCDpdf_ACCEPT_18 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_18.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_18.txt']
+QCDpdf_ACCEPT_19 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_19.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_19.txt']
+QCDpdf_ACCEPT_20 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_20.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_20.txt']
+QCDpdf_ACCEPT_21 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_21.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_21.txt']
+QCDpdf_ACCEPT_22 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_22.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_22.txt']
+QCDpdf_ACCEPT_23 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_23.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_23.txt']
+QCDpdf_ACCEPT_24 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_24.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_24.txt']
+QCDpdf_ACCEPT_25 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_25.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_25.txt']
+QCDpdf_ACCEPT_26 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_26.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_26.txt']
+QCDpdf_ACCEPT_27 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_27.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_27.txt']
+QCDpdf_ACCEPT_28 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_28.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_28.txt']
+QCDpdf_ACCEPT_29 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_29.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_29.txt']
+QCDpdf_ACCEPT_30 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_30.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_30.txt']
+QCDpdf_ACCEPT_31 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_31.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_31.txt']
+QCDpdf_ACCEPT_32 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_32.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_32.txt']
+QCDpdf_ACCEPT_33 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_33.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_33.txt']
+QCDpdf_ACCEPT_34 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_34.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_34.txt']
+QCDpdf_ACCEPT_35 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_35.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_35.txt']
+QCDpdf_ACCEPT_36 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_36.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_36.txt']
+QCDpdf_ACCEPT_37 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_37.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_37.txt']
+QCDpdf_ACCEPT_38 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_38.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_38.txt']
+QCDpdf_ACCEPT_39 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_39.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_39.txt']
+QCDpdf_ACCEPT_40 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_40.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_40.txt']
+QCDpdf_ACCEPT_41 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_41.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_41.txt']
+QCDpdf_ACCEPT_42 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_42.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_42.txt']
+QCDpdf_ACCEPT_43 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_43.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_43.txt']
+QCDpdf_ACCEPT_44 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_44.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_44.txt']
+QCDpdf_ACCEPT_45 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_45.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_45.txt']
+QCDpdf_ACCEPT_46 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_46.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_46.txt']
+QCDpdf_ACCEPT_47 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_47.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_47.txt']
+QCDpdf_ACCEPT_48 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_48.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_48.txt']
+QCDpdf_ACCEPT_49 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_49.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_49.txt']
+QCDpdf_ACCEPT_50 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_50.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_50.txt']
+QCDpdf_ACCEPT_51 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_51.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_51.txt']
+QCDpdf_ACCEPT_52 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_52.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_52.txt']
+QCDpdf_ACCEPT_53 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_53.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_53.txt']
+QCDpdf_ACCEPT_54 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_54.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_54.txt']
+QCDpdf_ACCEPT_55 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_55.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_55.txt']
+QCDpdf_ACCEPT_56 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_56.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_56.txt']
+QCDpdf_ACCEPT_57 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_57.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_57.txt']
+QCDpdf_ACCEPT_58 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_58.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_58.txt']
+QCDpdf_ACCEPT_59 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_59.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_59.txt']
+QCDpdf_ACCEPT_60 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_60.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_60.txt']
+QCDpdf_ACCEPT_61 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_61.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_61.txt']
+QCDpdf_ACCEPT_62 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_62.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_62.txt']
+QCDpdf_ACCEPT_63 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_63.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_63.txt']
+QCDpdf_ACCEPT_64 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_64.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_64.txt']
+QCDpdf_ACCEPT_65 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_65.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_65.txt']
+QCDpdf_ACCEPT_66 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_66.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_66.txt']
+QCDpdf_ACCEPT_67 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_67.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_67.txt']
+QCDpdf_ACCEPT_68 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_68.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_68.txt']
+QCDpdf_ACCEPT_69 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_69.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_69.txt']
+QCDpdf_ACCEPT_70 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_70.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_70.txt']
+QCDpdf_ACCEPT_71 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_71.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_71.txt']
+QCDpdf_ACCEPT_72 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_72.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_72.txt']
+QCDpdf_ACCEPT_73 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_73.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_73.txt']
+QCDpdf_ACCEPT_74 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_74.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_74.txt']
+QCDpdf_ACCEPT_75 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_75.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_75.txt']
+QCDpdf_ACCEPT_76 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_76.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_76.txt']
+QCDpdf_ACCEPT_77 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_77.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_77.txt']
+QCDpdf_ACCEPT_78 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_78.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_78.txt']
+QCDpdf_ACCEPT_79 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_79.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_79.txt']
+QCDpdf_ACCEPT_80 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_80.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_80.txt']
+QCDpdf_ACCEPT_81 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_81.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_81.txt']
+QCDpdf_ACCEPT_82 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_82.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_82.txt']
+QCDpdf_ACCEPT_83 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_83.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_83.txt']
+QCDpdf_ACCEPT_84 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_84.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_84.txt']
+QCDpdf_ACCEPT_85 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_85.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_85.txt']
+QCDpdf_ACCEPT_86 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_86.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_86.txt']
+QCDpdf_ACCEPT_87 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_87.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_87.txt']
+QCDpdf_ACCEPT_88 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_88.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_88.txt']
+QCDpdf_ACCEPT_89 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_89.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_89.txt']
+QCDpdf_ACCEPT_90 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_90.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_90.txt']
+QCDpdf_ACCEPT_91 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_91.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_91.txt']
+QCDpdf_ACCEPT_92 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_92.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_92.txt']
+QCDpdf_ACCEPT_93 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_93.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_93.txt']
+QCDpdf_ACCEPT_94 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_94.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_94.txt']
+QCDpdf_ACCEPT_95 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_95.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_95.txt']
+QCDpdf_ACCEPT_96 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_96.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_96.txt']
+QCDpdf_ACCEPT_97 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_97.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_97.txt']
+QCDpdf_ACCEPT_98 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_98.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_98.txt']
+QCDpdf_ACCEPT_99 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_99.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_99.txt']
+QCDpdf_ACCEPT_100 : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_100.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_100.txt']
 
-QCDpdf_ACCEPT : $ttH : .* : HessianPDFset; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_0.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_1.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_2.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_3.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_4.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_5.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_6.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_7.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_8.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_9.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_10.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_11.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_12.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_13.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_14.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_15.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_16.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_17.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_18.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_19.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_20.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_21.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_22.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_23.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_24.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_25.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_26.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_27.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_28.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_29.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_30.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_31.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_32.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_33.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_34.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_35.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_36.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_37.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_38.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_39.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_40.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_41.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_42.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_43.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_44.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_45.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_46.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_47.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_48.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_49.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_50.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_51.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_52.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_53.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_54.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_55.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_56.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_57.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_58.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_59.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_60.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_61.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_62.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_63.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_64.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_65.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_66.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_67.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_68.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_69.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_70.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_71.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_72.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_73.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_74.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_75.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_76.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_77.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_78.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_79.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_80.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_81.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_82.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_83.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_84.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_85.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_86.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_87.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_88.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_89.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_90.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_91.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_92.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_93.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_94.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_95.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_96.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_97.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_98.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_99.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_100.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_101.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_102.txt']
+QCDpdf_ACCEPT_0 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_0.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_0.txt']
+QCDpdf_ACCEPT_1 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_1.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_1.txt']
+QCDpdf_ACCEPT_2 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_2.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_2.txt']
+QCDpdf_ACCEPT_3 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_3.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_3.txt']
+QCDpdf_ACCEPT_4 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_4.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_4.txt']
+QCDpdf_ACCEPT_5 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_5.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_5.txt']
+QCDpdf_ACCEPT_6 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_6.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_6.txt']
+QCDpdf_ACCEPT_7 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_7.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_7.txt']
+QCDpdf_ACCEPT_8 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_8.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_8.txt']
+QCDpdf_ACCEPT_9 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_9.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_9.txt']
+QCDpdf_ACCEPT_10 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_10.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_10.txt']
+QCDpdf_ACCEPT_11 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_11.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_11.txt']
+QCDpdf_ACCEPT_12 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_12.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_12.txt']
+QCDpdf_ACCEPT_13 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_13.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_13.txt']
+QCDpdf_ACCEPT_14 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_14.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_14.txt']
+QCDpdf_ACCEPT_15 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_15.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_15.txt']
+QCDpdf_ACCEPT_16 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_16.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_16.txt']
+QCDpdf_ACCEPT_17 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_17.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_17.txt']
+QCDpdf_ACCEPT_18 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_18.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_18.txt']
+QCDpdf_ACCEPT_19 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_19.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_19.txt']
+QCDpdf_ACCEPT_20 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_20.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_20.txt']
+QCDpdf_ACCEPT_21 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_21.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_21.txt']
+QCDpdf_ACCEPT_22 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_22.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_22.txt']
+QCDpdf_ACCEPT_23 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_23.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_23.txt']
+QCDpdf_ACCEPT_24 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_24.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_24.txt']
+QCDpdf_ACCEPT_25 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_25.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_25.txt']
+QCDpdf_ACCEPT_26 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_26.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_26.txt']
+QCDpdf_ACCEPT_27 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_27.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_27.txt']
+QCDpdf_ACCEPT_28 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_28.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_28.txt']
+QCDpdf_ACCEPT_29 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_29.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_29.txt']
+QCDpdf_ACCEPT_30 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_30.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_30.txt']
+QCDpdf_ACCEPT_31 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_31.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_31.txt']
+QCDpdf_ACCEPT_32 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_32.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_32.txt']
+QCDpdf_ACCEPT_33 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_33.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_33.txt']
+QCDpdf_ACCEPT_34 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_34.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_34.txt']
+QCDpdf_ACCEPT_35 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_35.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_35.txt']
+QCDpdf_ACCEPT_36 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_36.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_36.txt']
+QCDpdf_ACCEPT_37 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_37.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_37.txt']
+QCDpdf_ACCEPT_38 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_38.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_38.txt']
+QCDpdf_ACCEPT_39 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_39.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_39.txt']
+QCDpdf_ACCEPT_40 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_40.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_40.txt']
+QCDpdf_ACCEPT_41 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_41.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_41.txt']
+QCDpdf_ACCEPT_42 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_42.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_42.txt']
+QCDpdf_ACCEPT_43 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_43.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_43.txt']
+QCDpdf_ACCEPT_44 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_44.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_44.txt']
+QCDpdf_ACCEPT_45 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_45.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_45.txt']
+QCDpdf_ACCEPT_46 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_46.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_46.txt']
+QCDpdf_ACCEPT_47 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_47.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_47.txt']
+QCDpdf_ACCEPT_48 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_48.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_48.txt']
+QCDpdf_ACCEPT_49 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_49.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_49.txt']
+QCDpdf_ACCEPT_50 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_50.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_50.txt']
+QCDpdf_ACCEPT_51 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_51.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_51.txt']
+QCDpdf_ACCEPT_52 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_52.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_52.txt']
+QCDpdf_ACCEPT_53 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_53.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_53.txt']
+QCDpdf_ACCEPT_54 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_54.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_54.txt']
+QCDpdf_ACCEPT_55 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_55.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_55.txt']
+QCDpdf_ACCEPT_56 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_56.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_56.txt']
+QCDpdf_ACCEPT_57 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_57.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_57.txt']
+QCDpdf_ACCEPT_58 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_58.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_58.txt']
+QCDpdf_ACCEPT_59 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_59.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_59.txt']
+QCDpdf_ACCEPT_60 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_60.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_60.txt']
+QCDpdf_ACCEPT_61 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_61.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_61.txt']
+QCDpdf_ACCEPT_62 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_62.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_62.txt']
+QCDpdf_ACCEPT_63 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_63.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_63.txt']
+QCDpdf_ACCEPT_64 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_64.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_64.txt']
+QCDpdf_ACCEPT_65 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_65.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_65.txt']
+QCDpdf_ACCEPT_66 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_66.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_66.txt']
+QCDpdf_ACCEPT_67 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_67.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_67.txt']
+QCDpdf_ACCEPT_68 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_68.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_68.txt']
+QCDpdf_ACCEPT_69 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_69.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_69.txt']
+QCDpdf_ACCEPT_70 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_70.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_70.txt']
+QCDpdf_ACCEPT_71 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_71.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_71.txt']
+QCDpdf_ACCEPT_72 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_72.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_72.txt']
+QCDpdf_ACCEPT_73 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_73.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_73.txt']
+QCDpdf_ACCEPT_74 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_74.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_74.txt']
+QCDpdf_ACCEPT_75 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_75.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_75.txt']
+QCDpdf_ACCEPT_76 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_76.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_76.txt']
+QCDpdf_ACCEPT_77 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_77.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_77.txt']
+QCDpdf_ACCEPT_78 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_78.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_78.txt']
+QCDpdf_ACCEPT_79 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_79.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_79.txt']
+QCDpdf_ACCEPT_80 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_80.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_80.txt']
+QCDpdf_ACCEPT_81 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_81.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_81.txt']
+QCDpdf_ACCEPT_82 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_82.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_82.txt']
+QCDpdf_ACCEPT_83 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_83.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_83.txt']
+QCDpdf_ACCEPT_84 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_84.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_84.txt']
+QCDpdf_ACCEPT_85 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_85.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_85.txt']
+QCDpdf_ACCEPT_86 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_86.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_86.txt']
+QCDpdf_ACCEPT_87 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_87.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_87.txt']
+QCDpdf_ACCEPT_88 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_88.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_88.txt']
+QCDpdf_ACCEPT_89 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_89.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_89.txt']
+QCDpdf_ACCEPT_90 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_90.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_90.txt']
+QCDpdf_ACCEPT_91 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_91.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_91.txt']
+QCDpdf_ACCEPT_92 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_92.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_92.txt']
+QCDpdf_ACCEPT_93 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_93.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_93.txt']
+QCDpdf_ACCEPT_94 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_94.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_94.txt']
+QCDpdf_ACCEPT_95 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_95.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_95.txt']
+QCDpdf_ACCEPT_96 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_96.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_96.txt']
+QCDpdf_ACCEPT_97 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_97.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_97.txt']
+QCDpdf_ACCEPT_98 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_98.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_98.txt']
+QCDpdf_ACCEPT_99 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_99.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_99.txt']
+QCDpdf_ACCEPT_100 : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_100.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_100.txt']
 
-QCDpdf_ACCEPT : TTZ : .* : HessianPDFset; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_0.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_1.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_2.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_3.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_4.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_5.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_6.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_7.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_8.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_9.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_10.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_11.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_12.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_13.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_14.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_15.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_16.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_17.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_18.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_19.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_20.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_21.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_22.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_23.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_24.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_25.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_26.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_27.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_28.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_29.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_30.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_31.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_32.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_33.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_34.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_35.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_36.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_37.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_38.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_39.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_40.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_41.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_42.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_43.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_44.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_45.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_46.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_47.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_48.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_49.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_50.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_51.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_52.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_53.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_54.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_55.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_56.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_57.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_58.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_59.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_60.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_61.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_62.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_63.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_64.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_65.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_66.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_67.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_68.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_69.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_70.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_71.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_72.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_73.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_74.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_75.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_76.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_77.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_78.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_79.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_80.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_81.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_82.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_83.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_84.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_85.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_86.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_87.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_88.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_89.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_90.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_91.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_92.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_93.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_94.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_95.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_96.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_97.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_98.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_99.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_100.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_101.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_102.txt']
+QCDpdf_ACCEPT_0 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_0.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_0.txt']
+QCDpdf_ACCEPT_1 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_1.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_1.txt']
+QCDpdf_ACCEPT_2 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_2.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_2.txt']
+QCDpdf_ACCEPT_3 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_3.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_3.txt']
+QCDpdf_ACCEPT_4 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_4.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_4.txt']
+QCDpdf_ACCEPT_5 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_5.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_5.txt']
+QCDpdf_ACCEPT_6 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_6.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_6.txt']
+QCDpdf_ACCEPT_7 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_7.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_7.txt']
+QCDpdf_ACCEPT_8 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_8.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_8.txt']
+QCDpdf_ACCEPT_9 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_9.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_9.txt']
+QCDpdf_ACCEPT_10 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_10.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_10.txt']
+QCDpdf_ACCEPT_11 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_11.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_11.txt']
+QCDpdf_ACCEPT_12 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_12.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_12.txt']
+QCDpdf_ACCEPT_13 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_13.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_13.txt']
+QCDpdf_ACCEPT_14 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_14.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_14.txt']
+QCDpdf_ACCEPT_15 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_15.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_15.txt']
+QCDpdf_ACCEPT_16 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_16.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_16.txt']
+QCDpdf_ACCEPT_17 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_17.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_17.txt']
+QCDpdf_ACCEPT_18 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_18.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_18.txt']
+QCDpdf_ACCEPT_19 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_19.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_19.txt']
+QCDpdf_ACCEPT_20 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_20.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_20.txt']
+QCDpdf_ACCEPT_21 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_21.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_21.txt']
+QCDpdf_ACCEPT_22 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_22.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_22.txt']
+QCDpdf_ACCEPT_23 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_23.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_23.txt']
+QCDpdf_ACCEPT_24 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_24.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_24.txt']
+QCDpdf_ACCEPT_25 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_25.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_25.txt']
+QCDpdf_ACCEPT_26 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_26.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_26.txt']
+QCDpdf_ACCEPT_27 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_27.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_27.txt']
+QCDpdf_ACCEPT_28 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_28.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_28.txt']
+QCDpdf_ACCEPT_29 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_29.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_29.txt']
+QCDpdf_ACCEPT_30 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_30.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_30.txt']
+QCDpdf_ACCEPT_31 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_31.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_31.txt']
+QCDpdf_ACCEPT_32 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_32.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_32.txt']
+QCDpdf_ACCEPT_33 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_33.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_33.txt']
+QCDpdf_ACCEPT_34 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_34.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_34.txt']
+QCDpdf_ACCEPT_35 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_35.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_35.txt']
+QCDpdf_ACCEPT_36 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_36.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_36.txt']
+QCDpdf_ACCEPT_37 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_37.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_37.txt']
+QCDpdf_ACCEPT_38 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_38.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_38.txt']
+QCDpdf_ACCEPT_39 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_39.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_39.txt']
+QCDpdf_ACCEPT_40 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_40.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_40.txt']
+QCDpdf_ACCEPT_41 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_41.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_41.txt']
+QCDpdf_ACCEPT_42 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_42.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_42.txt']
+QCDpdf_ACCEPT_43 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_43.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_43.txt']
+QCDpdf_ACCEPT_44 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_44.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_44.txt']
+QCDpdf_ACCEPT_45 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_45.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_45.txt']
+QCDpdf_ACCEPT_46 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_46.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_46.txt']
+QCDpdf_ACCEPT_47 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_47.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_47.txt']
+QCDpdf_ACCEPT_48 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_48.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_48.txt']
+QCDpdf_ACCEPT_49 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_49.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_49.txt']
+QCDpdf_ACCEPT_50 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_50.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_50.txt']
+QCDpdf_ACCEPT_51 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_51.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_51.txt']
+QCDpdf_ACCEPT_52 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_52.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_52.txt']
+QCDpdf_ACCEPT_53 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_53.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_53.txt']
+QCDpdf_ACCEPT_54 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_54.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_54.txt']
+QCDpdf_ACCEPT_55 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_55.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_55.txt']
+QCDpdf_ACCEPT_56 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_56.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_56.txt']
+QCDpdf_ACCEPT_57 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_57.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_57.txt']
+QCDpdf_ACCEPT_58 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_58.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_58.txt']
+QCDpdf_ACCEPT_59 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_59.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_59.txt']
+QCDpdf_ACCEPT_60 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_60.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_60.txt']
+QCDpdf_ACCEPT_61 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_61.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_61.txt']
+QCDpdf_ACCEPT_62 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_62.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_62.txt']
+QCDpdf_ACCEPT_63 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_63.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_63.txt']
+QCDpdf_ACCEPT_64 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_64.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_64.txt']
+QCDpdf_ACCEPT_65 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_65.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_65.txt']
+QCDpdf_ACCEPT_66 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_66.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_66.txt']
+QCDpdf_ACCEPT_67 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_67.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_67.txt']
+QCDpdf_ACCEPT_68 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_68.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_68.txt']
+QCDpdf_ACCEPT_69 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_69.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_69.txt']
+QCDpdf_ACCEPT_70 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_70.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_70.txt']
+QCDpdf_ACCEPT_71 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_71.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_71.txt']
+QCDpdf_ACCEPT_72 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_72.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_72.txt']
+QCDpdf_ACCEPT_73 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_73.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_73.txt']
+QCDpdf_ACCEPT_74 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_74.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_74.txt']
+QCDpdf_ACCEPT_75 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_75.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_75.txt']
+QCDpdf_ACCEPT_76 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_76.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_76.txt']
+QCDpdf_ACCEPT_77 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_77.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_77.txt']
+QCDpdf_ACCEPT_78 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_78.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_78.txt']
+QCDpdf_ACCEPT_79 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_79.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_79.txt']
+QCDpdf_ACCEPT_80 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_80.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_80.txt']
+QCDpdf_ACCEPT_81 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_81.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_81.txt']
+QCDpdf_ACCEPT_82 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_82.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_82.txt']
+QCDpdf_ACCEPT_83 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_83.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_83.txt']
+QCDpdf_ACCEPT_84 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_84.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_84.txt']
+QCDpdf_ACCEPT_85 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_85.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_85.txt']
+QCDpdf_ACCEPT_86 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_86.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_86.txt']
+QCDpdf_ACCEPT_87 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_87.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_87.txt']
+QCDpdf_ACCEPT_88 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_88.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_88.txt']
+QCDpdf_ACCEPT_89 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_89.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_89.txt']
+QCDpdf_ACCEPT_90 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_90.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_90.txt']
+QCDpdf_ACCEPT_91 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_91.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_91.txt']
+QCDpdf_ACCEPT_92 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_92.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_92.txt']
+QCDpdf_ACCEPT_93 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_93.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_93.txt']
+QCDpdf_ACCEPT_94 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_94.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_94.txt']
+QCDpdf_ACCEPT_95 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_95.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_95.txt']
+QCDpdf_ACCEPT_96 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_96.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_96.txt']
+QCDpdf_ACCEPT_97 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_97.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_97.txt']
+QCDpdf_ACCEPT_98 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_98.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_98.txt']
+QCDpdf_ACCEPT_99 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_99.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_99.txt']
+QCDpdf_ACCEPT_100 : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_100.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_100.txt']
 
-QCDpdf_ACCEPT : tZq : .* : HessianPDFset; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_0.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_1.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_2.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_3.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_4.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_5.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_6.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_7.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_8.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_9.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_10.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_11.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_12.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_13.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_14.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_15.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_16.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_17.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_18.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_19.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_20.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_21.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_22.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_23.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_24.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_25.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_26.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_27.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_28.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_29.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_30.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_31.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_32.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_33.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_34.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_35.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_36.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_37.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_38.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_39.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_40.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_41.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_42.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_43.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_44.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_45.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_46.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_47.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_48.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_49.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_50.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_51.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_52.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_53.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_54.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_55.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_56.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_57.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_58.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_59.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_60.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_61.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_62.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_63.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_64.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_65.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_66.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_67.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_68.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_69.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_70.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_71.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_72.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_73.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_74.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_75.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_76.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_77.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_78.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_79.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_80.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_81.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_82.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_83.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_84.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_85.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_86.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_87.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_88.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_89.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_90.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_91.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_92.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_93.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_94.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_95.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_96.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_97.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_98.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_99.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_100.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_101.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_102.txt']
+alphaS : $TTW : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_101.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_102.txt']
+alphaS : $ttH : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_101.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_102.txt']
+alphaS : TTZ : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_101.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_102.txt']
+alphaS : tZq : .* : templateAsymm; FakeRates=['ttW_multilepton/frs-pdfs/fr-pdf_101.txt'\,'ttW_multilepton/frs-pdfs/fr-pdf_102.txt']
 
