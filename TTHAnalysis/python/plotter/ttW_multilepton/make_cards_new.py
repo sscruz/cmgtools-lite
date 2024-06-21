@@ -8,7 +8,7 @@ if 'psi' in os.environ['HOSTNAME']:
     queue ="standard"
 elif 'fanae' in os.environ['HOSTNAME']:
     ORIGIN     = "/lustrefs/hdd_pool_dir/nanoAODv9/ttH_differential/NanoTrees_UL_v2_060422_skim2lss_newfts/"
-    queue ="batch"
+    queue ="short"
 elif 'gae' in os.environ['HOSTNAME']: 
     ORIGIN     = "/lustrefs/hdd_pool_dir/nanoAODv9/ttH_differential/NanoTrees_UL_v2_060422_skim2lss_newfts/"
     queue ="batch"
@@ -45,7 +45,7 @@ if "gen" in OTHER:
    ltext = "-l {LUMI}".format(LUMI=LUMI)
 
 
-T2L="-P {ORIGIN}/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btag_SFs_WPfixed_25GeV// --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars --FMCs {{P}}/6_ttWforlepton --Fs {{P}}/7_Vars_forttWDiff_25 --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
+T2L="-P {ORIGIN}/{YEAR} --FMCs {{P}}/0_jmeUnc_merged  --FMCs {{P}}/2_btag_SFs_WPfixed_25GeV// --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars_matteoflavor --FMCs {{P}}/6_ttWforlepton --Fs {{P}}/7_Vars_forttWDiff_25 --FMCs {{P}}/1_recl_allvars_withmatteoflavor --FDs {{P}}/1_recl  --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
 
 if "gen" in OTHER:
    T2L= "-P {ORIGIN}/NanoTrees_UL_v2_gennoskim_190923/{YEAR} ".format(ORIGIN = re.sub("NanoTrees_UL_v2_060422_.*","",ORIGIN), YEAR=YEAR)
