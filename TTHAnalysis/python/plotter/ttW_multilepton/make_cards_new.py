@@ -22,6 +22,7 @@ submit = '''sbatch -c %d -p %s  --wrap '{command}' '''%(nCores, queue)
 if len(sys.argv) < 4: 
     print 'Sytaxis is %s [outputdir] [year] [region] [observable] [other]'%sys.argv[0]
     raise RuntimeError 
+
 OUTNAME=sys.argv[1]
 YEAR=sys.argv[2]
 REGION=sys.argv[3]
@@ -45,7 +46,7 @@ if "gen" in OTHER:
    ltext = "-l {LUMI}".format(LUMI=LUMI)
 
 
-T2L="-P {ORIGIN}/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btag_SFs_WPfixed_25GeV// --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars --FMCs {{P}}/6_ttWforlepton --Fs {{P}}/7_Vars_forttWDiff_25 --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
+T2L="-P {ORIGIN}/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btag_SFs_WPfixed_25GeV// --FMCs {{P}}/2_scalefactors_lep/  --Fs {{P}}/6_ttWforlepton --Fs {{P}}/7_Vars_forttWDiff_25 --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
 
 if "gen" in OTHER:
    T2L= "-P {ORIGIN}/NanoTrees_UL_v2_gennoskim_190923/{YEAR} ".format(ORIGIN = re.sub("NanoTrees_UL_v2_060422_.*","",ORIGIN), YEAR=YEAR)
