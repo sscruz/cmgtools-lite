@@ -403,9 +403,6 @@ CMS_ttWl_thu_shape_ttZ_muF : TTZ : .* : templateAsymm ; FakeRates=['ttW_multilep
 CMS_ttWl_thu_shape_ttW_muR : $TTW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
 CMS_ttWl_thu_shape_ttW_muF : $TTW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
 
-CMS_ttWl_thu_shape_ttW_muR : $TTW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
-CMS_ttWl_thu_shape_ttW_muF : $TTW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
-
 CMS_ttWl_thu_shape_tHW_muR : $tHW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_2p0_muF_1p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_0p5_muF_1p0.txt']
 CMS_ttWl_thu_shape_tHW_muF : $tHW : .* : templateAsymm ; FakeRates=['ttW_multilepton/frs-scales/fr-muR_1p0_muF_2p0.txt'\,'ttW_multilepton/frs-scales/fr-muR_1p0_muF_0p5.txt']
 
