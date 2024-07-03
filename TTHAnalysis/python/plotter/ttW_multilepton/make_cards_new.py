@@ -46,7 +46,9 @@ if "gen" in OTHER:
    ltext = "-l {LUMI}".format(LUMI=LUMI)
 
 
-T2L="-P {ORIGIN}/{YEAR} --FMCs {{P}}/0_jmeUnc_v1  --FMCs {{P}}/2_btag_SFs_WPfixed_25GeV// --FMCs {{P}}/2_scalefactors_lep/  --Fs {{P}}/6_ttWforlepton --Fs {{P}}/7_Vars_forttWDiff_25 --Fs {{P}}/1_recl   --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
+
+T2L="-P {ORIGIN}/{YEAR} --FMCs {{P}}/0_jmeUnc_merged  --FMCs {{P}}/2_btag_SFs_WPfixed_25GeV// --FMCs {{P}}/2_scalefactors_lep/ --Fs {{P}}/4_evtVars_matteoflavor --Fs {{P}}/6_ttWforlepton --Fs {{P}}/7_Vars_forttWDiff_25 --FMCs {{P}}/1_recl_allvars_withmatteoflavor --FDs {{P}}/1_recl  --xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW ".format(ORIGIN=ORIGIN, YEAR=YEAR)
+
 
 if "gen" in OTHER:
    T2L= "-P {ORIGIN}/NanoTrees_UL_v2_gennoskim_190923/{YEAR} ".format(ORIGIN = re.sub("NanoTrees_UL_v2_060422_.*","",ORIGIN), YEAR=YEAR)
@@ -139,7 +141,7 @@ if (REGION == "3l" and "diff" in OTHER):
         TORUN = TORUN.replace(MCA,"ttW_multilepton/mca-includes/mca-3l-sigprompt-gen.txt")
         TORUN = TORUN.replace("ttW_multilepton/3l_tight.txt","ttW_multilepton/3l_fiducial.txt")
     print( submit.format(command=TORUN))
-    #os.system(submit.format(command=TORUN))
+    os.system(submit.format(command=TORUN))
 
 if REGION == "3l" and OBSERVABLE == "asymmetry":
     OPT_3L='{T2L} {OPTIONS} -W "L1PreFiringWeight_Nom*puWeight*btagSF*leptonSF_3l*triggerSF_3l"'.format(T2L=T2L, OPTIONS=OPTIONS, YEAR=YEAR)
@@ -160,6 +162,7 @@ if  REGION == "cr_3l" and OBSERVABLE == "inclusive":
     CATNAMES=",".join( map( lambda x : x+CATPOSTFIX, 'eee,eem,emm,mmm'.split(',')))
     TORUN = '''python {SCRIPT} {DOFILE} ttW_multilepton/mca-3l-{MCASUFFIX}{MCAOPTION}{OBSERVABLE}.txt ttW_multilepton/3l_tight.txt {FUNCTION_CR_3L} {SYSTS} {OPT_3L} --binname ttW_cr_3l_{YEAR} --categorize "{CATFUNC}" "{CATBINS}" {CATNAMES} --year {YEAR}'''.format( SCRIPT=SCRIPT, DOFILE=DOFILE, MCASUFFIX=MCASUFFIX,MCAOPTION=MCAOPTION,OBSERVABLE="-"+OBSERVABLE,FUNCTION_CR_3L=FUNCTION_CR_3L,SYSTS=SYSTS,OPT_3L=OPT_3L,YEAR=YEAR,CATFUNC=CATFUNC,CATBINS=CATBINS,CATNAMES=CATNAMES)
     print( submit.format(command=TORUN))
+    os.system(submit.format(command=TORUN))
 
 if REGION == "cr_4l" and OBSERVABLE == "inclusive":
     OPT_4L='{T4L} {OPTIONS} -W "L1PreFiringWeight_Nom*puWeight*btagSF*leptonSF_4l*triggerSF_3l"'.format(T4L=T4L,OPTIONS=OPTIONS)
@@ -167,4 +170,5 @@ if REGION == "cr_4l" and OBSERVABLE == "inclusive":
     CATPOSTFIX="_cr_4l";
     TORUN = 'python {SCRIPT} {DOFILE} ttW_multilepton/mca-4l-{MCASUFFIX}{MCAOPTION}.txt ttW_multilepton/4l_tight.txt {FUNCTION_CR_4L} {SYSTS} {OPT_4L} --binname ttW{CATPOSTFIX}_{YEAR} --year {YEAR} '.format(SCRIPT=SCRIPT, DOFILE=DOFILE,MCASUFFIX=MCASUFFIX,MCAOPTION=MCAOPTION, FUNCTION_CR_4L=FUNCTION_CR_4L,SYSTS=SYSTS,OPT_4L=OPT_4L,CATPOSTFIX=CATPOSTFIX,YEAR=YEAR)
     print submit.format(command=TORUN)
+    os.system(submit.format(command=TORUN))
 
