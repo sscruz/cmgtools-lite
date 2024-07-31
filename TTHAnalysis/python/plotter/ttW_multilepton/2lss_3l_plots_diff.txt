@@ -34,7 +34,7 @@ metLD:		MET_pt*0.6 + mhtJet25*0.4  	        : 40,0,400; XTitle="E_{T}^{miss} LD 
 
 #test_plots
 #lep1_pt:         LepGood1_pt                                    : 40,0,200; XTitle="Leading lepton p_{T} (GeV)"
-lep1_conePt     :     LepGood1_conePt                            : [25, 37, 50, 62, 75, 97, 120, 160, 200]; XTitle="Leading lepton cone p_{T} (GeV)"  ,  IncludeOverflows=True,YMin=0, YMax=350.
+lep1_conePt     :     LepGood1_conePt                            : [25, 37, 50, 62, 75, 97, 120, 160, 200]; XTitle="Leading lepton cone p_{T} (GeV)"  ,  IncludeOverflows=True,YMin=0, YMax=190.
 lep1_eta        :      abs(LepGood1_eta)				 :[0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5]; XTitle="Leading lepton #eta",  IncludeOverflows=True,YMin=0, YMax=300
 lep2_eta        :      abs(LepGood2_eta)				 :[0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5]; XTitle="Subleading lepton #eta",  IncludeOverflows=True,YMin=0, YMax=300
 lep2_conePt     :     LepGood2_conePt                            : [15, 22, 30, 40, 50, 75, 100]; XTitle="Subeading lepton cone p_{T} (GeV)"  ,  IncludeOverflows=True,YMin=0, YMax=350.
