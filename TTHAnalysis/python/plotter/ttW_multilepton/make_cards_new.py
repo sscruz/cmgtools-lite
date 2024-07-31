@@ -20,7 +20,7 @@ else:
 submit = '''sbatch -c %d -p %s  --wrap '{command}' '''%(nCores, queue)
 
 if len(sys.argv) < 4: 
-    print 'Sytaxis is %s [outputdir] [year] [region] [observable] [other]'%sys.argv[0]
+    print('Sytaxis is %s [outputdir] [year] [region] [observable] [other]'%sys.argv[0])
     raise RuntimeError 
 
 OUTNAME=sys.argv[1]
@@ -65,10 +65,11 @@ ASIMOV="--asimov signal"
 SCRIPT= "makeShapeCardsNew.py"
 PROMPTSUB="--plotgroup data_fakes+=.*_promptsub"
 
+print("other:",OTHER)
 if 'unblind' in OTHER:
     ASIMOV=""
 
-print "We are using the asimov dataset"
+print("We are using the asimov dataset")
 OPTIONS="{OPTIONS} -L ttW_multilepton/functionsTTW.cc --mcc ttW_multilepton/lepchoice-ttW-FO.txt --mcc ttW_multilepton/mcc-METchoice-prefiring.txt {PROMPTSUB} --neg   --threshold 0.01 {ASIMOV} ".format(OPTIONS=OPTIONS,PROMPTSUB=PROMPTSUB,ASIMOV=ASIMOV) # neg necessary for subsequent rebin #
 CATPOSTFIX=""
 MCASUFFIX="mcdata-frdata"
@@ -110,8 +111,9 @@ if REGION == "2lss":
         OPT_2L = OPT_2L.replace('-W "L1PreFiringWeight_Nom*puWeight*btagSF*leptonSF_2lss*triggerSF_2lss"','')
     CATPOSTFIX=""
     CHARGE = ""
-    if "chargesplit" in OTHER:
+    if "charge_flav_split" in OTHER or "chargesplit" in OTHER:
        CHARGE = "chargebiname"
+       print(CHARGE)
 
     TORUN='''python {SCRIPT} {DOFILE} ttW_multilepton/mca-2lss-{MCASUFFIX}{MCAOPTION}{OBSERVABLE}.txt ttW_multilepton/2lss_tight.txt "{FUNCTION_2L}" "{CATBINS}" {SYSTS} {OPT_2L} --binname ttW_2lss_0tau_{GEN}{OBS}_{YEAR}{CHARGE} --year {YEAR}  '''.format(SCRIPT=SCRIPT, DOFILE=DOFILE, MCASUFFIX=MCASUFFIX, MCAOPTION=MCAOPTION, OBSERVABLE="-"+OBSERVABLE, FUNCTION_2L=FUNCTION_2L, CATBINS=CATBINS, SYSTS=SYSTS, OPT_2L=OPT_2L, YEAR=YEAR, GEN=GENN,OBS=OBSERVABLE,CHARGE = CHARGE)
     if "gen" in OTHER:
@@ -123,7 +125,22 @@ if REGION == "2lss":
         print( submit.format(command=TORUN.replace("chargebiname","_negative")+ " -E ^minusminus")) #malamente
         os.system(submit.format(command=TORUN.replace("chargebiname","_positive")+ " -E ^plusplus"))
         os.system(submit.format(command=TORUN.replace("chargebiname","_negative")+ " -E ^minusminus"))
-
+    if "charge_flav_split" in OTHER:
+        print( submit.format(command=TORUN.replace("chargebiname","_positive_ee")+ " -E ^plusplus -E ^ee")) # ee tra-tra
+        print( submit.format(command=TORUN.replace("chargebiname","_positive_em")+ " -E ^plusplus -E ^em")) # emu tra-tra
+        print( submit.format(command=TORUN.replace("chargebiname","_positive_mm")+ " -E ^plusplus -E ^mm")) # mumu tra-tra
+        
+        print( submit.format(command=TORUN.replace("chargebiname","_negative_ee")+ " -E ^minusminus -E ^ee")) #ee malamente
+        print( submit.format(command=TORUN.replace("chargebiname","_negative_em")+ " -E ^minusminus -E ^em")) #emu malamente
+        print( submit.format(command=TORUN.replace("chargebiname","_negative_mm")+ " -E ^minusminus -E ^mm")) #mumu malamente
+        os.system( submit.format(command=TORUN.replace("chargebiname","_positive_ee")+ " -E ^plusplus -E ^ee")) # ee tra-tra
+        os.system( submit.format(command=TORUN.replace("chargebiname","_positive_em")+ " -E ^plusplus -E ^em")) # emu tra-tra
+        os.system( submit.format(command=TORUN.replace("chargebiname","_positive_mm")+ " -E ^plusplus -E ^mm")) # mumu tra-tra
+        
+        os.system( submit.format(command=TORUN.replace("chargebiname","_negative_ee")+ " -E ^minusminus -E ^ee")) #ee malamente
+        os.system( submit.format(command=TORUN.replace("chargebiname","_negative_em")+ " -E ^minusminus -E ^em")) #emu malamente
+        os.system( submit.format(command=TORUN.replace("chargebiname","_negative_mm")+ " -E ^minusminus -E ^mm")) #mumu malamente
+        
     else:
         os.system( submit.format(command=TORUN))
         print( submit.format(command=TORUN))
@@ -134,14 +151,21 @@ if (REGION == "3l" and "diff" in OTHER):
     if "gen" in OTHER:
         OPT_2L = OPT_2L.replace('-W "L1PreFiringWeight_Nom*puWeight*btagSF*leptonSF_3l*triggerSF_3l"','')
     CATPOSTFIX=""
-
-    TORUN='''python {SCRIPT} {DOFILE} ttW_multilepton/mca-3l-{MCASUFFIX}{MCAOPTION}{OBSERVABLE}.txt ttW_multilepton/3l_tight.txt "{FUNCTION_2L}" "{CATBINS}" {SYSTS} {OPT_2L} --binname ttW_3l_0tau_{GEN}{OBS}_{YEAR} --year {YEAR} -E nbtagdiff -X ^2b1B '''.format(SCRIPT=SCRIPT, DOFILE=DOFILE, MCASUFFIX=MCASUFFIX, MCAOPTION=MCAOPTION, OBSERVABLE="-"+OBSERVABLE, FUNCTION_2L=FUNCTION_2L, CATBINS=CATBINS, SYSTS=SYSTS, OPT_2L=OPT_2L, YEAR=YEAR, GEN=GENN,OBS=OBSERVABLE)
+    FLAVOR = "allflav"
+    TORUN='''python {SCRIPT} {DOFILE} ttW_multilepton/mca-3l-{MCASUFFIX}{MCAOPTION}{OBSERVABLE}.txt ttW_multilepton/3l_tight.txt "{FUNCTION_2L}" "{CATBINS}" {SYSTS} {OPT_2L} --binname ttW_3l_0tau_{GEN}{OBS}_{YEAR}_{FLAV} --year {YEAR} -E nbtagdiff -X ^2b1B '''.format(SCRIPT=SCRIPT, DOFILE=DOFILE, MCASUFFIX=MCASUFFIX, MCAOPTION=MCAOPTION, OBSERVABLE="-"+OBSERVABLE, FUNCTION_2L=FUNCTION_2L, CATBINS=CATBINS, SYSTS=SYSTS, OPT_2L=OPT_2L, YEAR=YEAR, GEN=GENN,OBS=OBSERVABLE,FLAV=FLAVOR)
     if "gen" in OTHER:
         MCA = '''ttW_multilepton/mca-3l-{MCASUFFIX}{MCAOPTION}{OBSERVABLE}.txt'''.format(MCASUFFIX=MCASUFFIX, MCAOPTION=MCAOPTION, OBSERVABLE="-"+OBSERVABLE)
         TORUN = TORUN.replace(MCA,"ttW_multilepton/mca-includes/mca-3l-sigprompt-gen.txt")
         TORUN = TORUN.replace("ttW_multilepton/3l_tight.txt","ttW_multilepton/3l_fiducial.txt")
-    print( submit.format(command=TORUN))
-    os.system(submit.format(command=TORUN))
+    if "flav_split" in OTHER:
+       #os.system(submit.format(command=TORUN.replace("allflav","eee")+ "-E eee"))
+       #os.system(submit.format(command=TORUN.replace("allflav","eem")+ "-E eem"))
+       #os.system(submit.format(command=TORUN.replace("allflav","emm")+ "-E emm"))
+       #os.system(submit.format(command=TORUN.replace("allflav","mmm")+ "-E mmm"))
+       print(submit.format(command=TORUN.replace("allflav","eee")+ "-E eee"))
+       print(submit.format(command=TORUN.replace("allflav","eem")+ "-E eem"))
+       print(submit.format(command=TORUN.replace("allflav","emm")+ "-E emm"))
+       print(submit.format(command=TORUN.replace("allflav","mmm")+ "-E mmm"))
 
 if REGION == "3l" and OBSERVABLE == "asymmetry":
     OPT_3L='{T2L} {OPTIONS} -W "L1PreFiringWeight_Nom*puWeight*btagSF*leptonSF_3l*triggerSF_3l"'.format(T2L=T2L, OPTIONS=OPTIONS, YEAR=YEAR)
@@ -169,6 +193,6 @@ if REGION == "cr_4l" and OBSERVABLE == "inclusive":
     OPT_4L="{OPT_4L} -I ^Zveto  -E ^underflowVeto4l -X 2j -X 2b1B".format(OPT_4L=OPT_4L)
     CATPOSTFIX="_cr_4l";
     TORUN = 'python {SCRIPT} {DOFILE} ttW_multilepton/mca-4l-{MCASUFFIX}{MCAOPTION}.txt ttW_multilepton/4l_tight.txt {FUNCTION_CR_4L} {SYSTS} {OPT_4L} --binname ttW{CATPOSTFIX}_{YEAR} --year {YEAR} '.format(SCRIPT=SCRIPT, DOFILE=DOFILE,MCASUFFIX=MCASUFFIX,MCAOPTION=MCAOPTION, FUNCTION_CR_4L=FUNCTION_CR_4L,SYSTS=SYSTS,OPT_4L=OPT_4L,CATPOSTFIX=CATPOSTFIX,YEAR=YEAR)
-    print submit.format(command=TORUN)
+    print(submit.format(command=TORUN))
     os.system(submit.format(command=TORUN))
 
