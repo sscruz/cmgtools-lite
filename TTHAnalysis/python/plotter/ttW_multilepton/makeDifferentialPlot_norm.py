@@ -18,8 +18,10 @@ var = sys.argv[3]
 #Dictionary with allowed input varaibles 
 varname = {"lep1_pt":("p_{T} (lep1)"),"lep2_pt":("p_{T} (lep2)"),"lep1_eta":("#eta (lep1)"),"lep2_eta":("#eta (lep2)"),"njets":("N Jet"),"njets_7bins":("N Jet"),"nbjets":("N b-tag Loose"),"jet1_pt":("p_{T} (jet)"),"jet1_eta":("|#eta| (jet1)"),"deta_llss":("#Delta #eta (ll)"),"HT":("HT"),"dR_ll":("#Delta R (ll)"),"max_eta":("max(#eta) (ll)"), "pt3l": ("p_{T} 3l"), "m3l":("m_{3l}"),"dR_lbmedium":(" #Delta R (l bmedium)"),"mindr_lep1_jet25":("min #Delta R (lj)"),"dR_lbloose":(" #Delta R (l bloose)"),"jet2_pt":(" p_{T} (jet 2)"),"jet2_eta":(" |#eta| (jet 2)"),"bLooseLeadingJet_eta":(" |#eta| (bLoose 1)"),"bLooseLeadingJet_pt":(" p_{T}  (bLoose 1)"),"bMediumLeadingJet_eta":(" |#eta| (bMedium 1)"),"bMediumLeadingJet_pt":(" p_{T}  (bMedium 1)"),"sum_2lss_pt":(" p_{T}^{lep1}+p_{T}^{lep2}  "),"nbjets_medium":(" N b-tag medium ") ,"mll":(" m_ll ")  }
 
-theounc = ["_CMS_ttWl_thu_shape_ttW","_QCDpdf_ttW_ACCEPT","_FSR","_ISR_ttW"] 
 
+theounc = ["_CMS_ttWl_thu_shape_ttW_muF","_CMS_ttWl_thu_shape_ttW_muR","_FSR","_ISR_ttW","_alphaS"] 
+for i in range(1,99):
+    theounc.append("_QCDpdf_ACCEPT_"+str(i))
 
 if var not in varname.keys():
    print("Variable not included, please add")
@@ -64,23 +66,44 @@ _noDelete={}
 
 
 def Get_Genhisto(tf,tf1,tf2,tf3,name):
-    ##print(name)
-    reference1=tf.Get(name)
-    reference2=tf1.Get(name)
-    reference3=tf2.Get(name)
-    reference4=tf3.Get(name)
+    keys1 = [ key.GetName() for key in tf.GetListOfKeys() ]
+    keys2 = [ key.GetName() for key in tf1.GetListOfKeys() ]
+    keys3 = [ key.GetName() for key in tf2.GetListOfKeys() ]
+    keys4 = [ key.GetName() for key in tf3.GetListOfKeys() ]
+    if "x_TTW_inclusive_QCDpdf_ACCEPT" in name and name not in keys1:
+       print("hey")
+       reference1=tf.Get("x_TTW_inclusive")
+    else:
+       reference1=tf.Get(name)
+
+    if "x_TTW_inclusive_QCDpdf_ACCEPT" in name and name not in keys2:
+       print("hey")
+       reference2=tf1.Get("x_TTW_inclusive")
+    else:
+       reference2=tf1.Get(name)
+
+    if "x_TTW_inclusive_QCDpdf_ACCEPT" in name and name not in keys3:
+       print("hey")
+       reference3=tf2.Get("x_TTW_inclusive")
+    else:
+       reference3=tf2.Get(name)
+    if "x_TTW_inclusive_QCDpdf_ACCEPT" in name and name not in keys4:
+       print("hey")
+       reference4=tf3.Get("x_TTW_inclusive")
+    else:
+       reference4=tf3.Get(name)
  
     reference = reference1.Clone("reference"+name)
    
     reference.Add(reference2)
     reference.Add(reference3)
     reference.Add(reference4)
-    ##print(reference1.GetBinContent(1),reference1.GetBinError(1))
-    ##print(reference2.GetBinContent(1),reference2.GetBinError(1))
-    ##print(reference3.GetBinContent(1),reference3.GetBinError(1))
-    ##print(reference4.GetBinContent(1),reference4.GetBinError(1))
-    ##print(reference.GetBinContent(1),reference.GetBinError(1))
-    print("refbins", reference.GetNbinsX(),reference.GetXaxis().GetXmin())
+    #print(reference1.GetBinContent(1),reference1.GetBinError(1))
+    #print(reference2.GetBinContent(1),reference2.GetBinError(1))
+    #print(reference3.GetBinContent(1),reference3.GetBinError(1))
+    #print(reference4.GetBinContent(1),reference4.GetBinError(1))
+    #print(reference.GetBinContent(1),reference.GetBinError(1))
+    reference.Scale(1, "width")
     return reference
 
 

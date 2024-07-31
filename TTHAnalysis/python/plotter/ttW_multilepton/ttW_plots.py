@@ -37,7 +37,7 @@ if 'cism.ucl.ac.be' in os.environ['HOSTNAME']:
 
 if ".psi.ch" in os.environ['HOSTNAME']:
     P0 = "/pnfs/psi.ch/cms/trivcat/store/user/sesanche"
-    #submit = 'sbatch -c %d -p short --wrap "{command}"'%nCores
+    submit = 'sbatch -c %d -p short --wrap "{command}"'%nCores
 
 TREESALL = "--xf GGHZZ4L_new,qqHZZ4L,tWll,WW_DPS,WpWpJJ,WWW_ll,T_sch_lep,GluGluToHHTo2V2Tau,TGJets_lep,WWTo2L2Nu_DPS,GluGluToHHTo4Tau,ZGTo2LG,GluGluToHHTo4V,TTTW  --FMCs {P}/0_jmeUnc_v1  --FMCs {P}/2_btag_SFs_WPfixed_25GeV/ --FMCs {P}/2_scalefactors_lep/  --Fs {P}/4_evtVars --Fs {P}/1_recl --Fs {P}/6_ttWforlepton  --Fs {P}/7_Vars_forttWDiff_25 " 
 YEARDIR=YEAR if YEAR not in ['all','2016APV_2016'] else ''
@@ -268,6 +268,9 @@ if __name__ == '__main__':
 
         if '_chargeasymmetry' in torun:
             x = x + " -E ^met --sP ^ttW_charge_asymmetry_v4 " 
+            x = x.replace("--rebin 4","")
+            x = x.replace("mca-3l-mcdata-frdata.txt","mca-3l-mcdata-frdata-leptoncharge.txt")
+            
 
         if '_DNNnodes' in torun:
             x = add(x, "--sP 'kinMVA_3l_cat.*'")

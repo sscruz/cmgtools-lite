@@ -9,8 +9,11 @@ import os
 from math import sqrt, cos, sin
 from copy import deepcopy
 import ROOT as r 
+def mTauTauVis(ev, ind, tesFile): 
+    file = r.TFile(tesFile)
+    hist = file.Get('tes')
+    #    tes  = hist.GetBinContent(hist.GetXaxis().FindBin(dm))
 
-def mTauTauVis( ev, ind ): 
     all_leps = [l for l in Collection(ev,"LepGood")]
     nFO = getattr(ev,"nLepFO_Recl")
     chosen = getattr(ev,"iLepFO_Recl")
@@ -19,10 +22,16 @@ def mTauTauVis( ev, ind ):
     
     if ev.Tau_tight2lss1tau_idx < 0: return -1
     taus = [ t for t in Collection(ev, 'TauSel_Recl')]
+    #dms = [ d for d in Collection(ev, 'TauSel_Recl_decayMode')]
 
-    return (leps[ind].p4() + taus[int(ev.Tau_tight2lss1tau_idx)].p4()).M()
+    #dm = ev.TauSel_Recl_decayMode
+    #tes  = hist.GetBinContent(hist.GetXaxis().FindBin(dm))
+    #print("ciao ", tes)
+    return (leps[ind].p4() + (taus[int(ev.Tau_tight2lss1tau_idx)].p4()*hist.GetBinContent(hist.GetXaxis().FindBin(ev.TauSel_Recl_decayMode[int(ev.Tau_tight2lss1tau_idx)])) )).M()  
 
-def massL3( ev, var ): 
+def massL3(ev, var, tesFile):
+    file = r.TFile(tesFile)
+    hist = file.Get('tes')
     if ev.Tau_tight2lss1tau_idx < 0: return -1
     all_leps = [l for l in Collection(ev,"LepGood")]
     nFO = getattr(ev,"nLepFO_Recl")
@@ -31,19 +40,23 @@ def massL3( ev, var ):
     if len(leps) < 2: return 0
 
     taus = [ t for t in Collection(ev, 'TauSel_Recl')]
+    #dms = [ d for d in Collection(ev, 'TauSel_Recl_decayMode')]
     l1=r.TLorentzVector();l2=r.TLorentzVector()
     l1.SetPtEtaPhiM(leps[0].conePt, leps[0].eta, leps[0].phi, 0)
     l2.SetPtEtaPhiM(leps[1].conePt, leps[1].eta, leps[1].phi, 0)
-    part = l1 + l2 + taus[int(ev.Tau_tight2lss1tau_idx)].p4()
-    
-    met_pt  = getattr(ev,'MET_pt%s'%var) 
+    part = l1 + l2 + taus[int(ev.Tau_tight2lss1tau_idx)].p4()*hist.GetBinContent(hist.GetXaxis().FindBin(ev.TauSel_Recl_decayMode[int(ev.Tau_tight2lss1tau_idx)]))
+
+    met_pt  = getattr(ev,'MET_pt%s'%var)
     met_phi = getattr(ev,'MET_phi%s'%var)
 
     return sqrt(part.Pt()*met_pt*(1-cos(part.Phi()-met_phi)))
 
 
+
+
 class finalMVA_DNN_2lss1tau(Module):
-    def __init__(self, variations=[], doSystJEC=True, fillInputs=False):
+    def __init__(self, tesYear = "2018", variations=[], doSystJEC=True, fillInputs=False):
+        self.tesFile = "/home/ucl/cp3/atalier/final_tth/CMSSW_10_4_0/src/CMGTools/TTHAnalysis/data/TauIDSFs/TauES_dm_DeepTau2017v2p1VSjet_UL{}.root".format(tesYear)
         self.outVars = []
         self._MVAs   = []
         self.fillInputs = fillInputs
@@ -95,8 +108,11 @@ class finalMVA_DNN_2lss1tau(Module):
 
         self._MVAs.extend( [ worker_2lss1tau_unclUp, worker_2lss1tau_unclDown])
         self.outVars.extend( ['DNN_2lss1tau_unclUp_' + x for x in cats_2lss1tau] +  ['DNN_2lss1tau_unclDown_' + x for x in cats_2lss1tau])
-
-
+    def applyTES(self, ev):
+        file = r.TFile(self.tesFile)
+        hist = file.Get('tes')
+        return hist.GetBinContent(hist.GetXaxis().FindBin(ev.TauSel_Recl_decayMode[int(ev.Tau_tight2lss1tau_idx)]))
+    
     def getVarsForVariation(self, var):
         return {'avg_dr_jet'             : lambda ev : getattr(ev,'avg_dr_jet%s'%var),
                 'min_dr_Lep'             : lambda ev : min([ev.drlep12, ev.drlep13, ev.drlep23]),
@@ -132,20 +148,20 @@ class finalMVA_DNN_2lss1tau(Module):
                 'nJetForward'            : lambda ev : getattr(ev,'nFwdJet%s_Recl'%var),
                 "mT_lep1"                : lambda ev : getattr(ev,'MT_met_lep1%s'%var),
                 "mT_lep2"                : lambda ev : getattr(ev,'MT_met_lep2%s'%var),
-                'tau1_pt'                : lambda ev : ev.TauSel_Recl_pt [int(ev.Tau_tight2lss1tau_idx)] if ev.Tau_tight2lss1tau_idx > -1 else 0, 
+                'tau1_pt'                : lambda ev : ev.TauSel_Recl_pt [int(ev.Tau_tight2lss1tau_idx)] * self.applyTES(ev) if ev.Tau_tight2lss1tau_idx > -1 else 0, 
                 'tau1_eta'               : lambda ev : ev.TauSel_Recl_eta[int(ev.Tau_tight2lss1tau_idx)] if ev.Tau_tight2lss1tau_idx > -1 else 0, 
                 'tau1_phi'               : lambda ev : ev.TauSel_Recl_phi[int(ev.Tau_tight2lss1tau_idx)] if ev.Tau_tight2lss1tau_idx > -1 else 0, 
                 'mindr_tau_jet'          : lambda ev : getattr(ev,'mindr_tau_jet%s'%var),
-                'mTauTauVis1'            : lambda ev : mTauTauVis(ev, 0),
-                'mTauTauVis2'            : lambda ev : mTauTauVis(ev, 1),
-                'massL3'                 : lambda ev : massL3(ev, var),
+                'mTauTauVis1'            : lambda ev : mTauTauVis(ev, 0,self.tesFile),
+                'mTauTauVis2'            : lambda ev : mTauTauVis(ev, 1,self.tesFile),
+                'massL3'                 : lambda ev : massL3(ev, var,self.tesFile),
 
             }
 
 
 
     def beginFile(self, inputFile, outputFile, inputTree, wrappedOutputTree):
-        print self.outVars
+        #print self.outVars
         declareOutput(self, wrappedOutputTree, self.outVars)
         
     def analyze(self,event):

@@ -60,23 +60,44 @@ maxY = 0
 _noDelete={}
 
 def Get_Genhisto(tf,tf1,tf2,tf3,name):
-    print(name)
-    reference1=tf.Get(name)
-    reference2=tf1.Get(name)
-    reference3=tf2.Get(name)
-    reference4=tf3.Get(name)
+    keys1 = [ key.GetName() for key in tf.GetListOfKeys() ]
+    keys2 = [ key.GetName() for key in tf1.GetListOfKeys() ]
+    keys3 = [ key.GetName() for key in tf2.GetListOfKeys() ]
+    keys4 = [ key.GetName() for key in tf3.GetListOfKeys() ]
+    if "x_TTW_inclusive_QCDpdf_ACCEPT" in name and name not in keys1:
+       print("hey")
+       reference1=tf.Get("x_TTW_inclusive")
+    else:
+       reference1=tf.Get(name)
+
+    if "x_TTW_inclusive_QCDpdf_ACCEPT" in name and name not in keys2:
+       print("hey")
+       reference2=tf1.Get("x_TTW_inclusive")
+    else:
+       reference2=tf1.Get(name)
+
+    if "x_TTW_inclusive_QCDpdf_ACCEPT" in name and name not in keys3:
+       print("hey")
+       reference3=tf2.Get("x_TTW_inclusive")
+    else:
+       reference3=tf2.Get(name)
+    if "x_TTW_inclusive_QCDpdf_ACCEPT" in name and name not in keys4:
+       print("hey")
+       reference4=tf3.Get("x_TTW_inclusive")
+    else:
+       reference4=tf3.Get(name)
  
     reference = reference1.Clone("reference"+name)
    
     reference.Add(reference2)
     reference.Add(reference3)
     reference.Add(reference4)
-    print(reference1.GetBinContent(1),reference1.GetBinError(1))
-    print(reference2.GetBinContent(1),reference2.GetBinError(1))
-    print(reference3.GetBinContent(1),reference3.GetBinError(1))
-    print(reference4.GetBinContent(1),reference4.GetBinError(1))
-    print(reference.GetBinContent(1),reference.GetBinError(1))
-    
+    #print(reference1.GetBinContent(1),reference1.GetBinError(1))
+    #print(reference2.GetBinContent(1),reference2.GetBinError(1))
+    #print(reference3.GetBinContent(1),reference3.GetBinError(1))
+    #print(reference4.GetBinContent(1),reference4.GetBinError(1))
+    #print(reference.GetBinContent(1),reference.GetBinError(1))
+    reference.Scale(1, "width")
     return reference
 
 def doSpam(text,x1,y1,x2,y2,align=12,fill=False,textSize=0.033,_noDelete={}):
@@ -144,6 +165,7 @@ def doShadedUncertainty(h,unc_list_up,unc_list_dn,lumi,relative = False):
                 dNdn.append(err)
             if N == 0 and (dN == 0 or relative): continue
             x = xaxis.GetBinCenter(i+1);
+            print(dNup)
             EYhigh = math.sqrt(sum(np.array(dNup)*np.array(dNup)))
             EYlow =math.sqrt(sum(np.array(dNdn)*np.array(dNdn)))
             EXhigh, EXlow = (xaxis.GetBinUpEdge(i+1)-x, x-xaxis.GetBinLowEdge(i+1))
@@ -312,10 +334,14 @@ referencen.Scale(1./lumi)
 reference.GetXaxis().SetRangeUser(lowedge,upperedge)
 referencen.Draw("Hsame")
 
-herrlistup = [Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_CMS_ttWl_thu_shape_ttWUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_QCDpdf_ttW_ACCEPTUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_FSRUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_ISR_ttWUp")]
-herrlistdn = [Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_CMS_ttWl_thu_shape_ttWDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_QCDpdf_ttW_ACCEPTDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_FSRDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_ISR_ttWDown")]
 
 
+herrlistup = [Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_CMS_ttWl_thu_shape_ttW_muFUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_alphaSUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_CMS_ttWl_thu_shape_ttW_muRUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_FSRUp"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_ISR_ttWUp")]
+herrlistdn = [Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_CMS_ttWl_thu_shape_ttW_muFDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_alphaSDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_CMS_ttWl_thu_shape_ttW_muRDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_FSRDown"),Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_ISR_ttWDown")]
+
+for i in range(1,99):
+    herrlistup.append(Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_QCDpdf_ACCEPT_"+str(i)+"Up"))
+    herrlistdn.append(Get_Genhisto(tf,tf1,tf2,tf3,"x_TTW_inclusive_QCDpdf_ACCEPT_"+str(i)+"Down"))
 
 totalError = doShadedUncertainty(reference,herrlistup,herrlistdn,lumi)  
 totalError.Draw("PE2 SAME")

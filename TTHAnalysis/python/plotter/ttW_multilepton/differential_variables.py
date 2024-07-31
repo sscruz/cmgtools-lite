@@ -11,6 +11,7 @@ class Observable:
 all_vars={}
 
 for REGION in ["2lss", "3l"]:
+
     for OBSERVABLE in ["njets","njets_7bins","nbjets_medium","nbjets","lep1_pt","lep2_pt", "dR_ll","lep1_eta", "lep2_eta", "max_eta","jet1_pt", "jet2_pt", "jet1_eta", "jet2_eta", "bMediumLeadingJet_pt", "bMediumLeadingJet_eta", "bLooseLeadingJet_pt", "bLooseLeadingJet_eta", "mll", "sum_2lss_pt", "deta_llss","dR_lbmedium","dR_lbloose","mindr_lep1_jet25","HT","m3l","pt3l"]:
         if OBSERVABLE == "njets":
             FUNCTION_2L="nDressSelJet"
@@ -254,8 +255,8 @@ for REGION in ["2lss", "3l"]:
                 CATBINS_Gen    ="[0, 250, 400, 600, 1000]"
 
             elif REGION == "3l":
-                CATBINS    ="[0.0,100,200,250,300.,375,450,525,600.,1400.,2000.]"
-                CATBINS_Gen    ="[0.0,200,300.,450,600.,2000.]"
+                CATBINS    ="[0, 100, 150.,175., 200.,225., 250.,375., 1000]"
+                CATBINS_Gen    ="[0, 150,200,250, 1000]"
         
         elif OBSERVABLE == "m3l":
             FUNCTION_2L="mass_3_cheap(GenDressedLepton_pt[iDressSelLep[0]],GenDressedLepton_eta[iDressSelLep[0]],GenDressedLepton_pt[iDressSelLep[1]],GenDressedLepton_eta[iDressSelLep[1]],GenDressedLepton_phi[iDressSelLep[1]]-GenDressedLepton_phi[iDressSelLep[0]],GenDressedLepton_pt[iDressSelLep[2]],GenDressedLepton_eta[iDressSelLep[2]],GenDressedLepton_phi[iDressSelLep[2]]-GenDressedLepton_phi[iDressSelLep[0]])"

@@ -116,6 +116,7 @@ if isNano: # new nanoAOD-tools options
     # output file name pattern
     #parser.add_option("-o", "--outPattern",   dest="outPattern",     type="string", default="%s_Friend", help="Pattern string for output file name"); # not really configurable due to postprocessor limitations
     parser.add_option("-z", "--compression",  dest="compression", type="string", default=("ZLIB:3"), help="Compression: none, or (algo):(level) ")
+    parser.add_option("--full",      action="store_true", default=False, help="Dont get friends, copy the full tree");
 else: # old CMGTools options
     # importing of modules
     parser.add_option("-m", "--modules", dest="modules",  type="string", default=[], action="append", help="Run these modules");
@@ -124,6 +125,7 @@ else: # old CMGTools options
     # output file name pattern
     parser.add_option("-o", "--outPattern",   dest="outPattern",     type="string", default="evVarFriend_%s", help="Pattern string for output file name");
     parser.add_option("-T", "--tree-dir",   dest="treeDir",     type="string", default="sf", help="Directory of the friend tree in the file (default: 'sf')");
+
 (options, args) = parser.parse_args()
 
 
@@ -257,7 +259,6 @@ if options.checkaliens:
 jobs = []
 print 'gets here'
 for D in sorted(glob(args[0]+"/*")):
-    if "1_" in D: continue
     if isNano:
         treename = "Events"
         if os.path.isfile(D) and D.endswith(".root"):
@@ -266,6 +267,7 @@ for D in sorted(glob(args[0]+"/*")):
             fname = "%s/%s.root" % (D, os.path.basename(D))
         else:
             continue
+
     else:
         treename = options.tree
         fname    = "%s/%s/%s_tree.root" % (D,options.tree,options.tree)
@@ -324,7 +326,7 @@ for D in sorted(glob(args[0]+"/*")):
             if options.queue == "condor":
                 jobs.append((short,data,1))
             else:
-                jobs.append((short,fname,"%s/%s.root" % (args[1],options.outPattern%short),data,(0,entries),-1,None))
+                jobs.append((short,fname,"%s/%s.root" % (args[1],options.outPattern%short),data,(0,entries),-1,None,options.full))
         else:
             nchunk = int(ceil(entries/float(chunk)))
             if not options.quiet: print "  ",os.path.basename(D),("  DATA" if data else "  MC")," %d chunks (%d events)" % (nchunk, entries)
@@ -350,14 +352,14 @@ for D in sorted(glob(args[0]+"/*")):
                     if i not in options.chunks: continue
                 if not options.fineSplit:
                     r = (int(i*chunk),min(int((i+1)*chunk),entries))
-                    jobs.append((short,fname,"%s/%s.chunk%d.root" % (args[1],options.outPattern%short,i),data,r,i,None))
+                    jobs.append((short,fname,"%s/%s.chunk%d.root" % (args[1],options.outPattern%short,i),data,r,i,None, options.full))
                 else:
                     ev_per_fs = int(ceil(chunk/float(options.fineSplit)))
                     for ifs in xrange(options.fineSplit):
                         if i in chunks_with_subs[short] and ifs in done_subchunks[(short,i)]: continue
                         if options.subChunk != None and ifs != options.subChunk: continue
                         r = (i*chunk + ifs*ev_per_fs, min(i*chunk + min((ifs+1)*ev_per_fs, chunk),entries))
-                        jobs.append((short,fname,"%s/%s.chunk%d.sub%d.root" % (args[1],options.outPattern%short,i,ifs),data,r,i,(ifs,options.fineSplit)))
+                        jobs.append((short,fname,"%s/%s.chunk%d.sub%d.root" % (args[1],options.outPattern%short,i,ifs),data,r,i,(ifs,options.fineSplit), options.full))
 print "\n"
 njobs = len(jobs)
 if options.queue == "condor": 
@@ -406,7 +408,7 @@ if options.queue:
         elif "fast" in options.env:
             super = "sbatch --partition cp3-fast --qos=cp3 "
         else:
-            super = "sbatch --partition cp3 --qos=cp3 "
+            super = "bash"#sbatch --partition cp3 --qos=cp3 "
     else: # Use lxbatch by default
         runner = options.runner
         super  = "bsub -q {queue}".format(queue = options.queue)
@@ -418,11 +420,11 @@ if options.queue:
     if not isNano: basecmd += " -T %s " % options.treeDir
 
     if options.queue == "cp3":
-        basecmd = "python {dir}/{self} -j 0 -N {chunkSize} -t {tree} {data} {output}".format(
+        basecmd = "sbatch -n1 -c1 el7 python {dir}/{self} -j 0 -N {chunkSize} -t {tree} {data} {output}".format(
                 dir = os.getcwd(), runner=runner, cmssw = os.environ['CMSSW_BASE'],
                 self=sys.argv[0], chunkSize=options.chunkSize,
                 tree=options.tree, data=args[0], output=theoutput)
-        if not isNano: basecmd = "python {dir}/{self} -j 0 -N {chunkSize} -T {tdir} -t {tree} {data} {output}".format(
+        if not isNano: basecmd = "sbatch -n1 -c1 el7 python {dir}/{self} -j 0 -N {chunkSize} -T {tdir} -t {tree} {data} {output}".format(
                 dir = os.getcwd(), runner=runner, cmssw = os.environ['CMSSW_BASE'],
                 self=sys.argv[0], chunkSize=options.chunkSize, tdir=options.treeDir,
                 tree=options.tree, data=args[0], output=theoutput)
@@ -474,10 +476,10 @@ if options.queue:
          os.system("condor_submit "+options.subfile)
     else:
       random.shuffle(jobs)
-      for (name,fin,fout,data,range,chunk,fs) in jobs:
+      for (name,fin,fout,data,range,chunk,fs, full) in jobs:
         if chunk != -1:
             if options.logdir: writelog = "-o {logdir}/{data}_{chunk}.out -e {logdir}/{data}_{chunk}.err".format(logdir=logdir, data=name, chunk=chunk)
-            cmd = "{super} {writelog} {base} -d {data} -c {chunk} {post}".format(super=super, writelog=writelog, base=basecmd, data=name, chunk=chunk, post=friendPost)
+            cmd = "{super} {writelog} {base} -d {data} -c {chunk} {post}".format(super=super, writelog=writelog, base=basecmd, data=name, chunk=chunk, post=friendPost) + (" --full" if full else "")
             if options.queue == "batch" and options.env != "oviedo":
                 cmd = "echo \"{base} -d {data} -c {chunk} {post}\" | {super} {writelog}".format(super=super, writelog=writelog, base=basecmd, data=name, chunk=chunk, post=friendPost)
             elif options.env == "oviedo":
@@ -491,8 +493,11 @@ if options.queue:
 """)
 
                 dacmd = "{base} -d {data} -c {chunk} {post}".format(base=basecmd, data=name, chunk=chunk, post=friendPost)
-                subfile.write("""srun -N1 -n1 -c1 --exclusive {cmd} &
+#                subfile.write("""srun -N1 -n1 -c1 --exclusive {cmd} &
+#wait
+                subfile.write("""{cmd} &
 wait
+
 
 """.format(cmd=dacmd))
                 subfile.close()
@@ -502,7 +507,7 @@ wait
                 cmd += " --fineSplit %d --subChunk %d" % (fs[1], fs[0])
         else:
             if options.logdir: writelog = "-o {logdir}/{data}.out -e {logdir}/{data}.err".format(logdir=logdir, data=name)
-            cmd = "{super} {writelog} {base} -d {data} {post}".format(super=super, writelog=writelog, base=basecmd, data=name, chunk=chunk, post=friendPost)
+            cmd = "{super} {writelog} {base} -d {data} {post}".format(super=super, writelog=writelog, base=basecmd, data=name, chunk=chunk, post=friendPost)  + (" --full" if full else "")
 
             if options.queue == "batch" and options.env != "oviedo":
                 cmd = "echo \"{base} -d {data} {post}\" | {super} {writelog}".format(super=super, writelog=writelog, base=basecmd, data=name, chunk=chunk, post=friendPost)
@@ -607,12 +612,14 @@ def _runIt(myargs):
     return (name,(nev,time))
 
 def _runItNano(myargs):
-    (name,fin,ofout,data,range,chunk,fineSplit) = myargs
+    (name,fin,ofout,data,range,chunk,fineSplit, full) = myargs
     timer = ROOT.TStopwatch()
     inpsibatch= 'SLURMD_NODENAME' in os.environ and 't3wn' in os.environ['SLURMD_NODENAME'] and ofout.startswith('/pnfs/psi.ch/')
     if inpsibatch:
         ofout = '/scratch/'+ofout
     command = ["nano_postproc.py", "--friend", os.path.dirname(ofout), "--postfix", os.path.basename(ofout)[len(name):-len(".root")] ]
+    if full :
+        command.remove( "--friend")
     for i in options.imports:  command += [ "-I", i[0], i[1] ]
     command += [ "-z", options.compression ]
     fin = fin
