@@ -323,10 +323,10 @@ t1 = doSpam('138 fb^{-1} (13 TeV)',  0.67, .955,0.99, .995, align=12, textSize=0
 
 #frame.Draw()
 reco_particle.GetXaxis().SetTitleSize(0.055)
-reco_particle.GetYaxis().SetTitle("Particle level %s"%varname[var])
+reco_particle.GetYaxis().SetTitle("Detector level %s"%varname[var])
 reco_particle.GetXaxis().SetTitleOffset(1.1)
 reco_particle.GetYaxis().SetTitleSize(0.055)
-reco_particle.GetXaxis().SetTitle("Detector level %s"%varname[var])
+reco_particle.GetXaxis().SetTitle("Particle level %s"%varname[var])
 reco_particle.GetZaxis().SetTitle("Events ")
 reco_particle.GetZaxis().SetTitleOffset(1.2)
 reco_particle.GetZaxis().SetTitleOffset(0.8)
@@ -337,6 +337,7 @@ t1.Draw()
 
 plot=var
 c1.SaveAs(outfolder+'/response_%s_%s.png'%(plot.replace('.','p'),region))                 
+c1.SaveAs(outfolder+'/response_%s_%s.pdf'%(plot.replace('.','p'),region))                 
 ## Compute purity and stability with the response matrix
 # X: detector level
 # Y: particle level
@@ -393,7 +394,7 @@ def compute_stability(hist, low_bin, high_bin):
 # Get binnings
 from differential_variables import all_vars
 
-observable = all_vars[(var, "2lss")]
+observable = all_vars[(var, region)]
 
 reco_bins = observable.CATBINS
 reco_bins = reco_bins.strip("[").strip("]").split(",")

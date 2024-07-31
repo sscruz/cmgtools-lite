@@ -54,7 +54,7 @@ lepGen1_eta    :     abs(GenDressedLepton_eta[iDressSelLep[0]])                 
 max_eta        :  max(abs(LepGood1_eta),abs(LepGood2_eta))    :[0, 0.5, 1.0, 1.25, 1.5, 1.75, 2, 2.25, 2.5] ; XTitle="max |#eta_{ll}|"
 dR_ll : deltaR(LepGood1_eta,LepGood1_phi,LepGood2_eta,LepGood2_phi) :  [0.0,0.8,1.6,2.1,2.9,3.3,4.1,5.0]; XTitle="#Delta R(l\,l)" ,  IncludeOverflows=True,YMin=0, YMax=550
 HT : htJet25j_Recl : [0, 125, 250, 325, 400, 500, 600, 800, 1000]; XTitle="H_{T} (GeV)"
-HT_3l : htJet25j_Recl : [0.0,100,200,250,300.,375,450,525,600.,1400.,2000.]; XTitle="H_{T} (GeV)"
+HT_3l : htJet25j_Recl : [0, 100, 150.,175., 200.,225., 250.,375., 1000]; XTitle="H_{T} (GeV)",  IncludeOverflows=True,YMin=0, YMax=110
 sum_2lss_pt: LepGood1_conePt+LepGood2_conePt : [0.0, 50.0, 100.0, 150.0, 200.0, 250.0, 300.0, 350.0, 400.0] ; XTitle="p_{T}^{l1} +p_{T}^{l2} (GeV)"
 mindr_lep1_jet25 : mindr_lep1_jet25 : [0, 0.75,1.0,1.25, 1.5,1.75, 2.0,2.5, 3.0]; XTitle="min #Delta R(lep1\,jet)"
 dR_lbmedium : dR_lbmedium : [0, 0.5,1.0,1.25, 1.5,1.75, 2.0,2.25, 2.5,2.75, 3.0,3.25,3.5,3.75,4.0]; XTitle="min #Delta R(l\,b)",  IncludeOverflows=True
@@ -62,4 +62,3 @@ dR_lbmedium : dR_lbmedium : [0, 0.5,1.0,1.25, 1.5,1.75, 2.0,2.25, 2.5,2.75, 3.0,
 mll : mass_2(LepGood1_conePt, LepGood1_eta, LepGood1_phi, 0, LepGood2_conePt, LepGood2_eta, LepGood2_phi, 0): [0.0, 50.0, 100.0, 150.0, 200.0, 250.0, 300.0, 350.0, 400.0] ;  XTitle="m_{ll}"
 pt3l         : LepGood1_pt+LepGood2_pt+LepGood3_pt    : [0.0, 100,150.,200., 250.,300 ,350.,450. ,800.];  XTitle=" p_{T}^{3l} (GeV)"  ,  IncludeOverflows=True,YMin=0, YMax=400.
 m3l : mass_3_cheap(LepGood1_pt,LepGood1_eta,LepGood2_pt,LepGood2_eta,LepGood2_phi-LepGood1_phi,LepGood3_pt,LepGood3_eta,LepGood3_phi-LepGood1_phi) : [0., 50., 150., 250., 350., 600.] ;  XTitle="m_{3l}"
-

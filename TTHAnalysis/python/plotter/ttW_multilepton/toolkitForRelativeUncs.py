@@ -7,7 +7,7 @@ from differential_variables import all_vars
 
 
 
-basecommand = 'combineTool.py -M MultiDimFit {algosettings} --setParameters {setpars} --split-points 1 --floatOtherPOIs=1 --saveInactivePOI 1 {parallel} {queue} {extra} --robustFit 1 --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --setParameterRanges {minmaxlist} --squareDistPoiStep --autoRange 4 -m 125'
+basecommand = "sbatch -p batch --wrap 'combineTool.py -M MultiDimFit {algosettings} --setParameters {setpars} --split-points 1 --floatOtherPOIs=1 --saveInactivePOI 1 {parallel} {queue} {extra} --robustFit 1 --cminDefaultMinimizerStrategy 0 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --setParameterRanges {minmaxlist} --squareDistPoiStep --autoRange 4 -m 125'"
 
 individual_scaff = {
     "btag": [
@@ -27,7 +27,10 @@ individual_scaff = {
         "CMS_scale_j_BBEC1_2018", 
         "CMS_scale_j_BBEC1_2017", 
         "CMS_scale_j_RelativeBal", 
-        "CMS_scale_j_FlavorQCD", 
+        "CMS_scale_j_FlavorPureGluon", 
+        "CMS_scale_j_FlavorPureQuark", 
+        "CMS_scale_j_FlavorPureCharm", 
+        "CMS_scale_j_FlavorPureBottom", 
         "CMS_scale_j_RelativeSample_2016APV", 
         "CMS_scale_j_BBEC1", 
         "CMS_res_j_barrel_2016APV", 
@@ -40,6 +43,7 @@ individual_scaff = {
         "CMS_scale_j_Absolute_2017", 
         "CMS_scale_j_RelativeSample_2018", 
         "CMS_jesHEMIssue", 
+        "CMS_ttWl_UnclusteredEn", 
         "CMS_scale_j_RelativeSample_2017", 
         "CMS_scale_j_RelativeSample_2016", 
         "CMS_res_j_endcap1_2018", 
@@ -58,41 +62,50 @@ individual_scaff = {
         "lumi_13TeV_2016", 
         "lumi_13TeV_2017"
     ], 
+    "Norm_ttz_wz_zz": [
+        "CMS_ttWl_TTZ_lnU", 
+        "CMS_ttWl_WZ_lnU", 
+        "CMS_ttWl_ZZ_lnU", 
+    ], 
     "modeling_norm": [
         "QCDscale_ttZ", 
         "QCDscale_ttH", 
-        "CMS_ttWl_Rares", 
+        "CMS_ttWl_Rares",
+        "CMS_ttWl_tZq", 
+        "CMS_ttWl_ttVV",  
         "CMS_ttWl_Convs", 
-        "CMS_ttWl_QF", 
-        "QCDscale_ttWW", 
+        "CMS_ttWl_QF",
+        "CMS_ttWl_VVV",  
         "QCDscale_tHW", 
-        "QCDscale_tHq"
+        "QCDscale_tHq",
+        "rgx{BR_.*}"
     ], 
     "modeling_shape": [
         "CMS_ttWl_EWK_btag", 
-        "CMS_ttWl_thu_shape_ttH", 
-        "CMS_ttWl_thu_shape_ttZ", 
+        "rgx{CMS_ttWl_thu_shape_ttH.*}", 
+        "rgx{CMS_ttWl_thu_shape_ttZ.*}", 
         "pdf_gg", 
-        "CMS_ttWl_thu_shape_ZZ", 
-        "CMS_ttWl_thu_shape_ttW", 
+        "rgx{CMS_ttWl_thu_shape_ZZ.*}", 
+        "rgx{CMS_ttWl_thu_shape_ttW.*}", 
         "pdf_qg", 
-        "CMS_ttWl_thu_shape_tHq", 
-        "CMS_ttWl_thu_shape_tHW", 
+        "rgx{CMS_ttWl_thu_shape_tHq.*}", 
+        "rgx{CMS_ttWl_thu_shape_tHW.*}", 
         "pdf_Higgs_ttH", 
         "pdf_TTWW", 
-        "CMS_ttWl_thu_shape_WZ", 
+        "rgx{CMS_ttWl_thu_shape_WZ.*}", 
         "pdf_qqbar", 
         "CMS_ttWl_EWK_jet",
-        "QCDpdf_ACCEPT",
+        "rgx{QCDpdf_ACCEPT.*}",
+        "alphaS",
         "FSR",
         "ISR_ttW",
         "ISR_ttH",
         "ISR_ttZ",
         "ISR_tZq",
-        "QCDscale_tZq_ACCEPT",
-        "QCDscale_VVV_ACCEPT",
-        "QCDscale_ttVV_ACCEPT",
-        "QCDscale_Rares_ACCEPT",
+        "rgx{CMS_ttWl_thu_shape_tZq.*}",
+        "rgx{CMS_ttWl_thu_shape_VVV.*}",
+        "rgx{CMS_ttWl_thu_shape_ttVV.*}",
+        "rgx{CMS_ttWl_thu_shape_Rares.*}",
 
     ], 
     "nonprompt": [
@@ -153,9 +166,10 @@ def calculateRelativeUncertainties(task):
     ##################### OLD
     # First, we calculate the nominal files that we need.
     for poi in POIs:
-        cumulative = [x for x in POIs if x != poi]
+      cumulative = [x for x in POIs if x != poi]
 
-        # nominal_POI
+      # nominal_POI
+      if donominal_1 or donominal_2:
         if not os.path.isfile(inpath + "/nominal/higgsCombinenominal_{p}.MultiDimFit.mH125.root".format(p = poi)) or redo:
             nomcomm    = basecommand.format(algosettings = "--algo grid --points " + str(npoints),
                                             setpars      = ",".join([el + "=1" for el in POIs]),
@@ -164,18 +178,21 @@ def calculateRelativeUncertainties(task):
                                             extra        = '-n nominal_{p} {card} -P {p}'.format(p = poi, card = thecard),
                                             #extra        = '-n nominal_{p} {card} -P {p} --freezeParameters {c}'.format(p = poi, card = thecard, c = ",".join(cumulative))
                                             minmaxlist   = ":".join([el + "=0,3" for el in POIs]),
-                                            )
-            if not pretend: os.system("cd {path}; rm ./higgsCombinenominal_{p}.POINTS*; cd -".format(path = inpath + "/nominal", p = poi))
+                            )
+            if donominal_1:    
+               if not pretend: os.system("cd {path}; rm ./higgsCombinenominal_{p}.POINTS*; cd -".format(path = inpath + "/nominal", p = poi))
 
-            print "\nCommand:", "cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = nomcomm)
-            if not pretend: os.system("cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = nomcomm))
-
-            nomcomm  = 'hadd -f higgsCombinenominal_{p}.MultiDimFit.mH125.root higgsCombinenominal_{p}.POINTS.*.MultiDimFit.mH125.root'.format(p = poi)
-            print "\nCommand:", "cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = nomcomm) 
-            if not pretend: os.system("cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = nomcomm))
+               print "\nCommand:", "cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = nomcomm)
+               if not pretend: os.system("cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = nomcomm))
+            if donominal_2:
+               nomcomm  = 'hadd -f higgsCombinenominal_{p}.MultiDimFit.mH125.root higgsCombinenominal_{p}.POINTS.*.MultiDimFit.mH125.root'.format(p = poi)
+               print "\nCommand:", "cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = nomcomm) 
+               if not pretend: os.system("cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = nomcomm))
 
         # bestfit_POI
+      elif doBF:
         if not os.path.isfile(inpath + "/nominal/higgsCombinebestfit_{p}.MultiDimFit.mH125.root".format(p = poi)) or redo:
+
             if not pretend and os.path.isfile(inpath + "/nominal/higgsCombinebestfit_{p}.MultiDimFit.mH125.root".format(p = poi)):
                 os.system("cd {path}; rm ./higgsCombinebestfit_{p}.MultiDimFit.mH125.root; cd -".format(path = inpath + "/nominal", p = poi))
             gridcomm = basecommand.format(algosettings = "--algo none",
@@ -188,8 +205,8 @@ def calculateRelativeUncertainties(task):
             print "\nCommand:", "cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = gridcomm)
             if not pretend: os.system("cd {p}; {cmd}; cd -".format(p = inpath + "/nominal", cmd = gridcomm))
 
-    
-    for poi in POIs:
+    if not (donominal_1) and not (donominal_2) and not(doBF) and splitting:
+     for poi in POIs:
         #cumulative = [x for x in POIs if x != poi]
         cumulative = []
         fileList   = []
@@ -210,9 +227,9 @@ def calculateRelativeUncertainties(task):
                                             minmaxlist   = ":".join([el + "=0,3" for el in POIs]),
                 )
 
-                if not pretend: os.system("cd {path}; rm ./higgsCombine{g}_{p}.POINTS*; cd -".format(path = inpath + "/individual", p = poi, g = gr))
-                print "\nCommand:", "cd {p}; {cmd}; cd -".format(p = inpath + "/individual", cmd = thecomm)
-                if not pretend: os.system("cd {p}; {cmd}; cd -".format(p = inpath + "/individual", cmd = thecomm))
+                #if not pretend: os.system("cd {path}; rm ./higgsCombine{g}_{p}.POINTS*; cd -".format(path = inpath + "/individual", p = poi, g = gr))
+                #print "\nCommand:", "cd {p}; {cmd}; cd -".format(p = inpath + "/individual", cmd = thecomm)
+                #if not pretend: os.system("cd {p}; {cmd}; cd -".format(p = inpath + "/individual", cmd = thecomm))
 
                 tmpcomm = 'hadd -f higgsCombine{gp}.MultiDimFit.mH125.root higgsCombine{gp}.POINTS.*.MultiDimFit.mH125.root'.format(gp = gr + '_' + poi)
 
@@ -249,7 +266,10 @@ if __name__ == "__main__":
     parser.add_argument('--verbose',    '-V', action  = "store_true", dest = "verbose",  required = False, default = False)
     parser.add_argument('--doObserved', '-O', action  = "store_true", dest = "doobs",    required = False, default = False)
     parser.add_argument('--blindSignalStrength','-b',action="store_true",dest="blindmu", required = False, default = False)
-
+    parser.add_argument('--donominal_1','-N1',action="store_true",dest="donominal_1", required = False, default = False)
+    parser.add_argument('--donominal_2','-N2',action="store_true",dest="donominal_2", required = False, default = False)
+    parser.add_argument('--doBF','-B',action="store_true",dest="doBF", required = False, default = False)
+    parser.add_argument('--splitting','-S',action="store_true",dest="splitting", required = False, default = False)
 
     args     = parser.parse_args()
     nthreads = args.nthreads
@@ -261,7 +281,10 @@ if __name__ == "__main__":
     doobs    = args.doobs
     doblind  = args.blindmu
     ncores   = args.nthreads
-
+    donominal_1= args.donominal_1
+    donominal_2 = args.donominal_2
+    doBF = args.doBF
+    splitting = args.splitting
     task=inpath, varName, ncores, pretend, verbose, extra, doobs, doblind
 
     calculateRelativeUncertainties(task)

@@ -15,14 +15,14 @@ TTZ	: TTLep_pow : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGo
 TTZ   	: TTSemi_pow : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kSpring+2
 
 WZ	: WZTo3LNu_fxfx : 5.28 : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0  ;  FillColor=ROOT.kViolet-4
-ZZ : ZZTo4L : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ;  FillColor=ROOT.kViolet-3
-ZZ : DYJetsToLL_M10to50_LO : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-3
-ZZ : GluGluToContinToZZTo2e2mu   : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-4, Label="ZZ"
-ZZ : GluGluToContinToZZTo2mu2tau : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-4, Label="ZZ"
-ZZ : GluGluToContinToZZTo2e2tau  : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-4, Label="ZZ"
-ZZ : GluGluToContinToZZTo4e      : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-4, Label="ZZ"
-ZZ : GluGluToContinToZZTo4mu     : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-4, Label="ZZ"
-ZZ : GluGluToContinToZZTo4tau    : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-4, Label="ZZ"
+ZZ : ZZTo4L : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ;  FillColor=ROOT.kViolet-3, Label="ZZ"
+ZZ : DYJetsToLL_M10to50_LO : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-3, Label="ZZ"
+ZZ : GluGluToContinToZZTo2e2mu   : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-3, Label="ZZ"
+ZZ : GluGluToContinToZZTo2mu2tau : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-3, Label="ZZ"
+ZZ : GluGluToContinToZZTo2e2tau  : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-3, Label="ZZ"
+ZZ : GluGluToContinToZZTo4e      : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-3, Label="ZZ"
+ZZ : GluGluToContinToZZTo4mu     : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-3, Label="ZZ"
+ZZ : GluGluToContinToZZTo4tau    : xsec :  LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kViolet-3, Label="ZZ"
 
 Rares: GGHZZ4L_new : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kAzure-9
 Rares : qqHZZ4L : xsec : LepGood1_mcMatchId!=0 && LepGood2_mcMatchId!=0 && LepGood3_mcMatchId!=0 && LepGood4_mcMatchId!=0 ; FillColor=ROOT.kAzure-9

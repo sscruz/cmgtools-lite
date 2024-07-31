@@ -19,9 +19,9 @@ r.TH1.AddDirectory(0)
 #comm2 = "combineTool.py -M Impacts -d {incard} --robustFit 1 --doFits {ncores} {asimov} {extra} -m 1 -n {prefix} --redefineSignalPOIs {pois} --robustHesse 1 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000"
 #comm3 = "combineTool.py -M Impacts -d {incard} -o impacts{prefix}.json {ncores} {asimov} {extra} -m 1 -n {prefix} --redefineSignalPOIs {pois} --robustHesse 1 --robustFit 1 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000"
 
-comm1 = "combineTool.py -M Impacts -d {incard} --doInitialFit --robustFit 1 {ncores} {asimov} {extra} -m 1 -n {prefix} --out {outdir} --redefineSignalPOIs {pois} --floatOtherPOIs 1 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --cminDefaultMinimizerStrategy 0 --robustHesse 1"
-comm2 = "combineTool.py -M Impacts -d {incard} --robustFit 1 --doFits {ncores} {asimov} {extra} -m 1 -n {prefix} --redefineSignalPOIs {pois} --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --cminDefaultMinimizerStrategy 0 --robustHesse 1"
-comm3 = "combineTool.py -M Impacts -d {incard} -o impacts{prefix}.json {ncores} {asimov} {extra} -m 1 -n {prefix} --redefineSignalPOIs {pois} --robustFit 1  --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --cminDefaultMinimizerStrategy 0 --robustHesse 1"
+comm1 = "combineTool.py -M Impacts -d {incard} --doInitialFit --robustFit 1 {ncores} {asimov} {extra} -m 125 -n {prefix} --out {outdir} --redefineSignalPOIs {pois} --floatOtherPOIs 1 --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --cminDefaultMinimizerStrategy 0 --robustHesse 1"
+comm2 = "combineTool.py -M Impacts -d {incard} --robustFit 1 --doFits {ncores} {asimov} {extra} -m 125 -n {prefix} --redefineSignalPOIs {pois} --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --cminDefaultMinimizerStrategy 0 --robustHesse 1 --job-mode slurm --job-dir ./Logs_impacts   --sub-opts '-p batch'"
+comm3 = "combineTool.py -M Impacts -d {incard} -o impacts{prefix}.json {ncores} {asimov} {extra} -m 125 -n {prefix} --redefineSignalPOIs {pois} --robustFit 1  --X-rtd MINIMIZER_analytic --X-rtd MINIMIZER_MaxCalls=5000000 --cminDefaultMinimizerStrategy 0 --robustHesse 1"
 
 nuisanceColours = {
     'Gaussian'          : 1,
@@ -401,12 +401,22 @@ def makeImpacts(task):
     if verbose:
         print "First command:", firstcomm, "\n"
 
-    if not pretend:
+    if not pretend  and  firststepbatch:
         if not os.path.exists(inpath + "/impacts_"+regName):
                os.system("mkdir "+inpath + "/impacts_"+regName)
-        outstat = os.system("cd " + inpath + "/impacts_"+regName+"; " + firstcomm + "; cd -")
+        outstat = os.system("cd " + inpath + "/impacts_"+regName+"; " +"sbatch -p batch --wrap '" +firstcomm + " ' "+"; cd -")
+        print("sbatch -p batch --wrap '" +firstcomm + " ' ")
         if outstat:
             raise RuntimeError("FATAL: first command failed to execute for variable {v}.".format(v = varName))
+
+    if not pretend  and  firststep:
+        if not os.path.exists(inpath + "/impacts_"+regName):
+               os.system("mkdir "+inpath + "/impacts_"+regName)
+        outstat = os.system("cd " + inpath + "/impacts_"+regName+"; "  +firstcomm +"; cd -")
+        print("sbatch -p batch --wrap '" +firstcomm + " ' ")
+        if outstat:
+            raise RuntimeError("FATAL: first command failed to execute for variable {v}.".format(v = varName))
+
 
     secondcomm = comm2.format(ncores = ("--parallel " + str(ncores)) if ncores else "",
                              asimov = asimov_,
@@ -421,11 +431,10 @@ def makeImpacts(task):
     if verbose:
         print "Second command:", secondcomm, "\n"
 
-    if not pretend:
+    if not pretend  and  secondstep:
         outstat = os.system("cd " + inpath + "/impacts_"+regName+"; " + secondcomm + "; cd -")
         if outstat:
             raise RuntimeError("FATAL: second command failed to execute for variable {v}.".format(v = varName))
-
     thirdcomm = comm3.format(ncores = ("--parallel " + str(ncores)) if ncores else "",
                              asimov = asimov_,
                              incard = "../ws_"+varName+"_"+regName+'.root',
@@ -439,15 +448,15 @@ def makeImpacts(task):
     if verbose:
         print "Third command:", thirdcomm, "\n"
 
-    if not pretend:
+    if not pretend and thirdstep:
         outstat = os.system("cd " + inpath + "/impacts_"+regName+"; " + thirdcomm + "; cd -")
         if outstat:
             raise RuntimeError("FATAL: third command failed to execute for variable {v}.".format(v = varName))
 
     
-    plotImpacts(inpath+"/impacts_"+regName+ "/impacts{v}.json".format(v = varName+"_"+regName), "impacts{v}".format(v = varName+"_"+regName), inpath, nparticlebins, doblind, varName,regName)
-    print '\n> Variable', varName, "' impacts produced.\n"
-    return
+        plotImpacts(inpath+"/impacts_"+regName+ "/impacts{v}.json".format(v = varName+"_"+regName), "impacts{v}".format(v = varName+"_"+regName), inpath, nparticlebins, doblind, varName,regName)
+        print '\n> Variable', varName, "' impacts produced.\n"
+        return
 
 
 
@@ -465,6 +474,10 @@ if __name__ == '__main__':
     parser.add_argument('--verbose',    '-V', action  = "store_true", dest = "verbose",  required = False, default = False)
     parser.add_argument('--doObserved', '-O', action  = "store_true", dest = "doobs",    required = False, default = False)
     parser.add_argument('--blindSignalStrength','-b',action="store_true",dest="blindmu", required = False, default = False)
+    parser.add_argument('--initialFit',    '-I',action="store_true",dest="firststep", required = False, default = False)
+    parser.add_argument('--initialFitBatch',    '-Ib',action="store_true",dest="firststepbatch", required = False, default = False)
+    parser.add_argument('--FitbyFit',    '-M',action="store_true",dest="secondstep", required = False, default = False)
+    parser.add_argument('--lastPart',    '-F',action="store_true",dest="thirdstep", required = False, default = False)
 
 
     args     = parser.parse_args()
@@ -478,7 +491,10 @@ if __name__ == '__main__':
     doobs    = args.doobs
     doblind  = args.blindmu
     ncores   = args.nthreads
-    
+    firststep = args.firststep
+    firststepbatch = args.firststepbatch
+    secondstep = args.secondstep
+    thirdstep = args.thirdstep
 
 
     task=inpath, varName, ncores, pretend, verbose, extra, doobs, doblind,regName
