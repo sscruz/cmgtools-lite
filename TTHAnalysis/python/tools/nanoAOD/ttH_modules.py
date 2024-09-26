@@ -426,6 +426,13 @@ bTagSFs = lambda : BtagSFs("JetSel_Recl",
 #                                    corrs=jecGroups,
 #                        )
 
+from CMGTools.TTHAnalysis.tools.nanoAOD.btagEffCount_ul import bTagEffCount
+
+btagEffDeepjet_2016APV = [lambda : bTagEffCount( tagger = "DeepFlav", variable = "btagDeepFlavB", year = "2016APV", verbosity = 0)]
+btagEffDeepjet_2016    = [lambda : bTagEffCount( tagger = "DeepFlav", variable = "btagDeepFlavB", year = "2016", verbosity = 0)]
+btagEffDeepjet_2017    = [lambda : bTagEffCount( tagger = "DeepFlav", variable = "btagDeepFlavB", year = "2017", verbosity = 0)]
+btagEffDeepjet_2018    = [lambda : bTagEffCount( tagger = "DeepFlav", variable = "btagDeepFlavB", year = "2018", verbosity = 0)]
+
 from CMGTools.TTHAnalysis.tools.nanoAOD.lepScaleFactors import lepScaleFactors
 leptonSFs = lambda : lepScaleFactors()
 
